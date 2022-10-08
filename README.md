@@ -8,8 +8,15 @@
 6. about page
 7. required apps page (for setting up a new computer)
 
+# Timeline
+Finished by November 1
+
+# Examples
+- https://timdaub.github.io/projects/
+- https://leerob.io/snippets
+
 ## Resources
-https://www.npmjs.com/package/@zentered/next-product-docs
+- https://www.npmjs.com/package/@zentered/next-product-docs
 
 ## Frameworks
 - Server & Hosting Nextjs & Vercel
@@ -17,6 +24,7 @@ https://www.npmjs.com/package/@zentered/next-product-docs
 
 ### Website Examples
 - https://opstrace.com/
+- https://timdaub.github.io/projects/ 
 
 ### Blog Examples
 Requirements
@@ -25,3 +33,6 @@ Requirements
 - Dovetail: https://dovetailapp.com/outlier/
 - - dropdown menu for topics
 - - CMS presenting different topics
+
+## Analytics
+- https://plausible.io/
