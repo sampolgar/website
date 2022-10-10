@@ -14,6 +14,7 @@ Finished by November 1
 # Examples
 - https://timdaub.github.io/projects/
 - https://leerob.io/snippets
+- https://nextra.vercel.app/
 
 ## Resources
 - https://www.npmjs.com/package/@zentered/next-product-docs
@@ -36,3 +37,10 @@ Requirements
 
 ## Analytics
 - https://plausible.io/
+
+
+Todo
+- [x] get basic working https://nextjs.org/docs/api-reference/create-next-app
+- [ ] get basic typescript working
+- [ ] add next-product-docs component https://github.com/zentered/next-product-docs
+- [ ] choose template
