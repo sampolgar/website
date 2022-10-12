@@ -9,10 +9,20 @@
 
 
     <script type="text/jsx">
-        const app = document.getElementById('app');
-        console.log(props)
+        function Header({title}) {
+            console.log(title)
+            return <h1>{title}</h1>
+        }
 
+        function HomePage() {
+            return (
+                <div>
+                    <Header title="reactor" />
+                </div>
+            )
+        }
+        ReactDOM.render(<HomePage />, app);
     </script>
 </body>
 
-</html>`
+</html>

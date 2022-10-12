@@ -55,3 +55,9 @@ Differences
 - - like building blocks, combined together are the structure to a website
 - Props
 - State
+
+# React Hooks
+## rendering 
+<!-- render whatevers on the left into the right -->
+`<div id="app"></div>`
+`ReactDOM.render(<Header />, app);`
