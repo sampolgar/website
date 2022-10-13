@@ -1,13 +1,16 @@
-<html>
+import { useState } from 'react';
+const app = document.getElementById("app")
 
-<body>
-    <div id="app"></div>
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+function Header({ title }) {
+return <h1>{title ? title : "Default title"}</h1>
+}
 
+function HomePage() {
+const names = ["Ada Lovelace", "Grace Hopper", "Margaret Hamilton"]
 
+const [likes, setLikes] = useState(0)
 
+<<<<<<< HEAD
     <script type="text/jsx">
         const app = document.getElementById('app');
 
@@ -27,5 +30,22 @@
         ReactDOM.render(<Homepage />, app);
     </script>
 </body>
+=======
+function handleClick() {
+setLikes(likes + 1)
+}
 
-</html>`
+return (
+<div>
+    <Header title="Develop. Preview. Ship. 🚀" />
+    <ul>
+        {names.map((name) => (
+        <li key={name}>{name}</li>
+        ))}
+    </ul>
+>>>>>>> 30313ccab4f1ae4ab03366b60d69d1e45861433c
+
+    <button onClick={handleClick}>Like ({likes})</button>
+</div>
+)
+}
