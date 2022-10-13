@@ -50,8 +50,30 @@ Differences
 - Ternary operator: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
 - ES Modules and import / export: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
 
+## object property vs template literals
+- object property: `function(props){ console.log('props.title + " sam polgar"') }`
+- template literal: `function({title}){ console.log({`${title} sam polgar`})}` 
+
+
+## destructuring
+Without
+```
+function getFullName(nameObj) {
+    return `${nameObj.firstName} ${nameObj.lastName}`
+}
+```
+With
+```
+function getFullName({ firstName, lastName }) {
+  return `${firstName} ${lastName}`;
+}
+```    
+
 # React
 - Components
 - - like building blocks, combined together are the structure to a website
 - Props
+- - like arguments to a function
+- - use them to pass data from parent to child to change behaviour or look of things
+- - data flows down, not up
 - State

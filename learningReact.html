@@ -10,8 +10,21 @@
 
     <script type="text/jsx">
         const app = document.getElementById('app');
-        console.log(props)
 
+        function Header({title}){
+            console.log(title);
+            return <h1>title</h1>;
+        }
+
+        function Homepage(){
+            return ( 
+            <div>
+                <Header title ="React "/>
+            </div>
+            );
+        }
+
+        ReactDOM.render(<Homepage />, app);
     </script>
 </body>
 
