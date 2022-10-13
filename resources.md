@@ -75,11 +75,9 @@ function getFullName({ firstName, lastName }) {
 - - like building blocks, combined together are the structure to a website
 - Props
 - - like arguments to a function
-<<<<<<< HEAD
 - - use them to pass data from parent to child to change behaviour or look of things
 - - data flows down, not up
 - State
-=======
 - State
 -- info in the interface that changes over time e.g. toggle
 
@@ -172,4 +170,3 @@ return <h1>{title ? title : 'Default title'}</h1>
 `const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];`
 `<ul>names.map(name => <li>{name}</li>);</ul>`
 ```
->>>>>>> 30313ccab4f1ae4ab03366b60d69d1e45861433c
