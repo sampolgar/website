@@ -1,20 +1,20 @@
-Crypto
+## Crypto
 https://github.com/rugpullindex/awesome-ethereum-rollups
 
-React
-JSX Markdown: https://beta.reactjs.org/learn/writing-markup-with-jsx
+## React
+- JSX Markdown: https://beta.reactjs.org/learn/writing-markup-with-jsx
+- React tutorial https://reactjs.org/tutorial/tutorial.html`
+- JS reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Overview
+- https://babeljs.io/docs/en/editors/
 
-What's a DOM
-
+## What's a DOM
 - The HTML + Javascript renders content
 
-Declerative vs Imperative
-
+### Declerative vs Imperative
 - Imperative: How to do something, e.g. go to the store and buy bread, etc
 - Declarative: What to do, e.g. Make a sandwich
 
-React
-
+# React
 - react core library
 - reactDOM provides DOM methods
 - Bringing react in, add both to the project
@@ -23,19 +23,19 @@ React
 - Also add Babel to compile JSX to JS
   `https://unpkg.com/@babel/standalone/babel.min.js`
 
-Difference
-HTML + JavaScript (Imperative)
+## Difference
+### HTML + JavaScript (Imperative)
 
-````const header = document.createElement('h1')
+``const header = document.createElement('h1')
 const headerText = document.createTextNode('Hello World');
-header.appendChild(headerText)```
+header.appendChild(headerText)``
 
-React + JSX (Declerative)
+### React + JSX (Declerative)
 - add script type = text/jsx
-```const header = document.getElementById('header')
-ReactDOM.render(<h1>Hello, World</h1>, header)```
+``const header = document.getElementById('header')
+ReactDOM.render(<h1>Hello, World</h1>, header) ``
 
-Differences
+### Differences
 - React uses JSX (not JS)
 - Babel compiles JSX to JS
 - React is declerative
@@ -57,13 +57,11 @@ Differences
 
 
 ## destructuring
-Without
-```
-function getFullName(nameObj) {
+- Without
+`` function getFullName(nameObj) {
     return `${nameObj.firstName} ${nameObj.lastName}`
-}
-```
-With
+}``
+- With
 ```
 function getFullName({ firstName, lastName }) {
   return `${firstName} ${lastName}`;
@@ -169,4 +167,22 @@ return <h1>{title ? title : 'Default title'}</h1>
 ## map
 `const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];`
 `<ul>names.map(name => <li>{name}</li>);</ul>`
+```
+
+## React component class / React component type
+```
+class ShoppingList extends React.Component {
+  render() {
+    return (
+      <div className="shopping-list">
+        <h1>Shopping List for {this.props.name}</h1>
+        <ul>
+          <li>Instagram</li>
+          <li>WhatsApp</li>
+          <li>Oculus</li>
+        </ul>
+      </div>
+    );
+  }
+}
 ```
