@@ -3,12 +3,14 @@ https://github.com/rugpullindex/awesome-ethereum-rollups
 
 ## React
 - JSX Markdown: https://beta.reactjs.org/learn/writing-markup-with-jsx
-- React tutorial https://reactjs.org/tutorial/tutorial.html`
+- React tutorial https://reactjs.org/tutorial/tutorial.html
+- Better React Tutorail https://beta.reactjs.org/learn
 - JS reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Overview
 - https://babeljs.io/docs/en/editors/
 
 ## What's a DOM
 - The HTML + Javascript renders content
+- React DOM has built-in functions e.g. onClick
 
 ### Declerative vs Imperative
 - Imperative: How to do something, e.g. go to the store and buy bread, etc
@@ -22,6 +24,9 @@ https://github.com/rugpullindex/awesome-ethereum-rollups
   `https://unpkg.com/react-dom@17/umd/react-dom.development.js`
 - Also add Babel to compile JSX to JS
   `https://unpkg.com/@babel/standalone/babel.min.js`
+
+## notes
+- conventional to use on[Event] and handle[Event] for props
 
 ## Difference
 ### HTML + JavaScript (Imperative)
@@ -72,6 +77,7 @@ function getFullName({ firstName, lastName }) {
 - Components
 - - like building blocks, combined together are the structure to a website
 - Props
+- - short for properties, returns hierarchy of views
 - - like arguments to a function
 - - use them to pass data from parent to child to change behaviour or look of things
 - - data flows down, not up
@@ -127,9 +133,6 @@ export default function DisplayPage() { return <div> <Header /> </div> }
 
 
 
-
-
-
 # React Hooks
 ## rendering
 <!-- render whatevers on the left into the right -->
@@ -165,24 +168,124 @@ return <h1>{title ? title : 'Default title'}</h1>
 
 
 ## map
+```
 `const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];`
 `<ul>names.map(name => <li>{name}</li>);</ul>`
 ```
 
-## React component class / React component type
+## Classes
+### board rendering i
+- Board renders squares & sends props to Sqare
+- Square receives value i from board as props
+- square is rendered by board calling renderSquare (renderClass)
 ```
-class ShoppingList extends React.Component {
+class Board extends React.Component {
+  renderSquare(i) {
+    return <Square value={i} />;
+  }
+}
+
+class Square extends React.Component {
   render() {
     return (
-      <div className="shopping-list">
-        <h1>Shopping List for {this.props.name}</h1>
-        <ul>
-          <li>Instagram</li>
-          <li>WhatsApp</li>
-          <li>Oculus</li>
-        </ul>
-      </div>
+      <button className="square">
+        {this.props.value}
+      </button>
     );
   }
 }
 ```
+
+### square rendering x
+- add a function to the button click
+- the function written inside {}
+```
+class Square extends React.Component {
+  render() {
+    return (
+      <button className="square">
+        onClick = {
+          function () {
+            console.log('click');
+          }
+        }
+        {this.props.value}
+      </button>
+    );
+  }
+}
+```
+- better writen as an arrow function
+```
+class Square extends React.Component {
+  render() {
+    return (
+      <button className="square">
+        onClick = {
+          () => console.log('click')
+        }
+        {this.props.value}
+      </button>
+    );
+  }
+}
+```
+
+### using React state to remember who called last x or o
+- add a state to the Square because square is being pressed
+- create a constructor to initialize the state
+- state is private to the component its called in
+- all React components need super(props) in their constructor because Javascript classes call super
+```
+class Square extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      value: null,
+    };
+  }
+  render() /////
+}
+```
+use the state in the onClick function
+- change this.props.value to this.state.value
+- change function to set initial value to X
+```
+class Square extends ////////
+return (
+  <button className="square">
+    onClick = {
+      () => this.setState({value: 'X'})
+    }
+    {this.state.value}
+  </button>
+```
+
+## send the state from the square to the board
+- add the checking logic to 1 place, not in the square, in the board
+- need to declare the shared stated in the parent component
+- parent can pass the state down to the child as props
+
+
+
+## 
+
+# JS
+## functions
+### standard
+```
+function () {console.log("click"); }
+```
+### arrow
+```
+() => console.log("click")
+```
+### arrow with return
+```
+() => { return console.log("click") }
+```
+
+
+
+Current progress
+https://reactjs.org/tutorial/tutorial.html#function-components
