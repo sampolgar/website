@@ -1,10 +1,29 @@
 {
+  "name": "website",
+  "version": "1.0.0",
+  "description": "1. docs page for code like docusaurus  2. docs page for PM like notion/coda (maybe better to keep in notion/Coda and bring in via iframe) 3. blog page like gatsby 4. portfolio page like gatsby 5. my favourite x page like notion - filterable (books, blogs, movies, music, etc.) 6. about page 7. required apps page (for setting up a new computer)",
+  "main": "like-button.js",
   "scripts": {
-    "dev": "next dev"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sampolgar/website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sampolgar/website/issues"
+  },
+  "homepage": "https://github.com/sampolgar/website#readme",
   "dependencies": {
-    "next": "^12.3.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.25.0",
+    "eslint-config-react-app": "^7.0.1",
+    "prettier": "2.7.1"
   }
 }
