@@ -4,29 +4,27 @@ import matter from "gray-matter";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
-//export function means you can call it from another class?
 export function getSortedPostsData() {
-  // get filenames under /posts
+  // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
-    // remove.md to get from the filename to get Id
+    // Remove ".md" from file name to get id
     const id = fileName.replace(/\.md$/, "");
 
-    // read markdown file as string
+    // Read markdown file as string
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
 
-    //use gray-matter to parse the post metadata section
+    // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
 
-    //combine the data with the id
+    // Combine the data with the id
     return {
       id,
       ...matterResult.data,
     };
   });
-
-  // sort posts by date
+  // Sort posts by date
   return allPostsData.sort(({ date: a }, { date: b }) => {
     if (a < b) {
       return 1;
