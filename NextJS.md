@@ -32,3 +32,34 @@
 
 - import global css to the page/\_app.js
 - server needs restarting after global css changes
+
+# architecture
+
+## page generation
+
+### Static or Server-side
+
+- Nextjs supports both in the same app
+- choose static if you can render a page at build time
+- choose server-side if you need to fetch data at request time e.g. page updates based on user interaction
+- you can also use javascript in the browser to render a page e.g. frequently updated data like a dashboard
+
+### implementing static or server-side
+#### 
+
+## how to implement
+
+# blog with nextjs
+
+use YAML Front Matter to add metadata to markdown files
+
+- npm install gray-matter
+- https://github.com/jonschlinkert/gray-matter
+  e.g.
+
+```
+---
+title: 'When to Use Static Generation v.s. Server-side Rendering'
+date: '2020-01-02'
+---
+```
