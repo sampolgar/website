@@ -63,3 +63,10 @@ title: 'When to Use Static Generation v.s. Server-side Rendering'
 date: '2020-01-02'
 ---
 ```
+
+## staticaly generating pages
+- use dynamic routes to generate pages from markdown files
+- first create a file `[id].js` in the pages directory
+- then create a file to render all the posts with `getStaticProps` and `getStaticPaths`
+- `getStaticProps` fetches the data for a single post
+- `getStaticPaths` tells Nextjs how many pages there are
