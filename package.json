@@ -1,6 +1,7 @@
 {
   "dependencies": {
+    "date-fns": "^2.29.3",
     "remark": "^14.0.2",
-    "remark-html": "^15.0.1" 
+    "remark-html": "^15.0.1"
   }
 }
