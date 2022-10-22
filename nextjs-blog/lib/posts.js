@@ -51,6 +51,18 @@ export function getAllPostsIds() {
   });
 }
 
+export async function getAllPostsIdsDatabase() {
+  const res = await fetch();
+  const posts = await res.json();
+  return posts.map((post) => {
+    return {
+      params: {
+        id: post.id,
+      },
+    };
+  });
+}
+
 export async function getPostData(id) {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");

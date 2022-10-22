@@ -73,6 +73,18 @@ date: '2020-01-02'
 - `getStaticProps` fetches the data for a single post
 - `getStaticPaths` tells Nextjs how many pages there are
 
+### getstaticpaths
+- `getStaticPaths` runs at serverside and called at build time
+- this means that the paths returned from `getStaticPaths` will be rendered to HTML at build time
+- getstaticpaths can't call an API endpoint
+- they can be used to make DB queries which won't be sent to the browser (to keep safe)
+
+### getstaticprops
+- `getStaticProps` runs at serverside and called at build time
+- this means that the props returned from `getStaticProps` will be passed to the page component at build time
+- getstaticprops can't call an API endpoint
+- they can be used to make DB queries which won't be sent to the browser (to keep safe)
+
 ## nextjs gitignore
 
 ```
@@ -115,10 +127,3 @@ jspm_packages
 .node_repl_history
 .next
 ```
-
-## staticaly generating pages
-- use dynamic routes to generate pages from markdown files
-- first create a file `[id].js` in the pages directory
-- then create a file to render all the posts with `getStaticProps` and `getStaticPaths`
-- `getStaticProps` fetches the data for a single post
-- `getStaticPaths` tells Nextjs how many pages there are

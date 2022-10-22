@@ -2,6 +2,9 @@ import Layout from "../components/layout";
 import Head from "next/head";
 import { getSortedPostsData } from "../lib/posts";
 import utilStyles from "../styles/utils.module.css";
+import Link from "next/link";
+import Date from "../components/date";
+import Signup from "../components/signup";
 
 // change getStaticProps to getServerSideProps to run on every request
 // get static props is a function that gets called at build time on server-side
@@ -27,14 +30,19 @@ export default function Home({ allPostsData }) {
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              {title}
+              <Link href={`/posts/${id}`}>
+                <a>{title}</a>
+              </Link>
               <br />
-              {id}
-              <br />
-              {date}
+              <small className={utilStyles.lightText}>
+                <Date dateString={date} />
+              </small>
             </li>
           ))}
         </ul>
+      </section>
+      <section>
+        <Signup />
       </section>
     </Layout>
   );

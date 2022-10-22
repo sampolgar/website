@@ -23,6 +23,13 @@ Finished by November 1
 - Server & Hosting Nextjs & Vercel
 - Docs page: https://www.npmjs.com/package/@zentered/next-product-docs
 
+## Headless CMS
+- https://www.sanity.io/ - Nike, Cloudflare, Figma, Sonos, netlify, etc
+- https://prismic.io/pricing, digital ocean, netflix, vice, maccas, raspberry pi - freetier,
+- https://strapi.io/pricing-self-hosted
+- contentful
+- buttercms
+
 ### Website Examples
 - https://opstrace.com/
 - https://timdaub.github.io/projects/ 
