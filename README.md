@@ -24,11 +24,10 @@ Finished by November 1
 - Docs page: https://www.npmjs.com/package/@zentered/next-product-docs
 
 ## Headless CMS
+- not needed - I'll write in markdown
 - https://www.sanity.io/ - Nike, Cloudflare, Figma, Sonos, netlify, etc
 - https://prismic.io/pricing, digital ocean, netflix, vice, maccas, raspberry pi - freetier,
 - https://strapi.io/pricing-self-hosted
-- contentful
-- buttercms
 
 ### Website Examples
 - https://opstrace.com/

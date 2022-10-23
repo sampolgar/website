@@ -4,7 +4,7 @@ import { getSortedPostsData } from "../lib/posts";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import Date from "../components/date";
-import Signup from "../components/signup";
+import Form from "../components/signup";
 
 // change getStaticProps to getServerSideProps to run on every request
 // get static props is a function that gets called at build time on server-side
@@ -42,7 +42,7 @@ export default function Home({ allPostsData }) {
         </ul>
       </section>
       <section>
-        <Signup />
+        <Form />
       </section>
     </Layout>
   );
