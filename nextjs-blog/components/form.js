@@ -7,13 +7,20 @@ export default function formHandler() {
     // prevent form from submitting & refreshing
     e.preventDefault();
 
-    const form = e.target;
+    // get form data
+    const formData = new FormData(e.target);
+    console.log("form data: " + formData);
 
-    //const form = e.target as HTMLFormElement;
+    console.log(JSON.stringify("e is" + e));
+    console.log(JSON.stringify("e target is" + e));
+
+    const form = e.target;
 
     const data = {
       email: form.email.value,
     };
+
+    console.log("data" + form.email.data);
 
     //send the form data to the api and get a response
     const response = await fetch("/api/formSubmit", {
