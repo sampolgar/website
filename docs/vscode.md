@@ -13,9 +13,15 @@
 - https://code.visualstudio.com/docs/nodejs/browser-debugging
 
 # Typescript
+
 - https://code.visualstudio.com/docs/languages/typescript
 - install globally `npm install -g typescript`
 - install on a project `npm install --save-dev typescript`
 
 # markdown
+
 - https://code.visualstudio.com/docs/languages/markdown
+
+# todo
+
+- https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
