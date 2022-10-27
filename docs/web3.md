@@ -1,0 +1,2 @@
+- https://letsfuckingbuild.co/p/us-based-web3-vc-mapping
+- https://airtable.com/shrpPDeuSTZxZOBxe/tbljuGRj98bADFSPa
