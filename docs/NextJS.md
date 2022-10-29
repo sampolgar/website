@@ -74,12 +74,14 @@ date: '2020-01-02'
 - `getStaticPaths` tells Nextjs how many pages there are
 
 ### getstaticpaths
+
 - `getStaticPaths` runs at serverside and called at build time
 - this means that the paths returned from `getStaticPaths` will be rendered to HTML at build time
 - getstaticpaths can't call an API endpoint
 - they can be used to make DB queries which won't be sent to the browser (to keep safe)
 
 ### getstaticprops
+
 - `getStaticProps` runs at serverside and called at build time
 - this means that the props returned from `getStaticProps` will be passed to the page component at build time
 - getstaticprops can't call an API endpoint
@@ -126,4 +128,22 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 .next
+```
+
+# NextJS TypeScript
+
+- https://nextjs.org/docs/basic-features/typescript
+
+# .env files
+`.env.local`
+Environment variables must be referenced as e.g. process.env.PUBLISHABLE_KEY, not const { PUBLISHABLE_KEY } = process.env.
+```
+# .env
+A=abc
+
+# becomes "preabc"
+WRONG=pre$A
+
+# becomes "pre$A"
+CORRECT=pre\$A 
 ```

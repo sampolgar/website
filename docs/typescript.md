@@ -39,7 +39,7 @@ export default (req, res) => {
 
 ## After
 
-```javascript
+```typescript
 export default (_: NextApiRequest, res: NextApiResponse) => {
   res.status(200).json({ text: "Hello" });
 };
@@ -59,7 +59,8 @@ export async function getStaticProps({ params }) {
 ```
 
 ## After
-
+params.id as string
+params.id: string => only on declaring
 ```javascript
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postData = await getPostData(params.id as string);
