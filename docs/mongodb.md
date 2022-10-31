@@ -6,7 +6,7 @@
 async function main() {
 
   const uri =
-    "mongodb+srv://contentconnector:contentconnector@cluster0.6j5j1zz.mongodb.net/?retryWrites=true&w=majority";
+    "mongodb+srv://--:--@cluster0.6j5j1zz.mongodb.net/?retryWrites=true&w=majority";
 
   const client = new MongoClient(uri);
 
