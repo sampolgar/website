@@ -1,6 +1,7 @@
 - Find queries: https://www.mongodb.com/developer/languages/javascript/node-crud-tutorial/?_ga=2.172347555.1456210778.1667163680-861193317.1663721544#create
 - Aggregate queries: https://www.mongodb.com/developer/languages/javascript/node-aggregation-framework/?_ga=2.27046845.1456210778.1667163680-861193317.1663721544
 - online tester: https://mongoplayground.net/
+- practical workbook https://www.practical-mongodb-aggregations.com/examples/foundational/foundational.html
 
 e.g.
 - https://mongoplayground.net/p/YHDH6OUmV9F
