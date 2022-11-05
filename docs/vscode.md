@@ -25,3 +25,11 @@
 # todo
 
 - https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
+
+# importing
+- `/src/components/Header.jsx`
+- `/src/components/assets/Logo.png`
+- `index.js`
+```js
+
+```
