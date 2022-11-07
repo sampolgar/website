@@ -21,3 +21,4 @@ async function printCheapestSuburbs(client, country, market, maxNumberToPrint) {
 ```
 
 ### Function names
+https://dmitripavlutin.com/coding-like-shakespeare-practical-function-naming-conventions/
