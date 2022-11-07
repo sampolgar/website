@@ -1,0 +1,19 @@
+Difference between backend and frontend
+
+Backend request cycle
+- ⁠Authentication
+- ⁠Authorization
+- ⁠Request deserialization (= implicit in NodeJS / dynamic languages)
+- ⁠Request validation
+- ⁠Retrieve relevant domain objects
+- ⁠Business rules
+- ⁠Side effects (not just storing in DB, but sending email, calling other external service, etc)
+- ⁠Map data model to API response
+
+Frontend cannot be trusted, backend is trusted
+
+Should a backend be separated to a frontend?
+- different responsibilities
+- deploy backend = riskier than frontend
+- effort to deploy either 
+- separate means different interfaces can be compatible (mobile app, etc)
