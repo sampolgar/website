@@ -27,9 +27,38 @@
 - https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree
 
 # importing
+
 - `/src/components/Header.jsx`
 - `/src/components/assets/Logo.png`
 - `index.js`
+
 ```js
 
 ```
+
+# prettier
+
+```js
+{
+  "arrowParens": "always",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "embeddedLanguageFormatting": "auto",
+  "htmlWhitespaceSensitivity": "css",
+  "insertPragma": false,
+  "jsxSingleQuote": false,
+  "printWidth": 80,
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+  "requirePragma": false,
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "useTabs": false,
+  "vueIndentScriptAndStyle": false
+}
+```
+
+# hotkeys
+1. shift option down = copy current line down

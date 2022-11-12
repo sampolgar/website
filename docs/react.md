@@ -16,3 +16,51 @@
 - How and when to write custom hooks (spoilers: it's pretty much always)
 - How to break up components into manageable sizes, and how to isolate business logic from presentation
 - Understanding global state managers like Redux, what they do, how to use RTK and when it's an appropriate fit for your problem
+
+### code snippets
+
+#### troubleshooting react elements
+
+```js
+export default App => {
+    const e = <h1>Hello</h1>
+    console.log(e)
+    return (//normal react code)
+}
+```
+
+result: `›{type: "h1", key: null, ref: null, props: {children: "Hello"}, _owner: FiberNode, _store: {}}`
+
+#### inserting props into a string
+
+```js
+return (
+        <div className="card">
+            <img src={`../images/${props.img}`}
+        </div>
+)
+```
+
+### looping through Array and rendering JSX
+
+```js
+jokesData = [
+  {
+    setup: "I got my daughter a fridge for her birthday.",
+    punchline: "I can't wait to see her face light up when she opens it.",
+  },
+  {
+    setup: "How did the hacker escape the police?",
+    punchline: "He just ransomware!",
+  },
+];
+
+export default function App() {
+  const jokeElements = jokesData.map((joke) => {
+    return (
+      <Joke setup={joke.setup} punchline={joke.punchline} isPun={joke.isPun} />
+    );
+  });
+  return <div>{jokeElements}</div>;
+}
+```
