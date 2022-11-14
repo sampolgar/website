@@ -1,6 +1,7 @@
 # Resources
 
 - https://exploringjs.com/es6/ch_modules.html
+- https://github.com/mdn/js-examples/tree/master/module-examples
 
 
 ### es6 import export
