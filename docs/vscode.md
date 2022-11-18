@@ -62,3 +62,31 @@
 
 # hotkeys
 1. shift option down = copy current line down
+
+
+# lint
+## issue with `eslint errors strings must use singlequote`
+```js
+{
+  "extends": "standard",
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "globals": {
+    "define": true
+  },
+  // "rules": {
+  //   "quotes": [2, "single", { "avoidEscape": true }]
+  // },
+  "@typescript-eslint/quotes": [
+    "error",
+    "single",
+    {
+      "avoidEscape": true,
+      "allowTemplateLiterals": true
+    }
+  ]
+}
+
+```
