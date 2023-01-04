@@ -1,0 +1,34 @@
+{
+  "index": {
+    "title": "Home",
+    "type": "page"
+  },
+  "another": "Another Page",
+  "advanced": "Advanced (A Folder)",
+  "about": {
+    "title": "About",
+    "type": "page"
+  },
+  "blog": {
+    "title": "Blog",
+    "type": "page"
+  },
+  "docs": {
+    "title": "Docs",
+    "type": "page"
+  },
+  "projects": {
+    "title": "Projects",
+    "type": "page",
+    "theme": {
+      "typesetting": "article",
+      "layout": "full"
+    }
+  },
+  "contact": {
+    "title": "Contact ↗",
+    "type": "page",
+    "href": "https://twitter.com/0xsamp",
+    "newWindow": true
+  }
+}
