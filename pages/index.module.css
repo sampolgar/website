@@ -1,3 +1,4 @@
+/* TODO - text-decoration: none; for links */
 .text {
   font-family: var(--inter-font);
   font-weight: 200;
@@ -12,7 +13,7 @@
   text-decoration: none;
 }
 
-.file {
+/* .file {
   display: inline-block;
   font-size: 0.9em;
   padding: 1px 6px;
@@ -22,7 +23,7 @@
   font-weight: 600;
   cursor: default;
   user-select: none;
-}
+} */
 
 .body {
   margin: 0;
@@ -34,18 +35,13 @@
   font-family: 'Inter', sans-serif;
 }
 
-.photo {
-  width: 100%;
-  border-radius: 0.2rem;
-}
-
-.a {
+.cardContainer {
   text-decoration: none;
 }
 
 .container {
   align-items: flex-start;
-  background: #383a45;
+  /* background: #383a45; */
   margin: 1rem;
   padding: 1rem;
   border-radius: 0.4rem;
@@ -54,39 +50,44 @@
 
 .blogContainer {
   place-items: center;
+  margin: 1rem 0 0.5rem 0;
 }
 
 .blogContent {
   display: flex;
-  background: rgb(52, 174, 183);
   border: 2px solid white;
   margin-top: 0.5rem;
   border-radius: 0.5rem;
   padding: 0.5rem;
+  place-items: center;
+  /* background: #2d2e36; */
 }
 
-p.title {
+.title {
   color: white;
-  font-size: 1.7rem;
+  font-size: 2rem;
   line-height: 1.7rem;
   font-weight: 600;
+  margin: 0.5rem 0 0.5rem 0;
 }
 
-p.subtitle {
+.subtitle {
   color: white;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 400;
+  margin: 0.3rem 0 0 0;
 }
 
-p.description {
+.description {
   color: #ffffff;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   line-height: 150%;
 }
 
-p.blogDescription {
+.blogDescription {
   color: #ffffff;
   font-size: 1rem;
+  font-weight: 400;
   line-height: 150%;
   text-align: center;
   letter-spacing: 0.01em;
@@ -96,8 +97,9 @@ p.blogDescription {
   width: 0.8rem;
 }
 
-.photo {
-  border-radius: 10px;
+.image {
+  width: 100%;
+  border-radius: 0.3rem;
 }
 
 @media only screen and (min-width: 550px) {
@@ -107,9 +109,9 @@ p.blogDescription {
 
   .blogContainer {
     display: grid;
+    max-width: 700px;
     grid-template-columns: repeat(3, auto);
     column-gap: 1em;
-    margin-top: 0;
   }
 
   .blogContent {
@@ -117,24 +119,24 @@ p.blogDescription {
     width: 100%;
   }
 
-  .photo {
-    width: 10rem;
+  .image {
+    max-width: 10rem;
     margin-right: 2rem;
     object-fit: cover;
   }
 
-  p.title {
+  .title {
     font-size: 2.5rem;
     font-weight: 600;
     margin: 1rem 0 1rem 0;
   }
 
-  p.subtitle {
+  .subtitle {
     font-weight: 400;
     margin: 0.8rem 0 0 0;
   }
 
-  .a {
+  .cardContainer {
     display: flex;
     align-items: center;
   }

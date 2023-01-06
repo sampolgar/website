@@ -18,12 +18,14 @@ export const Counter = () => {
 export const Profile = () => {
   return (
     <div className={styles.container}>
-      <a className={styles.a}>
+      <div className={styles.cardContainer}>
         <Image
+          className={styles.image}
           src={profilePhoto}
           alt='picture of author'
           width={1080}
           height={1080}
+          layout='responsive'
           priority={true}
         />
         <div className={styles.content}>
@@ -34,7 +36,7 @@ export const Profile = () => {
             decentralized web and accelerating web3 adoption
           </p>
         </div>
-      </a>
+      </div>
     </div>
   );
 };
