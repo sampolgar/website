@@ -35,3 +35,8 @@ jspm_packages
 
 nextjs-blog/next-env.d.ts
 .DS_Store
+dist
+node_modules
+.DS_Store
+.next
+.pnpm-debug.log
