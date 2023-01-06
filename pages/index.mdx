@@ -1,4 +1,83 @@
 import Image from 'next/image';
 import styles from './index.module.css';
+import profilePhoto from './docs/public/assets/main-compressed-1080.png';
+import styles2 from '../components/counters.module.css';
+import { useState } from 'react';
 
-<h1>hello</h1>
+export const Counter = () => {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <button onClick={() => setCount(count + 1)} className={styles2.counter}>
+        Clicked {count} times
+      </button>
+    </div>
+  );
+};
+
+export const Profile = () => {
+  return (
+    <div className={styles.container}>
+      <a className={styles.a}>
+        <Image
+          src={profilePhoto}
+          alt='picture of author'
+          width={1080}
+          height={1080}
+          priority={true}
+        />
+        <div className={styles.content}>
+          <p className={styles.title}>Sam Polgar</p>
+          <p className={styles.subtitle}>Product Engineer</p>
+          <p className={styles.description}>
+            Building Web3 protocols and infrastructure, exicted about the
+            decentralized web and accelerating web3 adoption
+          </p>
+        </div>
+      </a>
+    </div>
+  );
+};
+
+export const Blogs = () => {
+  return (
+    <div className={styles.container}>
+      <p className={styles.title}>Recent Articles</p>
+      <div className={styles.blogContainer}>
+        <div
+          className={styles.blogContent}
+          href='https://sampolgar.medium.com/comparing-ethereums-pos-blockchain-to-hedera-hashgraph-s-gossiping-gossip-ee7a0daf19ff'
+        >
+          <p className={styles.blogDescription}>
+            Comparing Ethereum's PoS blockchain to Hedera Hashgraph's gossip
+            about gossip and virtual voting
+          </p>
+        </div>
+        <div
+          className={styles.blogContent}
+          href='https://sampolgar.medium.com/why-are-web-3-apps-protocols-not-just-applications-56911d01cc43'
+        >
+          <p className={styles.blogDescription}>
+            Why are web 3 apps protocols, not just applications?
+          </p>
+        </div>
+        <div
+          className={styles.blogContent}
+          href='https://sampolgar.medium.com/north-star-metrics-a-framework-for-creating-value-3cc97d97b94a'
+        >
+          <p className={styles.blogDescription}>
+            North Star Metrics: a framework for creating value
+          </p>
+        </div>
+      </div>
+      <p className={styles.subtitle} href='https://sampolgar.medium.com'>
+        Read all
+      </p>
+    </div>
+  );
+};
+
+<Profile />
+<Blogs />
+
+<Counter />

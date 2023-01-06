@@ -1,5 +1,5 @@
-import React from 'react'
-import { DocsThemeConfig } from 'nextra-theme-docs'
+import React from 'react';
+import { DocsThemeConfig } from 'nextra-theme-docs';
 
 const config: DocsThemeConfig = {
   logo: <span>My Project</span>,
@@ -13,6 +13,8 @@ const config: DocsThemeConfig = {
   footer: {
     text: 'Nextra Docs Template',
   },
-}
+};
 
-export default config
+export default config;
+
+//TODO - update links here as per https://github.com/shuding/cobe/blob/main/website/theme.config.js
