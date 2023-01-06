@@ -3,6 +3,7 @@ import styles from './index.module.css';
 import profilePhoto from './docs/public/assets/main-compressed-1080.png';
 import styles2 from '../components/counters.module.css';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export const Counter = () => {
   const [count, setCount] = useState(0);
@@ -44,41 +45,31 @@ export const Profile = () => {
 export const Blogs = () => {
   return (
     <div className={styles.container}>
-      <p className={styles.title}>Recent Articles</p>
+      <div className={styles.title}>Recent Articles</div>
       <div className={styles.blogContainer}>
-        <div
+        <Link
           className={styles.blogContent}
           href='https://sampolgar.medium.com/comparing-ethereums-pos-blockchain-to-hedera-hashgraph-s-gossiping-gossip-ee7a0daf19ff'
         >
-          <p className={styles.blogDescription}>
-            Comparing Ethereum's PoS blockchain to Hedera Hashgraph's gossip
-            about gossip and virtual voting
-          </p>
-        </div>
-        <div
+          Comparing Ethereum's PoS blockchain to Hedera Hashgraph's gossip about
+          gossip and virtual voting
+        </Link>
+        <Link
           className={styles.blogContent}
           href='https://sampolgar.medium.com/why-are-web-3-apps-protocols-not-just-applications-56911d01cc43'
         >
-          <p className={styles.blogDescription}>
-            Why are web 3 apps protocols, not just applications?
-          </p>
-        </div>
-        <div
+          Why are web 3 apps protocols, not just applications?
+        </Link>
+        <Link
           className={styles.blogContent}
           href='https://sampolgar.medium.com/north-star-metrics-a-framework-for-creating-value-3cc97d97b94a'
         >
-          <p className={styles.blogDescription}>
-            North Star Metrics: a framework for creating value
-          </p>
-        </div>
+          North Star Metrics: a framework for creating value
+        </Link>
       </div>
-      <p className={styles.subtitle} href='https://sampolgar.medium.com'>
-        Read all
-      </p>
     </div>
   );
 };
 
 <Profile />
 <Blogs />
-<Counter />
