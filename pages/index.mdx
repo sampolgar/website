@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import styles from './index.module.css';
 import profilePhoto from './docs/public/assets/main-compressed-1080.png';
+import profilePhoto2 from './docs/public/assets/main-compressed.jpg';
+import profilePhoto3 from './docs/public/assets/main-color.jpg';
 import styles2 from '../components/counters.module.css';
 import { useState } from 'react';
 import Link from 'next/link';
@@ -16,26 +18,26 @@ export const Counter = () => {
   );
 };
 
-export const Profile = () => {
+export const Hero = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.cardContainer}>
-        <Image
-          className={styles.image}
-          src={profilePhoto}
-          alt='picture of author'
-          width={1080}
-          height={1080}
-          layout='responsive'
-          priority={true}
-        />
-        <div className={styles.content}>
-          <p className={styles.title}>Sam Polgar</p>
-          <p className={styles.subtitle}>Product Engineer</p>
-          <p className={styles.description}>
-            Building Web3 protocols and infrastructure, exicted about the
-            decentralized web and accelerating web3 adoption
-          </p>
+      <Image
+        className={styles.heroImage}
+        src={profilePhoto3}
+        alt='picture of Sam Polgar Smiling'
+        width={1080}
+        height={1080}
+        layout='responsive'
+        priority={true}
+      />
+      <div className={styles.content}>
+        <div className={styles.heading}>👋🏻 Hi, I'm Sam</div>
+        <div className={styles.about}>
+          I'm a Product Engineer - I enjoy working at the intersection of
+          product and engineering; learning why I'm building fuels my motivation
+          to build a better product. <br /> <br /> <br />
+          I'm interested in Web3 with a focus on building protocols and infrastructure
+          that power the next phase of the internet.
         </div>
       </div>
     </div>
@@ -45,7 +47,9 @@ export const Profile = () => {
 export const Blogs = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.title}>Recent Articles</div>
+      <div className={styles.about}>
+        I also write a blog, here are a few recent articles
+      </div>
       <div className={styles.blogContainer}>
         <Link
           className={styles.blogContent}
@@ -71,5 +75,5 @@ export const Blogs = () => {
   );
 };
 
-<Profile />
+<Hero />
 <Blogs />
