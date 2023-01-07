@@ -34,12 +34,12 @@ export const Hero = () => {
       />
       <div className={styles.content}>
         <div className={styles.heading}>👋🏻 Hi, I'm Sam</div>
-        <div className={styles.about}>I'm a Product Engineer</div>
+        {/* <div className={styles.about}>I'm a Product Engineer</div> */}
         <div className={styles.about}>
-          I thrive at the intersection of Product Management and Engineering,
-          driven by a curiosity to understand the purpose and logic behind what
-          I'm building, as well as the technical details of how it will be
-          built.
+          As a Product Engineer, I thrive at the intersection of Product
+          Management and Engineering, driven by a curiosity to understand the
+          purpose and logic behind what I'm building, as well as the end
+          product.
           <br /> <br />
           I'm focused on Web3, particularly the protocols and infrastructure
           that will shape the future of the internet.
@@ -52,8 +52,9 @@ export const Hero = () => {
 export const Blogs = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.about}>
-        Here are a few recent articles from my blog.
+      <hr className={styles.hr} />
+      <div className={styles.heading}>
+        <Link href='https://sampolgar.medium.com/'>Recent Articles</Link>
       </div>
       <div className={styles.blogContainer}>
         <Link
@@ -75,6 +76,9 @@ export const Blogs = () => {
         >
           North Star Metrics: a framework for creating value
         </Link>
+      </div>
+      <div className={styles.about}>
+        <Link href='https://sampolgar.medium.com/'>Read All</Link>
       </div>
     </div>
   );
