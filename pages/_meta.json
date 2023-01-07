@@ -2,20 +2,21 @@
   "index": {
     "title": "Home",
     "type": "page",
-    "hidden": true,
+    "hidden": false,
     "theme": {
       "sidebar": false,
       "toc": false,
       "footer": true,
       "pagination": true,
-      "breadcrumb": false,
-      "gitTimestamp": false
+      "breadcrumb": false
     }
   },
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
-  "about": {
-    "title": "About",
+  "blog": {
+    "title": "Blog",
+    "type": "page"
+  },
+  "portfolio": {
+    "title": "Portfolio",
     "type": "page"
   },
   "contact": {
