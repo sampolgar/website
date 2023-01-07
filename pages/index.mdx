@@ -53,9 +53,7 @@ export const Blogs = () => {
   return (
     <div className={styles.container}>
       <hr className={styles.hr} />
-      <div className={styles.heading}>
-        <Link href='https://sampolgar.medium.com/'>Recent Articles</Link>
-      </div>
+      <div className={styles.heading}>Recent Articles</div>
       <div className={styles.blogContainer}>
         <Link
           className={styles.blogContent}
@@ -84,5 +82,13 @@ export const Blogs = () => {
   );
 };
 
-<Hero />
-<Blogs />
+export const App = () => {
+  return (
+    <div className={styles.body}>
+      <Hero />
+      <Blogs />
+    </div>
+  );
+};
+
+<App />

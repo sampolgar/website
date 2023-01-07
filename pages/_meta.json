@@ -8,7 +8,8 @@
       "toc": false,
       "footer": true,
       "pagination": true,
-      "breadcrumb": false
+      "breadcrumb": false,
+      "gitTimestamp": false
     }
   },
   "another": "Another Page",

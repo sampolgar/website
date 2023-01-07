@@ -1,18 +1,17 @@
 import React from 'react';
 import { DocsThemeConfig } from 'nextra-theme-docs';
+import { useRouter } from 'next/router';
 
 const config: DocsThemeConfig = {
-  logo: <span>My Project</span>,
+  logo: <span>Sam Polgar</span>,
   project: {
-    link: 'https://github.com/shuding/nextra-docs-template',
+    link: 'https://github.com/sampolgar/website',
   },
-  chat: {
-    link: 'https://discord.com',
-  },
-  docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
+  docsRepositoryBase: 'https://github.com/sampolgar/website/tree/main/pages',
   footer: {
-    text: 'Nextra Docs Template',
+    text: 'Sam Polgar',
   },
+  gitTimestamp: false,
 };
 
 export default config;
