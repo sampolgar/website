@@ -19,16 +19,6 @@
   font-style: italic;
 }
 
-/* .main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  background: #2d2e36;
-} */
-
 .counter {
   border: 1px solid #ccc;
   border-radius: 5px;

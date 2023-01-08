@@ -1,0 +1,23 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: '. navbar .';
+  height: 50px;
+}
+
+.navbar {
+  grid-area: navbar;
+  display: flex;
+  flex-direction: row;
+  place-content: center;
+  overflow: hidden;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  padding: 0.5em;
+  margin: 0em 1em 0em 1em;
+  place-items: center;
+  object-fit: contain;
+}
