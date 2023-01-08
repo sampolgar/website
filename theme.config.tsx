@@ -1,7 +1,7 @@
 import React from 'react';
 import { DocsThemeConfig, useConfig } from 'nextra-theme-docs';
 import { useRouter } from 'next/router';
-import { Footer } from '@components/footer';
+import { Footer } from './components/footer';
 
 const config: DocsThemeConfig = {
   logo: (

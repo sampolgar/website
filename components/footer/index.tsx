@@ -44,7 +44,7 @@ export function Footer() {
       </Link>
       <Link
         className={styles.link}
-        href='https://www.linkedin.com/in/sampolgar/'
+        href='https://www.linkedin.com/in/sampolgar'
       >
         <Image
           className={styles.icon}
