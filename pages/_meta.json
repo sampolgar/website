@@ -2,7 +2,7 @@
   "index": {
     "title": "Home",
     "type": "page",
-    "hidden": false,
+    "hidden": true,
     "theme": {
       "sidebar": false,
       "toc": false,
@@ -18,7 +18,11 @@
   "portfolio": {
     "title": "Portfolio",
     "type": "page"
-  }, 
+  },
+  "docs": {
+    "title": "Docs",
+    "type": "page"
+  },
   "contact": {
     "title": "Contact ↗",
     "type": "page",

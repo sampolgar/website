@@ -1,7 +1,6 @@
 .body {
-  margin: 0;
+  margin: 1rem 0 1rem 0;
   padding: 0;
-  /* height: 100vh; */
   display: grid;
   place-items: center;
   max-width: 100%;
@@ -133,6 +132,11 @@
   border-radius: 0.3rem;
 }
 
+.cardImage {
+  width: 100%;
+  border-radius: 0.3rem;
+}
+
 @media only screen and (min-width: 550px) {
   .container {
     max-width: 700px;
@@ -152,8 +156,7 @@
     width: 100%;
   }
 
-  .image {
-    max-width: 10rem;
+  .cardImage {
     margin-right: 2rem;
     object-fit: cover;
   }
@@ -175,12 +178,17 @@
 
   .cardContainer {
     display: flex;
-    align-items: center;
+    margin: 2rem 0 0 0;
+    padding: 0;
   }
 }
 
 @media only screen and (min-width: 950px) {
   .body {
     font-size: 18px;
+  }
+
+  .cardImage {
+    width: 100%;
   }
 }

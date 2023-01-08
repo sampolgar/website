@@ -1,4 +1,10 @@
 {
+  "index": {
+    "title": "Portfolio",
+    "theme": {
+      "typesetting": "article"
+    }
+  },
   "apple": "Apple",
   "banana": "Banana"
 }

@@ -1,0 +1,42 @@
+# My Portfolio
+
+import Image from 'next/image';
+import styles from './../index.module.css';
+import profilePhoto from '../../public/images/main-color.jpg';
+import Link from 'next/link';
+
+export const Portfolio = () => {
+  return (
+    <div className={styles.container}>
+      <div className={styles.cardContainer}>
+        <Image
+          className={styles.cardImage}
+          src={profilePhoto}
+          alt='picture of author'
+          width={1080}
+          height={1080}
+          layout='responsive'
+          priority={true}
+        />
+        <div className={styles.content}>
+          <p className={styles.title}>Portfolio Website</p>
+          <p className={styles.description}>
+            Building Web3 protocols and infrastructure, exicted about the
+            decentralized web and accelerating web3 adoption
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const App = () => {
+  return (
+    <div className={styles.body}>
+      <Portfolio />
+      <Portfolio />
+    </div>
+  );
+};
+
+<App />
