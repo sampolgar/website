@@ -42,9 +42,12 @@ const config: DocsThemeConfig = {
     placeholder: 'Site Search',
   },
   darkMode: false,
+  editLink: {
+    text: '',
+  },
   feedback: {
-    
-  }
+    content: 'Feedback, Submit here!',
+  },
   // primaryHue: { dark: 100, light: 200 },
 };
 

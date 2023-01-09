@@ -22,8 +22,8 @@
   },
   "portfolio": {
     "title": "Portfolio",
-    "type": "page",
     "theme": {
+      "typesetting": "article",
       "layout": "raw"
     }
   },
