@@ -1,17 +1,12 @@
 .container {
-  height: 50px;
   display: flex;
   place-content: center;
-  margin: 1rem 0 1rem 0;
-  position: sticky;
-  left: 0;
-  bottom: 0;
-  width: 100%;
 }
 
 .link {
-  max-width: 60px;
-  margin: 0 1rem 1rem 1rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
 }
 
 .icon {
@@ -20,10 +15,12 @@
 .link:hover {
   background: #37464a;
   outline: none;
+  border-radius: 10px;
 }
 
 .link:active {
   color: #000;
-  box-shadow: 0 0 0 #efefef, 0 0 100px #ddd inset;
+  box-shadow: 0 0 0 #efefef;
   outline: none;
+  border-radius: 5px;
 }

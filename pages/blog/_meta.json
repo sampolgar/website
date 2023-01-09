@@ -1,4 +1,14 @@
 {
+  "*": {
+    "//": "Hide all the links from the sidebar or navbar, and disable ToC and Sidebar for these pages.",
+    "display": "hidden",
+    "theme": {
+      "toc": false,
+      "sidebar": false,
+      "pagination": false,
+      "typesetting": "article"
+    }
+  },
   "web3-protocols-not-apps": "Why are web 3 apps protocols, not just applications?",
   "blog1": "blog1",
   "blog2": "blog2"
