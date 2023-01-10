@@ -7,6 +7,14 @@ import Link from 'next/link';
 
 {/* TODO - optimize image for web */}
 
+export function Home() {
+  return (
+    <h1 className='text-center text-yellow-500 dark:text-yellow-400 font-space-grotesk'>
+      Hello world!
+    </h1>
+  );
+}
+
 export const Counter = () => {
   const [count, setCount] = useState(0);
   return (
@@ -82,6 +90,7 @@ export const Blogs = () => {
 export const App = () => {
   return (
     <div className={styles.body}>
+      <Home />
       <Hero />
       <Blogs />
     </div>
