@@ -48,6 +48,15 @@ const config: DocsThemeConfig = {
   feedback: {
     content: 'Feedback, Submit here!',
   },
+  banner: {
+    key: '0.1 release',
+    text: (
+      <p>
+        Thanks for visiting! This site is about a week from completion, see you
+        here again soon!
+      </p>
+    ),
+  },
   // primaryHue: { dark: 100, light: 200 },
 };
 
