@@ -1,22 +1,23 @@
-import { useState } from 'react';
-import styles from './counters.module.css';
+import Link from 'next/link';
 
-function MyButton() {
-  const [count, setCount] = useState(0);
-
-  function handleClick() {
-    setCount(count + 1);
-  }
-
+export const Card = ({
+  children,
+  title,
+  icon,
+  image,
+  arrow,
+  href,
+  ...props
+}) => {
   return (
-    <div>
-      <button onClick={handleClick} className={styles.counter}>
-        Clicked {count} times
-      </button>
-    </div>
+    <Link href={href} {...props}>
+      {children}
+      <span>{icon}</span>
+      <span>{title}</span>
+    </Link>
   );
-}
+};
 
-export default function MyApp() {
-  return <MyButton />;
-}
+export const Cards = ({ children, num, ...props }) => {
+  return <div {...props}>{children}</div>;
+};

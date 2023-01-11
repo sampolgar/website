@@ -23,8 +23,7 @@
   "portfolio": {
     "title": "Portfolio",
     "theme": {
-      "typesetting": "article",
-      "layout": "raw"
+      "typesetting": "article"
     }
   },
   "docs": {
