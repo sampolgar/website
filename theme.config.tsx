@@ -57,6 +57,10 @@ const config: DocsThemeConfig = {
       </p>
     ),
   },
+  nextThemes: {
+    forcedTheme: 'dark',
+  },
+
   // primaryHue: { dark: 100, light: 200 },
 };
 
