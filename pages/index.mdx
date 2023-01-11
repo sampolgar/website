@@ -1,19 +1,7 @@
 import Image from 'next/image';
 import styles from './index.module.css';
-import styles2 from '../components/counters.module.css';
 import { useState } from 'react';
 import Link from 'next/link';
-
-export const Counter = () => {
-  const [count, setCount] = useState(0);
-  return (
-    <div>
-      <button onClick={() => setCount(count + 1)} className={styles2.counter}>
-        Clicked {count} times
-      </button>
-    </div>
-  );
-};
 
 export const Hero = () => {
   return (
