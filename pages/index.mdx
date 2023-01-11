@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import styles from './index.module.css';
-import profilePhoto from '../public/images/main-color.jpg';
 import styles2 from '../components/counters.module.css';
 import { useState } from 'react';
 import Link from 'next/link';
@@ -21,7 +20,7 @@ export const Hero = () => {
     <div className={styles.container}>
       <Image
         className={styles.heroImage}
-        src={profilePhoto}
+        src='/images/main-color.jpg'
         alt='picture of Sam Polgar Smiling'
         width={1080}
         height={1080}
@@ -30,7 +29,6 @@ export const Hero = () => {
       />
       <div className={styles.content}>
         <div className={styles.heading}>Hi, I'm Sam</div>
-        {/* <div className={styles.about}>I'm a Product Engineer</div> */}
         <div className={styles.about}>
           As a Product Engineer, I thrive at the intersection of Product
           Management and Engineering, driven by a curiosity to understand the

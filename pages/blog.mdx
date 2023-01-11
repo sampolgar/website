@@ -20,7 +20,7 @@ export function BlogHeader() {
 }
 
 export function BlogIndex() {
-  return getPagesUnderRoute('/blog').map((page) => {
+  return getPagesUnderRoute('/blog').map((page, i, arr) => {
     return (
       <div key={page.route} className='mb-10'>
         <Link
@@ -39,6 +39,9 @@ export function BlogIndex() {
         {page.frontMatter?.date ? (
           <p className='opacity-50 text-sm'>{page.frontMatter.date}</p>
         ) : null}
+        {arr.length - 1 !== i && (
+          <hr className='h-px my-8 bg-gray-200 border-0 dark:bg-gray-700' />
+        )}
       </div>
     );
   });

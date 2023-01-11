@@ -3,6 +3,8 @@ description: My Portfolio
 type: posts
 ---
 
+# My Portfolio
+
 import Image from 'next/image';
 import styles from './index.module.css';
 import profilePhoto from '../public/images/main-color.jpg';
@@ -10,13 +12,13 @@ import Link from 'next/link';
 import { getPagesUnderRoute } from 'nextra/context';
 
 export const PortfolioIndex = () => {
-  return getPagesUnderRoute('/portfolio').map((page) => {
+  return getPagesUnderRoute('/portfolio').map((page, i, arr) => {
     return (
       <div key={page.route} className={styles.container}>
         <div className={styles.heading}>{page.frontMatter?.title}</div>
         <Image
           className={styles.heroImage}
-          src={`/..${page.frontMatter?.ogImage}`}
+          src={`${page.frontMatter?.ogImage}`}
           alt='picture of author'
           width={1080}
           height={1080}
@@ -24,10 +26,18 @@ export const PortfolioIndex = () => {
         />
         <div className={styles.content}>
           <div className={styles.about}>{page.frontMatter?.description}</div>
-          <Link key={page.route} className={styles.container} href={page.route}>
+          {page.frontMatter?.description2 && (
+            <div className={styles.about}>{page.frontMatter?.description2}</div>
+          )}
+          <Link
+            key={page.route}
+            className='text-gray-500 dark:text-gray-400'
+            href={page.route}
+          >
             Read more
           </Link>
         </div>
+        {arr.length - 1 !== i && <hr className={styles.hr} />}
       </div>
     );
   });
