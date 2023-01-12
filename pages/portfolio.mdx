@@ -3,52 +3,71 @@ description: My Portfolio
 type: posts
 ---
 
-# My Portfolio
-
 import Image from 'next/image';
-import styles from './index.module.css';
-import profilePhoto from '../public/images/main-color.jpg';
 import Link from 'next/link';
 import { getPagesUnderRoute } from 'nextra/context';
 
-export const PortfolioIndex = () => {
+export function PortfolioHeader() {
+  return (
+    <div className='max-w-screen-lg mx-auto pt-4 pb-4 mb-4 border-b border-gray-400 border-opacity-20'>
+      <h1>
+        <span className='font-bold leading-tight lg:text-5xl'>
+          My Portfolio
+        </span>
+      </h1>
+      <p className='text-center text-gray-500 dark:text-gray-400 font-space-grotesk'></p>
+    </div>
+  );
+}
+
+export const Portfolio = () => {
   return getPagesUnderRoute('/portfolio').map((page, i, arr) => {
     return (
-      <div key={page.route} className={styles.container}>
-        <div className={styles.heading}>{page.frontMatter?.title}</div>
-        <Image
-          className={styles.heroImage}
-          src={`${page.frontMatter?.ogImage}`}
-          alt='picture of author'
-          width={1080}
-          height={1080}
-          priority={true}
-        />
-        <div className={styles.content}>
-          <div className={styles.about}>{page.frontMatter?.description}</div>
-          {page.frontMatter?.description2 && (
-            <div className={styles.about}>{page.frontMatter?.description2}</div>
-          )}
-          <Link
-            key={page.route}
-            className='text-gray-500 dark:text-gray-400'
-            href={page.route}
-          >
-            Read more
-          </Link>
+      <section key={page.route} className='bg-white dark:bg-transparent '>
+        <div className='gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6'>
+          <Image
+            className='w-full shadow-lg shadow-white rounded-md'
+            src={`${page.frontMatter?.ogImage}`}
+            alt={page.frontMatter?.alt}
+            width={1080}
+            height={1080}
+            priority={true}
+          />
+          <div className='mt-4 md:mt-0'>
+            <h2 className='mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white'>
+              {page.frontMatter?.title}
+            </h2>
+            <p className='mb-6 font-light text-gray-500 md:text-base dark:text-gray-400'>
+              {page.frontMatter?.description}
+            </p>
+            <Link
+              className='inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-base px-5 py-2.5 text-center dark:focus:ring-primary-900'
+              href={page.route}
+            >
+              Read more
+              <svg
+                className='ml-2 -mr-1 w-5 h-5'
+                fill='currentColor'
+                viewBox='0 0 20 20'
+                xmlns='http://www.w3.org/2000/svg'
+                alt='Arrow'
+              >
+                <path
+                  fillRule='evenodd'
+                  d='M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z'
+                  clipRule='evenodd'
+                />
+              </svg>
+            </Link>
+          </div>
         </div>
-        {arr.length - 1 !== i && <hr className={styles.hr} />}
-      </div>
+        {arr.length - 1 !== i && (
+          <hr className='h-px my-4 bg-gray-200 border-0 dark:bg-gray-700' />
+        )}
+      </section>
     );
   });
 };
 
-export const App = () => {
-  return (
-    <div className={styles.body}>
-      <PortfolioIndex />
-    </div>
-  );
-};
-
-<App />
+<PortfolioHeader />
+<Portfolio />

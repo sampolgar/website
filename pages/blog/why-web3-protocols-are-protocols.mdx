@@ -7,18 +7,85 @@ ogImage: /public/images/blog/web3-protocols-not-apps/aethervdiscord.png
 ---
 
 import Image from 'next/image';
+import {
+  OneImage,
+  TwoImages,
+  ThreeImages,
+  TodoList,
+} from '../../components/images/images.tsx';
 
 # Why are web 3 apps protocols, not just applications?
 
 Why interacting with a Web 3 protocol like Aave appears like a bank, but differs “under the hood”
 
-It's no secret that tech talent is flocking to Web 3 - shifting from building Web 2 applications like Google and Facebook to working on building blockchain protocols.
+It's no secret that tech talent is flocking to Web3 - shifting from building Web 2 applications like Google and Facebook to working on building blockchain protocols.
 
 One question often asked is "What's the difference between a Web 2 application like Facebook and a Web 3 protocol?"
 
 I understand the confusion, after using DeFi protocols like Uniswap for exchanging Ethereum tokens and using Aave for lending and borrowing, I empathise with the average internet user, the application interfaces look similar.
 
 Discord, a Web2 application differs from Aether, a Web3 protocol… why?
+
+export const twoImages = [
+  {
+    src: '/images/blog/web3-protocols-not-apps/discord.png',
+    alt: 'Aether vs Discord',
+    caption: 'Aether vs Discord',
+    height: 1000,
+    width: 500,
+  },
+  {
+    src: '/images/blog/web3-protocols-not-apps/aether.png',
+    alt: 'Aether vs Discord',
+    caption: 'Aether vs Discord',
+    height: 1000,
+    width: 500,
+  },
+];
+
+export const threeImages = [
+  {
+    src: '/images/blog/web3-protocols-not-apps/discord.png',
+    alt: 'Aether vs Discord',
+    caption: 'Aether vs Discord',
+    height: 1000,
+    width: 500,
+  },
+  {
+    src: '/images/blog/web3-protocols-not-apps/aether.png',
+    alt: 'Aether vs Discord',
+    caption: 'Aether vs Discord',
+    height: 1000,
+    width: 500,
+  },
+  {
+    src: '/images/blog/web3-protocols-not-apps/aether.png',
+    alt: 'Aether vs Discord',
+    caption: 'Aether vs Discord',
+    height: 1000,
+    width: 500,
+  },
+];
+
+<OneImage
+  src='/images/blog/web3-protocols-not-apps/discordvsaether.png'
+  alt='Aether vs Discord'
+  caption='Aether vs Discord'
+  height={1000}
+  width={500}
+/>
+
+<BlogTwoImages />
+
+export const BlogTwoImages = () => {
+  return <TwoImages images={twoImages} />;
+};
+
+<BlogThreeImages />
+
+export const BlogThreeImages = () => {
+  return <ThreeImages images={threeImages} />;
+};
 
 ## By definition, an application and protocol are different
 
