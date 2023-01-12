@@ -14,24 +14,20 @@
       "breadcrumb": false
     }
   },
-  "blog": {
-    "title": "Blog",
-    "theme": {
-      "typesetting": "article"
-    }
-  },
   "portfolio": {
     "title": "Portfolio",
     "theme": {
       "typesetting": "article"
     }
   },
+  "blog": {
+    "title": "Blog",
+    "theme": {
+      "typesetting": "article"
+    }
+  },
   "docs": {
     "title": "Docs",
-    "type": "page"
-  },
-  "contact": {
-    "title": "Contact ↗",
     "type": "page"
   }
 }

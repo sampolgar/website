@@ -1,5 +1,6 @@
 import { DocsThemeConfig } from 'nextra-theme-docs';
 import { Footer } from './components/footer';
+import { Header } from './components/header';
 
 const config: DocsThemeConfig = {
   useNextSeoProps() {
@@ -25,18 +26,9 @@ const config: DocsThemeConfig = {
       <meta name='apple-mobile-web-app-title' content='Nextra' />
     </>
   ),
-  logo: (
-    <>
-      <span style={{ marginLeft: '2em', fontWeight: 800 }}>Sam Polgar</span>
-    </>
-  ),
-  project: {
-    link: 'https://github.com/sampolgar/website',
-  },
   docsRepositoryBase: 'https://github.com/sampolgar/website/tree/main/pages',
-  footer: {
-    component: <Footer />,
-  },
+  logo: Header,
+  logoLink: false,
   gitTimestamp: false,
   search: {
     placeholder: 'Site Search',
@@ -60,8 +52,9 @@ const config: DocsThemeConfig = {
   nextThemes: {
     forcedTheme: 'dark',
   },
-
-  // primaryHue: { dark: 100, light: 200 },
+  footer: {
+    component: Footer,
+  },
 };
 
 export default config;
