@@ -40,12 +40,12 @@ import Image from 'next/image';
 // }
 export function OneImage(props) {
   return (
-    <div className='mt-6 -mb-4 flex justify-center overflow-hidden rounded-xl'>
+    <div className='mt-6 -mb-4 flex justify-center rounded-xl'>
       <div className='grid-cols-1  place-content-center'>
         <Image
-          className='w-auto select-none bg-white rounded-xl content-center'
+          className='w-auto select-none rounded-xl content-center'
           src={props.src}
-          alt={props.alt}
+          alt={props.caption}
           width='1000'
           height='1000'
         />
@@ -93,9 +93,9 @@ export function TwoImagesVertical(props) {
 }
 export function TwoImages(props) {
   return (
-    <div className='lg:grid grid gap-4 lg:grid-cols-2 '>
-      <div className='mt-6 -mb-4 flex justify-between overflow-hidden rounded-xl'>
-        <div className='group relative place-content-center'>
+    <div className='lg:grid grid gap-4 lg:grid-cols-2 mb-3'>
+      <div className='mt-6 mb-4 flex justify-between rounded-xl mb-3'>
+        <div className='grid-cols-1  place-content-center'>
           <Image
             className='h-full w-full select-none rounded-xl content-center object-contain'
             src={props.src}
@@ -108,8 +108,8 @@ export function TwoImages(props) {
           </div>
         </div>
       </div>
-      <div className='mt-6 -mb-4 flex justify-center overflow-hidden rounded-xl'>
-        <div className='group relative place-content-center'>
+      <div className='mt-6 mb-4 flex justify-between rounded-xl mb-3'>
+        <div className='grid-cols-1  place-content-center'>
           <Image
             className='h-full w-full select-none rounded-xl content-center object-contain'
             src={props.src2}
@@ -117,7 +117,7 @@ export function TwoImages(props) {
             width='1000'
             height='1000'
           />
-          <div className='mt-3 text-sm text-gray-500 text-center '>
+          <div className=' mt-3 text-sm text-gray-500 text-center '>
             {props.caption2}
           </div>
         </div>
