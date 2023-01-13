@@ -3,16 +3,11 @@ title: Why are web 3 apps protocols, not just applications?
 date: 2022/12/23
 description: Why interacting with a Web 3 protocol like Aave appears like a bank, but differs “under the hood
 tag: protocol
-ogImage: /public/images/blog/web3-protocols-not-apps/aethervdiscord.png
+ogImage: /public/images/blog/web3-protocols-not-apps/web3stack.png
 ---
 
 import Image from 'next/image';
-import {
-  OneImage,
-  TwoImages,
-  ThreeImages,
-  TodoList,
-} from '../../components/images/images.tsx';
+import { OneImage, TwoImages } from '../../components/images/images.tsx';
 
 # Why are web 3 apps protocols, not just applications?
 
@@ -26,66 +21,14 @@ I understand the confusion, after using DeFi protocols like Uniswap for exchangi
 
 Discord, a Web2 application differs from Aether, a Web3 protocol… why?
 
-export const twoImages = [
-  {
-    src: '/images/blog/web3-protocols-not-apps/discord.png',
-    alt: 'Aether vs Discord',
-    caption: 'Aether vs Discord',
-    height: 1000,
-    width: 500,
-  },
-  {
-    src: '/images/blog/web3-protocols-not-apps/aether.png',
-    alt: 'Aether vs Discord',
-    caption: 'Aether vs Discord',
-    height: 1000,
-    width: 500,
-  },
-];
-
-export const threeImages = [
-  {
-    src: '/images/blog/web3-protocols-not-apps/discord.png',
-    alt: 'Aether vs Discord',
-    caption: 'Aether vs Discord',
-    height: 1000,
-    width: 500,
-  },
-  {
-    src: '/images/blog/web3-protocols-not-apps/aether.png',
-    alt: 'Aether vs Discord',
-    caption: 'Aether vs Discord',
-    height: 1000,
-    width: 500,
-  },
-  {
-    src: '/images/blog/web3-protocols-not-apps/aether.png',
-    alt: 'Aether vs Discord',
-    caption: 'Aether vs Discord',
-    height: 1000,
-    width: 500,
-  },
-];
-
-<OneImage
-  src='/images/blog/web3-protocols-not-apps/discordvsaether.png'
-  alt='Aether vs Discord'
+<TwoImages
+  src='/images/blog/web3-protocols-not-apps/discord.png'
+  alt='Discord'
   caption='Aether vs Discord'
-  height={1000}
-  width={500}
+  src2='/images/blog/web3-protocols-not-apps/aether.png'
+  alt2='Aether vs Discord'
+  caption2='Aether'
 />
-
-<BlogTwoImages />
-
-export const BlogTwoImages = () => {
-  return <TwoImages images={twoImages} />;
-};
-
-<BlogThreeImages />
-
-export const BlogThreeImages = () => {
-  return <ThreeImages images={threeImages} />;
-};
 
 ## By definition, an application and protocol are different
 
@@ -111,13 +54,17 @@ Blockchain protocols depend on the underlying blockchain infrastructure for secu
 
 The reason Web 2 banking apps look similar to Web 3 apps like Aave is that they share the Front-end application component. These are both web applications built for internet users.
 
-Web 2 application architectureWeb 3 application architecture
-
 ## Why blockchains and smart contracts are both protocols
 
 Ethereum is a protocol, and smart contracts power the protocols built on Ethereum, like Uniswap and Aave.
 
 [The Distributed Immutable Data Objects Wiki](https://www.omgwiki.org/dido/doku.php?id=dido:public:ra:1.2_views:2_tech_views:defilayers) illustrates the 4 Web 3 layers used when building a Decentralized Finance (DeFi) application — starting from Settlement (Blockchain), Protocol (Smart Contract), Application (Web Application) and Aggregation
+
+<OneImage
+  src='/images/blog/web3-protocols-not-apps/protocollayer.png'
+  alt='Protocol Layer'
+  caption='4 Protocol Layers'
+/>
 
 **Settlement Layer**
 
