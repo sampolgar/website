@@ -1,6 +1,7 @@
 # Git cheat sheet
 
 ## Setup Project
+
 git config --global init.default Branch main
 
 git config --global user.email "sampolgar@gmail.com"
@@ -26,6 +27,7 @@ git commit -m "initial"
 git push -u origin main
 
 ## Push exisiting repo
+
 git remote add origin https://github.com/sampolgar/project.git
 
 git branch -M main
@@ -36,11 +38,11 @@ git push -u origin main
 
 git add . | git add -A
 
-git commit  -m "message"
+git commit -m "message"
 
 git status
 
-git remote add origin https://github.com/sampolgar/git-commands.git 
+git remote add origin https://github.com/sampolgar/git-commands.git
 
 git push --set-upstream origin main
 
@@ -59,6 +61,7 @@ git add .
 git commit -m "Untrack files in .gitignore"
 
 ## Branch
+
 git branch
 
 git branch -r
@@ -73,13 +76,12 @@ git branch -d branch-name (delete branch locally, branch must be committed)
 
 git branch -D branch-name (delete branch, doesn't need commit, ensure you're on the branch)
 
-
 # Early Troubleshooting
 
 git remote set-url origin https://github.com/sampolgar/new-remote-url.git
 
-
 ## Working with upstream repo
+
 git fetch upstream
 
 git merge upstream/main
@@ -89,6 +91,7 @@ git push origin main
 git pull
 
 ## merge fork to main
+
 git checkout main
 
 git pull origin main
@@ -100,6 +103,7 @@ git push origin main
 git log
 
 ## add to gitignore
+
 cat gitignore
 
 touch .gitignore
@@ -115,6 +119,7 @@ rm readme.md
 rm-r
 
 ## fork & create pull request
+
 1. fork to my own repo
 2. clone
 3. create new branch git checkout -b fix-up-readme (example)
@@ -122,6 +127,7 @@ rm-r
 5. compare & pull request from fix-up-readme to main
 
 ## Merge project A into Project B
+
 cd path/to/project-b
 
 git remote add project-a /path/to/project-a
@@ -133,20 +139,25 @@ git merge --allow-unrelated-histories project-a/master # or whichever branch you
 git remote remove project-a
 
 ## bash
-find: sudo find . -name "*poster*"
+
+find: sudo find . -name "_poster_"
 
 rename file: mv filename newfilename
 
 # Troubleshooting
+
 ### refusing to merge unrelated histories
+
 Because there is no common base - when I created a new project and pushed it as a branch
 
 --allow-unrelated-histories
 
 ### when you didn't make any change but git says theres a change. Check status, then if not needed
+
 git reset --hard
 
 ### .DS_Store causing trouble
+
 Delete it
 find . -name .DS_Store -print0 | xargs -0 git rm -f --ignore-unmatch
 
@@ -160,9 +171,11 @@ git commit -m '.DS_Store banished!'
 # Ancillary
 
 ## Ngrok
+
 - download and unzip ngrok
-- ngrok config add-authtoken {authtoken}
+- ngrok config add-authtoken authtoken
 - ngrok http 3000
 
 ## Deno
+
 - cmd, shift, P - run -> Deno: Initialize Workspace Configuration command
