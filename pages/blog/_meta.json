@@ -9,8 +9,12 @@
       "typesetting": "article"
     }
   },
+  "hidden": {
+    "display": "hidden"
+  },
   "why-web3-protocols-are-protocols": "Why are web 3 apps protocols, not just applications",
   "comparing-ethereum-to-hashgraph": "Comparing Ethereum's Blockchain to Hashgraph's DAG",
-  "how-does-product-management-differ-in-web3.mdx": "How does product management differ in web3",
-  "nsm-framework-for-value-creation": "North Star Metrics: a framework for creating value"
+  "how-does-product-management-differ-in-web3": "How does product management differ in web3",
+  "nsm-framework-for-value-creation": "North Star Metrics: a framework for creating value",
+  "plg-in-web3": "In Web3 — The Community is the Product-Led Growth Enabler"
 }
