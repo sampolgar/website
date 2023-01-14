@@ -1,4 +1,4 @@
-# Sam's Personla Website
+# Sam's Personal Website
 
 This is the source code for my personal website, built using Next.js, [Nextra](https://nextra.site) and Tailwind CSS.
 

@@ -1,5 +1,6 @@
 {
-  "about": "About",
-  "advanced": "Advanced",
+  "index": "Index",
+  "dev": "Engineering",
+  "learning": "Learning",
   "web3": "Web3"
 }
