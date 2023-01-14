@@ -1,0 +1,437 @@
+---
+title: Comparing Ethereum's Blockchain to Hashgraph's DAG
+date: 2022/09/22
+description: Comparing Ethereum's Blockchain to Hashgraph's DAG
+ogImage: /public/images/blog/pm-in-web3/discord.gif
+---
+
+import Image from 'next/image';
+import {
+  OneImage,
+  TwoImages,
+  TwoImagesVertical,
+} from '../../components/images/images.tsx';
+
+export const navigation = '/images/blog/comparing-ethereum-to-hashgraph';
+
+# Comparing Ethereum's PoS blockchain to Hedera Hashgraph's gossip about gossip and virtual voting
+
+A deep-dive comparison into Ethereum and Hedera's Hashgraph
+
+# Pick the odd one out…
+
+> Bitcoin — proof-of-work.
+>
+> Ethereum — proof-of-stake.
+>
+> Cardano — proof-of-stake.
+>
+> Hedera Hashgraph — gossip about gossip and virtual voting.
+
+# Introduction
+
+Ethereum is the most battle-tested blockchain in terms of utilization and security; it also runs [73% of the crypto ecosystem's decentralized applications](https://www.stateofthedapps.com/stats) and continuously innovates according to its weaknesses — think L2s, PoW => PoS and sharding.
+
+Hedera's 3rd generation distributed ledger isn't a blockchain; it's a directed acyclic graph (DAG) that advertises a raft of benefits over the 1st and 2nd generation blockchains; in this article, I'll compare the Ethereums blockchain against Hedera's Hashgraph
+
+1.  Purpose of distributed ledgers
+2.  State management
+3.  Storage
+4.  Lifecycle of transactions
+5.  Network incentives
+6.  Gas and transaction fees
+7.  Peer-to-peer gossiping
+8.  Consensus
+
+## Blockchain vs graph
+
+<OneImage
+  src={`${navigation}/blockchain-vs-graph.png`}
+  caption='Blockchain Left, DAG Right'
+/>
+
+Illustrating a blockchain like Ethereum on the left, a DAG like Hashgraph on the right
+
+# Why do we need distributed ledgers?
+
+Ethereum and Hedera are both decentralized distributed networks. Their functions far exceed a simple ledger, however for now let's keep it simple — Distributed Ledger Technology (DLT).
+
+DLTs like Bitcoin, Ethereum, and Hedera record their participant's transactions on a ledger using cryptography which ensures the security of the transaction and network.
+
+Distributed ledgers are unlike centralized ledgers — they don't rely on central authority (the clearing house in the diagram below) to pay and run infrastructure and process transactions, their centralised ledger has a single point of failure and is prone to attacks, and their records are mutable, meaning their open to fraud.
+
+Centralized vs Distributed Ledgers
+
+<OneImage
+  src={`${navigation}/2-centralized-vs-decentralized.png`}
+  caption='Centralized vs Distributed'
+/>
+
+Distributed ledgers are shared and synchronized across multiple computers, geographies, accessible by multiple people, publicly. As transaction data is stored across multiple ledgers, they're less prone to network attacks, and records are immutable, hence, fraud-resistant.
+
+## More than just distributed ledgers
+
+Both Ethereum and Hedera are more powerful than a ledger. Ethereum's biggest blockchain innovation is a smart contract — an immutable application running on the blockchain. Think about a tiny computer program you've created and started on the blockchain which can't be turned off.
+
+Hedera offers 4 native services in addition to Ethereum's smart contracts which I'll discuss further in a proceeding blog post:
+
+- Token Service
+- Consensus Service
+- Smart Contract Service
+- File Service
+
+It's worth noting Ethereum's smart contract can facilitate Tokens (EIP 20, EIP 721) and host files (upload HEX data to the chain via a smart contract) both with price/speed limitations.
+
+> They're not ledgers, they're state machines
+
+## [**_Ethereum_**](https://ethereum.org/en/developers/docs/evm/#from-ledger-to-state-machine) is **_a state machine_**
+
+Simply put, a state machine changes from one state to another in response to input. E.g. a vending machine (state machine) will dispense an item (change state) in response to input (inserting money + selecting an item = transactions).
+
+<OneImage
+  src={`${navigation}/3-ethereum-state-machine.gif`}
+  caption='Ethereum is a state machine'
+/>
+
+Ethereum is a state machine because its Nodes (Validators) make Transactions (Create/validate blocks with inputs) to change the state of the blockchain.
+
+<OneImage
+  src={`${navigation}/4-ethereum-state.png`}
+  caption='Ethereum is a state machine'
+/>
+
+Source — [Ethereum Illustrated](https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf)
+
+The latest state is the current state of Ethereum which isn't available anywhere else. The current state is available in every new block — see below.
+
+<OneImage
+  src={`${navigation}/5-ethereum-block.png`}
+  caption='Ethereum is a state machine'
+/>
+
+Source — [diving into Ethereum's world state](https://medium.com/cybermiles/diving-into-ethereums-world-state-c893102030ed)
+
+## Hedera's Hashgraph is a replicated state machine
+
+A replicated state machine “distributes the burden and responsibility for maintaining that changing state across multiple computers to provide fault tolerance”
+
+Each Ethereum node that creates a new block is responsible for updating the state — for Hedera, multiple nodes “spread” the responsibility by maintaining a consistent state representation — i.e. multiple nodes contain the states of account balances.
+
+Hedera's consensus mechanism ensures all transactions are in timestamp order. Nodes will quickly arrange transactions in the correct transaction order to maintain an identical state to other nodes.
+
+# Storage
+
+## Ethereum persists all transaction data
+
+Ethereum's nodes store data (Roots for Transactions, State & Receipts), process transactions and add new blocks to the blockchain.
+
+<OneImage
+  src={`${navigation}/6-mainnet-nodes.png`}
+  caption='Responsibility of Ethereum`s validators'
+/>
+
+Ethereum's nodes bear the weight of the total blockchain storage —it's worth noting [Vitaliks EIP's](https://notes.ethereum.org/@vbuterin/verkle_and_state_expiry_proposal) is set to resolve this.
+
+## Hedera Hashgraph
+
+Because Hedera delivers fast _Finality_ (the guarantee a submitted transaction is complete and immutable) the state history can be pruned, meaning nodes don't need to keep the entire state history (unlike Ethereum which stores the entire state from the genesis block).
+
+Furthermore, Hedera's nodes can be optimized for their responsibilities– mainnet nodes focus on consensus and state persistence where mirror nodes store historical transactions and a proof identifying the correct history.
+
+<OneImage
+  src={`${navigation}/7-hashgraph-nodes.png`}
+  caption='Hedera`s validator split between Mirror Nodes and Mainnet Nodes'
+/>
+
+# Lifecycle of transactions
+
+## Ethereum blocks
+
+Each block contains
+
+- Block Number
+- Transactions
+- Parent Hash
+- Current Hash
+
+Transactions can be any type of transaction, e.g. an Ether transfer or interaction with a smart contract.
+
+<OneImage src={`${navigation}/8-eth-node.png`} caption='Ethereum block' />
+
+[Source](https://medium.com/ethereum-grid/ethereum-101-how-are-transactions-included-in-a-block-9ae5f491853f)
+
+Each block ensures the hash and parent hash line up across each nodes copy of the blockchain. This is the result of the gossiping discussed earlier in the article.
+
+<OneImage
+  src={`${navigation}/9-eth-blogs.png`}
+  caption='Ethereum genesis to current'
+/>
+
+[Source](https://medium.com/ethereum-grid/ethereum-101-how-are-transactions-included-in-a-block-9ae5f491853f)
+
+## Ethereum gas and transaction fees
+
+Users submitting transactions need to pay a “processing fee” in ETH to the network — after all, the network is run by anyone with a computer, internet, processing power, and the Ethereum client installed.
+
+As soon as you've submitted your transaction, your request is in a pool of transactions waiting to be included in a block.
+
+<OneImage
+  src={`${navigation}/10-eth-block-chains.png`}
+  caption='Ethereum Gas and Transaction Fees'
+/>
+
+[Source](https://medium.com/ethereum-grid/ethereum-101-how-are-transactions-included-in-a-block-9ae5f491853f)
+
+Ethereum's transactions work by supply and demand, like Uber's surge pricing; with high demand comes higher processing fees. Submitting your transaction with a low fee (imagine negotiating for half price with your Uber driver during surge pricing, they'll pick someone else up first), the Ethereum validators will choose to process more profitable transactions first.
+
+<OneImage
+  src={`${navigation}/11-eth-block-chains2.png`}
+  caption='Ethereum Gas and Transaction Fees'
+/>
+
+[Source](https://medium.com/ethereum-grid/ethereum-101-how-are-transactions-included-in-a-block-9ae5f491853f)
+
+The validator will claim all the provided transaction fees.
+
+## **Ethereum transaction fairness**
+
+It's important to note that validators choose which transactions to process; therefore, transactions aren't timestamped in the order they were received, but in the order, they were processed by the validator. Many transactions are never processed because they were submitted without enough Gas.
+
+Ethereum may not be used in use cases where absolute consequential processing is required.
+
+## Hedera Hashgraph events
+
+Hedera calls each “block” an event. Similar to blocks, each event contains
+
+- Signature
+- Timestamp
+- Transactions
+- Hash of the last event you made (unlike Ethereum)
+- Hash of the last event you received (unlike Ethereum)
+
+<OneImage
+  src={`${navigation}/12-hashgraph-1.png`}
+  caption='Hedera`s Hashgraph'
+/>
+
+## Hedera Hashgraph gas and transaction fees
+
+Gas and transaction fees on Hedera are infinitely cheaper due to Hedera's processing speed, furthermore, most of the unused gas charges will be refunded to the transactor.
+
+## Hedera transaction fairness
+
+3 advantages of Hashgraph involve Transaction access to the Hashgraph consensus mechanism.
+
+- **Fair Access:** no transaction can be prevented from entering or being delayed entry to the system, unlike Ethereum's validators who will choose the most expensive blocks to process first. Hedera requires new transactions to have enough gas
+- **Fair Timestamps:** because each transaction is fairly processed, the consensus timestamp reflects the true time each transaction is processed
+- **Fair Transaction Order:** because there is fair access and fair timestamps, Hedera's has confident records of their transaction order which can be used for a multitude of use cases where ordering is highly important e.g. law, stock market trading
+
+# Network incentives
+
+Unlike a traditional database that's managed by an organization with complete read/write access, a cryptographically secured distributed ledger such as Ethereum is immutable and decentralized. Each node on the network has a full immutable record of the ledger and using gossiping, will continue to update its ledger for each block created.
+
+## Ethereum
+
+Ethereum nodes, aka validators, are software clients built to validate transactions and run the network. Validators can be run by anyone and receive rewards for validating the network and occasionally receive a block to create.
+
+Each participant needing to transact with the chain sends a payment to the validator with their transaction, incentivising validators to continue their work.
+
+## Hedera
+
+Hedera's mainnet nodes are run by the governing council, a set of some of the largest companies in the world. Hedera hasn't yet allowed the public to validate nodes, however, when allowed, Hedera validators will be rewarded with the native currency HBAR in proportion to the amount of HBAR staked.a
+
+# Peer-to-peer gossip
+
+Gossip protocols are the fastest way to get information out to a network — to synchronise the network. In simple terms, a Gossiping protocol starts with 1 node (Amy) gossiping to another node (Bob), Amy and Bob will then gossip to 2 more nodes, etc.
+
+Distributed systems like Ethereum, Hedera, and NoSQL DB's by Amazon (DynamoDB) and Apache Cassandra use P2P gossip protocols to disseminate data to other nodes on the network. The visualisation below demonstrates Gossiping, the nodes spread information at an exponential speed. Gossip sync refers to the time when 2 nodes gossip.
+
+<OneImage src={`${navigation}/13-hashgraph.gif`} caption='Gossiping' />
+
+Source — Hedera website, I'll link soon
+
+## Ethereum's gossip
+
+Ethereum's blocks are strictly ordered in a chain, every new block contains a reference to its parent block and all nodes on the network agree on the total number of blocks.
+
+To achieve a synchronized chain (gossip sync), Ethereum nodes gossip the newest validated block to all nodes on the network. Once received, the new nodes can add the block to the top of the chain. A new block can't be minted before all nodes receive the new block (average approx 0.4 seconds for Ethereum).
+
+<OneImage
+  src={`${navigation}/14-block-node-propagation.png`}
+  caption='Ethereum Propagating'
+/>
+
+[Source](https://www.semanticscholar.org/paper/Ethna%3A-Analyzing-the-Underlying-Peer-to-Peer-of-Wang-Zhao/46bced8c503bde1e7b1ec38c355a61c5b8f7c027)
+
+## Hedera Hashgraph's gossip about gossip
+
+Hedera's innovation in Gossiping is Dr Leemon Baird's innovation, Hedera's Co-Founder.
+
+Wanting to create a faster, more secure network, Dr Baird implemented 2 unique changes
+
+**1\. Any node can gossip to any other node**. Because Hashgraph is a graph rather than a blockchain, Hedera's nodes don't need to mine a block and propagate it before mining/propagating a new block. Hedera creates events, a similar concept to a block, transactions are grouped together and temporarily stored on the graph.
+
+<OneImage
+  src={`${navigation}/15-hashgraph2.gif`}
+  caption='Hedera`s Gossiping'
+/>
+
+Source — [Hedera website](https://hedera.com/how-it-works)
+
+Unlike Ethereum where each block contains exactly the same transactions, Hedera's Events contain any transactions they've come across because any node can gossip transactions to any other node.
+
+You might think that process creates a ton of duplicate data stored on the graph, however, Hashgraph finds all the same transactions, calculates the true Median time they were submitted, orders them by true timestamp and prunes the rest of the transactions.
+
+<OneImage
+  src={`${navigation}/16-hashgraph3.gif`}
+  caption='Hedera`s Gossiping'
+/>
+
+**2\. Each gossip indirectly contains the history of all gossip**. Unlike blockchains that gossip just the new block
+
+<OneImage
+  src={`${navigation}/17-eth-propagation.png`}
+  caption='Ethereum block propagation'
+/>
+
+Blockchain block gossiping [Source](https://roots2019.tistory.com/277)
+
+Hashgraph gossips the event containing 2 hashes. The hash of the last event the node made, and the hash of the last event the node received, thus satisfying the properties of a Directed Acyclic Graph (DAG) enabling DAG graph algorithms to piece together the whole graph using the 2 Hashes.
+
+Hedera's visualization sums this up nicely
+
+<OneImage
+  src={`${navigation}/18-hashgraph4.gif`}
+  caption='Hashgraph Gossiping'
+/>
+
+[Source](https://hedera.com/how-it-works)
+
+# Consensus
+
+Decentralized, distributed systems like Ethereum and Hedera reach consensus when nodes vote on the state of the network. Network state is important because it's the agreement on the truth of transactions.
+
+## Centralized vs decentralized
+
+Consensus isn't needed in centralized systems because the system assumes information is truthful and correct. E.g. Alice sends Bob $100 from her banking app — the bank verifies Alice's account balance and approves the transaction.
+
+<OneImage src={`${navigation}/19-centralized.png`} caption='Centralized' />
+
+In decentralized distributed systems, there is no trusted authority. The network needs to reach a consensus after each (or several) transaction.
+
+<OneImage src={`${navigation}/20-decentralized.png`} caption='Decentralized' />
+
+Nodes on the network will validate Alice has enough money to send to bob, and the network consensus will ensure the whole network agrees with the validation before it's written on the ledger.
+
+## Consensus protocol vs consensus algorithm
+
+- Protocols are a set of defined standards
+- Algorithms are exact instructions on how to solve a problem
+
+Let's take Football as a sporting example:
+
+**Football protocol**
+
+- The boot is on the foot
+- The boot can kick the ball
+- Penalty kick is given for a handball
+- The game is won by the team with more points
+
+**Football algorithm**
+
+- Dribble the ball between defenders
+- Then aim at the goal posts at a point where the goalie can't defend
+- Then kick the ball at the point
+
+## Consensus protocol — Byzantine fault tolerance
+
+Byzantine fault tolerance (BFT) is the property of a distributed system that can resist a Byzantine Fault.
+
+**Byzantine faults are explained by the Byzantine general's problem —** Byzantine generals have a **communication problem**.
+
+Illustrated below, the generals have surrounded an enemy castle and are trying to coordinate their final movement. To be successful, all generals must agree on the same decision, either all attack or all retreat.
+
+<OneImage src={`${navigation}/21-bft.png`} caption='' />
+
+The problem arises each time they try to schedule the attack; each general sends their votes on what they want to do. The Byzantine problem occurs when the messaging is fraudulent — these messages are set to confuse others.
+
+<OneImage src={`${navigation}/22-bft2.png`} caption='' />
+
+The generals don't have secure communication with one another, imagine they need to send people from army camp to army camp; how can they trust the messages they receive are truthful when
+
+1.  Messages between generals can be intercepted and changed between sending and receiving
+2.  The messenger may get lost or killed
+3.  Generals can be corrupt or compromised and send conflicting messages to different generals
+
+<OneImage src={`${navigation}/23-bft3.png`} caption='' />
+
+Byzantine faults
+
+The generals need to safely make their decision together and reach **consensus,** and execute their plan — **coordination.**
+
+This concept is applied to distributed computer systems, where each general is a node on the network, each node is a stranger to another node, and if a node is unsure about the communication, other nodes on the network can verify it to be true.
+
+BFT-resistant systems weren't available until 1999 and since have been used in aircraft and military communications.
+
+Byzantine faults can occur in scenarios where
+
+1.  Software/hardware malfunctions
+2.  Network issues, or the network is slow or congested
+3.  Power outage
+4.  Malicious nodes trying to interrupt communications on the network
+
+<OneImage src={`${navigation}/24-bft4.png`} caption='' />
+
+Byzantine fault tolerance refers to the characteristic of distributed systems reaching a consensus in the face of the Byzantine problem.
+
+Decentralized networks like Ethereum and Hedera are also distributed, and thus, nodes on the network need to come to consensus in light of Byzantine faults for Nodes or the network to ensure transactions across the network are recorded, verified and shared amongst the network in parallel to each node recording the state of the network.
+
+# Consensus algorithms
+
+Consensus algorithms solve the Byzantine general's problem — Ethereum using Proof of Stake (PoS) and Hedera Hashgraph using virtual voting. A summary of the differences is below:
+
+<OneImage src={`${navigation}/25-hedera-vs-eth-bft.png`} caption='' />
+
+## Ethereum — Proof-of-Stake (PoS)
+
+Ethereum's PoS algorithm called Casper is described in great detail [here](https://docs.ethhub.io/ethereum-roadmap/ethereum-2.0/proof-of-stake/) and [here](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/).
+
+[Ethereum's PoS uses voting](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/), validators receive a new block from the leader, validators check the transactions & block signature is valid, then send their vote across the network.
+
+**Voting-based consensus is slow** because each new decision requires every node to vote and then sign the decision, generating network traffic.
+
+Voting-based consensus, minimum of x² votes, where x is number of nodes (often much more)
+
+<OneImage src={`${navigation}/26-eth-pos.png`} caption='' />
+
+Many voting-based consensus algorithms generate even more traffic, e.g. additional handshakes and receipts.
+
+## **Hedera Hashgraph — virtual voting**
+
+Unlike Ethereum, Hedera's Hashgraph doesn't have one leader verifying transactions, creating a block, asking the network to verify then requesting votes on whether the block is valid or not.
+
+Hashgraph's gossip about gossip shares the entire history of transactions with each node. Each node doesn't need to receive a vote from another node because every node can check the entire transaction history (by running a DAG algorithm and discovering all history) — they have the transaction history and know what they'll vote.
+
+<OneImage src={`${navigation}/27-hashgraph4.png`} caption='' />
+
+Hashgraph nodes containing the history of all timestamped transactions
+
+Ethereum requires all nodes on the network to have the same information; Hedera's Hashgraph requires 2/3 of the nodes to confirm the transaction and to reach consensus.
+
+The ledger of ordered events is enabled by the gossiping protocol, each node records the event received time, and the consensus is the median time.
+
+Hedera received computer-verified proof their consensus mechanism is aBFT, details [here](https://hedera.com/blog/coq-proof-completed-by-carnegie-mellon-professor-confirms-hashgraph-consensus-algorithm-is-asynchronous-byzantine-fault-tolerant), and explanations [here](https://www.radixdlt.com/post/what-is-virtual-voting) and [here](https://hedera.com/learning/consensus-algorithms/what-are-voting-based-consensus-algorithms).
+
+Copying from Hedera's website, Hedera reaches consensus by having ordered events and a network of shared gossip.
+
+It's worth noting Hedera Hashgraph nodes use Proof of Stake to preference each nodes validation and to keep the network honest.
+
+# Summary
+
+It seems the Web3 world is split into 2. One side is the Ethereum Maxi's — those who believe Ethereum will be the dominant, only worthy chain in the future. However, 3rd generation ledgers like Hedera's Hashgraph offer advancements in security, features and functionality that appeals to different industries. I believe we'll have a shared world.
+
+# Additional notes
+
+**Hedera rebuttal:** Here's an interesting article by [Eric Wall](https://ercwl.medium.com/hedera-hashgraph-time-for-some-fud-9e6653c11525) digging into his thoughts on Hedera. The counter-argument articles are worth ready, at the bottom of the article
+
+**Decentralization concerns:** currently only members of [Hedera's governing council](https://hedera.com/council) (39 of the biggest organizations in the world) can run mainnet nodes. ETH maxis will deny this is decentralized. Hedera notes by doing this, they “a*ddress decentralization concerns by separating governance from consensus”*. Hedera plans to open nodes to the public, each node can run on a small computer (raspberry pi) which should alleviate concerns.
