@@ -3,15 +3,28 @@ title: Palate
 description: Palate started out as an NFT minting website for winemakers to connect physical bottles of wine with on-chain certificates with the goal of transferring ownership of the wine to the buyer.
 tag: blog tag
 alt: Palate hero image with an indiciator that it's too early
-ogImage: /images/portfolio/palate/palateHero.png
+ogImage: /images/portfolio/palate/palate-website.png
 ---
+
+import Image from 'next/image';
+import { OneImage } from '../../components/images/images.tsx';
+export const navigation = '/images/portfolio/palate';
 
 # Palate
 
-### Website [link](https://palate.sampolgar.com)
+## Idea
 
 Palate started out as an NFT minting website for winemakers to connect physical bottles of wine with on-chain certificates with the goal of
 transferring ownership of the wine to the buyer.
+
+Soon after starting, I realised the value wasn't in the NFT minting website, but in the underlying infrastructure that would allow winemakers to track bottles through the supply chain and increase their liquidity.
+
+I wrote about the journey in great detail here: [website](https://palate.sampolgar.com)
+
+<OneImage
+  src={`${navigation}/palate-website.png`}
+  caption='Value Propostion for Wine Buyer/Collector Persona'
+/>
 
 ## Inspiration
 
@@ -24,6 +37,36 @@ After heavily researching the space and speaking to the wine industry including 
 2. Making NFT minting websites wasn't inline with my ambition to build the underlying infrastructure for wine authenticity, provenance, and storage condition guarantees.
    That still excites me, I believe it requires a long time (as the technology needs to be built into the supply chain) and a hard sell to vineyards and winemakers that are happy with selling their wine as is
 
-I wrote about the journey in great detail here: [website](https://palate.sampolgar.com)
+## What I learned
 
-If you're interested in pursuing the opportunity, I'm happy to share any further info I may have.
+### 1. Governing off-chain assets is hard
+
+- Wine quality changes over time and is based on the environment it's kept
+- Wine is a perishable good, it's hard to track the quality of the wine in the supply chain
+- Trading prices are either arbitrary (seller can charge whatever they want), or based on the quality of the wine. Can't make an oracle to hook up to physical assets
+
+### 2. NFT's are a great way to increase perceived value of wine
+
+Not for everyone though. The successful ones I've seen are either
+
+- Very famous to begin with, the brand sold the NFT's3
+- Coupled with additional experiences like videos unique to each NFT or using the NFT has a ticket to a wine tasting event or meeting the Winemaker
+- Currently successful in the alcohol/wine industry and have a large following
+
+I was most interested in building an infrastructure layer for onchain wine and wine derivatives, so the NFT minting side didn't keep me going.
+
+### 3. The wine industry is very traditional
+
+- I spoke with winemakers and learnt they love to make wine, they're experts at it
+- I spoke with vineyard owners and managers, they love their grapes and their land. They speak with their vines and know how they feel and what they need
+  I realised on-chain wines and the benefits blockchain brings is not a priority for them. They're happy with the way things are, and sell their wine every year without a problem
+
+### 4. @Punk6529 called it earlier
+
+I found this from his tweet thread on NFT's and realised how far off-chain assets are. I can see [StockX](https://stockx.com/about/stockx-launches-vault-nfts/) and another platform [Mattereum](https://mattereum.com/) progressing in the space and that's exciting!
+
+<OneImage src={`${navigation}/palate-nft.png`} caption='' />
+
+## Thanks for reading!
+
+Let me know if you have any feedback or questions, I'd love to hear from you!

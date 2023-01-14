@@ -1,9 +1,47 @@
 ---
 title: Personal Website
-description: I needed a personal website for my portfolio, my blog, and my notes. Here's how I built it and why.
+description: I needed a website to host my projects, blogs, and writing. I built this using NextJS, Nextra and TailwindCSS.
 tag: blog tag
 alt: My personal website
 ogImage: /images/portfolio/portfolio/portfolio.png
 ---
 
 # Personal Website
+
+## Requirements
+
+- About
+- Portfolio
+- Blog (Markdown preferrably)
+- Docs page for personal notes
+- Site search (optional but helpful)
+- Dark mode (optional but cool)
+- TailwindCSS (optional but helpful)
+- Tech: React & NextJS preferrably
+
+## Overview
+
+There's a ton of static site builders - gatsby, hugo, jekyll, docusaurus, etc. I wanted static site because I wanted to host it myself, send people to my space (instead of Medium) and wanted everything in Markdown.
+
+I wanted to use React to sink my teeth into it after some time away. I read about NextJS often and thought it would work well for the page routing, styling, and a few features I'll talk about below.
+
+I initially used my own CSS as I hadn't played with TailwindCSS before. When I ripped my own out and used Tailwind, I lit a fire on my productivity, I was happy I started using it.
+
+### NextJS + Nextra
+
+NextJS had a learning curve which I was impatient with, I really wanted to have this site up and running, but I wanted it to look good and function a little bit differently than the template.
+
+Concepts I initially didn't understand were
+
+- \_app.tsx and \_document.tsx files, both are injected into each page creation
+- css modules, that came easily
+- Images having their own component, can't use img tag - this is actually better because Images don't need to be compressed and auto lazy loading
+- Links having their own component
+
+Once I had the hang of NextJS I liked the routing, styles, page setup, image compression, and build process with Vercel.
+
+I found a great document themed template called [Nextra](https://nextra.site) - this appears to be build by the Vercel team, [github.com/shuding](https://github.com/shuding) seems to have crated it and is the main contributor, thanks Shu Ding!
+
+# Thanks for reading
+
+Let me know your feedback on the site, I'm looking to improve and would like your feedback!
