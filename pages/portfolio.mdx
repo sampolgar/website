@@ -21,7 +21,55 @@ export function PortfolioHeader() {
 }
 
 export const Portfolio = () => {
-  return getPagesUnderRoute('/portfolio').map((page, arr, i) => {
+  return getPagesUnderRoute('/portfolio').map((page, i, arr) => {
+    return (
+      <section key={page.route} className='bg-white dark:bg-transparent '>
+        <div className='gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6'>
+          <Image
+            className='w-full shadow-lg shadow-white rounded-md'
+            src={`${page.frontMatter?.ogImage}`}
+            alt={page.frontMatter?.alt}
+            width={1080}
+            height={1080}
+            priority={true}
+          />
+          <div className='mt-4 md:mt-0'>
+            <p
+              style={{ color: 'inherit', textDecoration: 'none' }}
+              className='block font-semibold mt-8 text-2xl'
+            >
+              {page.frontMatter?.title}
+            </p>
+            <p className='inline-block'>{page.frontMatter?.description}</p>
+            <span>
+              <Link className='inline-block' href={page.route}>
+                Read more
+                <svg
+                  className='ml-2 -mr-1 w-5 h-5'
+                  fill=''
+                  viewBox='0 0 20 20'
+                  xmlns='http://www.w3.org/2000/svg'
+                  alt='Arrow'
+                >
+                  <path
+                    fillRule='evenodd'
+                    d='M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z'
+                    clipRule='evenodd'
+                  />
+                </svg>
+              </Link>
+            </span>
+          </div>
+        </div>
+        {arr.length - 1 !== i && (
+          <hr className='h-px my-8 bg-gray-200 border-0 dark:bg-gray-700' />
+        )}
+      </section>
+    );
+  });
+};
+export const Portfolio2 = () => {
+  return getPagesUnderRoute('/portfolio').map((page, i, arr) => {
     return (
       <section key={page.route} className='bg-white dark:bg-transparent '>
         <div className='gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6'>

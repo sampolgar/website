@@ -1,6 +1,17 @@
+import Image from 'next/image';
 import { DocsThemeConfig } from 'nextra-theme-docs';
 import { Footer } from './components/footer';
-import { Header } from './components/header';
+
+const Logo = ({ size }) => {
+  return (
+    <Image
+      src='/images/social/avatar.png'
+      alt='Sam Polgar'
+      width={size}
+      height={size}
+    />
+  );
+};
 
 const config: DocsThemeConfig = {
   useNextSeoProps() {
@@ -27,13 +38,10 @@ const config: DocsThemeConfig = {
     </>
   ),
   docsRepositoryBase: 'https://github.com/sampolgar/website/tree/main/pages',
-  logo: Header,
-  logoLink: false,
   gitTimestamp: false,
   search: {
     placeholder: 'Site Search',
   },
-  darkMode: false,
   editLink: {
     text: '',
   },
@@ -50,10 +58,17 @@ const config: DocsThemeConfig = {
     ),
   },
   nextThemes: {
-    forcedTheme: 'dark',
+    defaultTheme: 'dark',
   },
   footer: {
     component: Footer,
+  },
+  logo: () => {
+    return (
+      <>
+        <Logo size={35} />
+      </>
+    );
   },
 };
 

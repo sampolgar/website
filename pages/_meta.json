@@ -6,7 +6,7 @@
     "title": "About",
     "hidden": true,
     "theme": {
-      "layout": "raw",
+      "layout": "full",
       "sidebar": false,
       "toc": false,
       "footer": true,
