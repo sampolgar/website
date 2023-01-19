@@ -1,7 +1,6 @@
 {
-  "index": "Index",
-  "dev": "Engineering",
-  "learning": "Learning",
+  "dev": "Dev",
   "product": "Product",
-  "writing": "Writing"
+  "writing": "Writing",
+  "learning": "Learning"
 }
