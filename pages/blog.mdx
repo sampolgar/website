@@ -32,13 +32,13 @@ export function BlogIndex() {
         </Link>
         <p className='opacity-80' style={{ marginTop: '.5rem' }}>
           {page.frontMatter?.description}{' '}
-          <span className='inline-block'>
-            <Link href={page.route}>{'Read more'}</Link>
-          </span>
         </p>
-        {page.frontMatter?.date ? (
-          <p className='opacity-50 text-sm'>{page.frontMatter.date}</p>
-        ) : null}
+        <span className='inline-block'>
+          <Link href={page.route}>{'Read more'}</Link>
+          {page.frontMatter?.date ? (
+            <p className='opacity-50 text-sm'>{page.frontMatter.date}</p>
+          ) : null}
+        </span>
         {arr.length - 1 !== i && (
           <hr className='h-px my-8 bg-gray-200 border-0 dark:bg-gray-700' />
         )}
