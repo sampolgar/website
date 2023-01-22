@@ -6,8 +6,9 @@ export function Footer() {
     <>
       <div className='bg-white dark:bg-transparent'>
         <hr className='h-px border-0 dark:bg-gray-700' />
+        <div></div>
         <div className='px-8 py-6 bg-gray-100 dark:bg-transparent md:flex '>
-          <div className='flex mt-4 space-x-6 md:mt-0'>
+          <div className='flex mt-4 space-x-6 md:mt-1'>
             <Link
               href='https://github.com/sampolgar'
               className='text-gray-400 hover:text-gray-900 dark:hover:text-white'
@@ -80,7 +81,7 @@ export function Footer() {
               </svg>
               <span className='sr-only'>Facebook page</span>
             </Link>
-            <div className='place-items-end'>
+            <div className='mr-2'>
               <ThemeSwitch />
             </div>
           </div>
