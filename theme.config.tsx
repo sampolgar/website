@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { DocsThemeConfig } from 'nextra-theme-docs';
 import { Footer } from './components/footer';
 import { Navbar } from 'nextra-theme-docs';
-import { Github, Medium, Twitter, LinkedIn } from './components/Social';
+import { Github, Medium, Twitter, LinkedIn } from './components/social';
 
 const Logo = ({ size }) => {
   return (
@@ -15,30 +15,36 @@ const Logo = ({ size }) => {
   );
 };
 
-const config: DocsThemeConfig = {
+export default {
   useNextSeoProps() {
     return {
       titleTemplate: '%s - Sam Polgar',
     };
   },
   faviconGlyph: '💡',
-  head: (
-    <>
-      <meta property='og:title' content='Sam Portfolio' />
-      <meta property='og:description' content='Sam Portfolio' />
-      <meta name='msapplication-TileColor' content='#ffffff' />
-      <meta name='theme-color' content='#ffffff' />
-      <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-      <meta httpEquiv='Content-Language' content='en' />
-      <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-      <meta name='description' content='Sam Polgar`s Website' />
-      <meta name='og:description' content='Sam Polgar`s Website' />
-      <meta name='twitter:card' content='summary_large_image' />
-      <meta name='twitter:site:domain' content='https://twitter.com/0xsamp' />
-      <meta name='twitter:url' content='https://twitter.com/0xsamp' />
-      <meta name='apple-mobile-web-app-title' content='Nextra' />
-    </>
-  ),
+  head: ({ title, meta }) => {
+    const ogImage =
+      'https://user-images.githubusercontent.com/39210767/213995514-dc0ee16f-b22c-43ea-902c-9d41e08082eb.png';
+    return (
+      <>
+        <meta property='og:title' content='Sam Portfolio' />
+        <meta property='og:description' content='Sam Portfolio' />
+        <meta name='og:image' content={ogImage} />
+        <meta name='msapplication-TileColor' content='#ffffff' />
+        <meta name='theme-color' content='#ffffff' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta httpEquiv='Content-Language' content='en' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta name='description' content='Sam Polgar`s Website' />
+        <meta name='og:description' content='Sam Polgar`s Website' />
+        <meta name='twitter:card' content='summary_large_image' />
+        <meta name='twitter:site:domain' content='https://twitter.com/0xsamp' />
+        <meta name='twitter:url' content='https://twitter.com/0xsamp' />
+        <meta name='twitter:image' content={ogImage} />
+        <meta name='apple-mobile-web-app-title' content='Sam`s Portfolio' />
+      </>
+    );
+  },
   docsRepositoryBase: 'https://github.com/sampolgar/website/tree/main/pages',
   gitTimestamp: false,
   search: {
@@ -49,15 +55,6 @@ const config: DocsThemeConfig = {
   },
   feedback: {
     content: 'Feedback, Submit here!',
-  },
-  banner: {
-    key: '0.1 release',
-    text: (
-      <p>
-        Thanks for visiting! This site is about a week from completion, see you
-        here again soon!
-      </p>
-    ),
   },
   nextThemes: {
     defaultTheme: 'dark',
@@ -84,5 +81,3 @@ const config: DocsThemeConfig = {
     ),
   },
 };
-
-export default config;
