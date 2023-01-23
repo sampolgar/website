@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { DocsThemeConfig } from 'nextra-theme-docs';
 import { Footer } from './components/footer';
+import { Navbar } from 'nextra-theme-docs';
+import { Github, Medium, Twitter, LinkedIn } from './components/Social';
 
 const Logo = ({ size }) => {
   return (
@@ -69,6 +71,17 @@ const config: DocsThemeConfig = {
         <Logo size={35} />
       </>
     );
+  },
+  navbar: {
+    component: Navbar,
+    extraContent: (
+      <>
+        <Github />
+        <Medium />
+        <Twitter />
+        <LinkedIn />
+      </>
+    ),
   },
 };
 

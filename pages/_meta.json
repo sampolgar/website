@@ -27,6 +27,9 @@
     }
   },
   "docs": {
-    "title": "Docs"
+    "title": "Docs",
+    "theme": {
+      "footer": false
+    }
   }
 }
