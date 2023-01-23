@@ -47,9 +47,9 @@ export default {
         <meta name='theme-color' content='#ffffff' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <meta httpEquiv='Content-Language' content='en' />
-        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <meta name='twitter:card' content='summary_large_image' />
-        <meta name='twitter:site:domain' content='https://twitter.com/0xsamp' />
+        <meta name='twitter:site' content='https://twitter.com/0xsamp' />
+        <meta name='twitter:creator' content='@0xsamp' />
         <meta name='twitter:url' content='https://twitter.com/0xsamp' />
         <meta name='twitter:image' content={ogImage} />
         <meta name='apple-mobile-web-app-title' content='Sam`s Portfolio' />
