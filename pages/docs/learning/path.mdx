@@ -1,0 +1,49 @@
+import { OneImage } from '../../../components/images/images.tsx';
+import { Tab, Tabs } from 'nextra-theme-docs';
+
+# Learning path
+
+### Web3 Backend Engineer
+
+#### skills
+
+<Tabs items={['engineering', 'ethereum', 'writing & presence']}>
+  <TabView skills={engSkillsArray} />
+  <Ethereum />
+  <WritingPresence />
+</Tabs>
+
+export const engSkillsArray = ['Typescript', 'React', 'Creating NPM packages'];
+
+export function TabView({ skills }) {
+  const currentSkills = skills.map((skill) => {
+    <p>{skill}</p>;
+  });
+  return (
+    <>
+      <Tab>{currentSkills}</Tab>
+    </>
+  );
+}
+
+export function Ethereum() {
+  return (
+    <>
+      <Tab>
+        <p>hello</p>
+        <p>hello</p>
+        <p>hello</p>
+      </Tab>
+    </>
+  );
+}
+
+export function WritingPresence() {
+  return (
+    <>
+      <Tab>
+        - TypeScript {'\n'}- React {'\n'}- Creating NPM Packages {'\n'}
+      </Tab>
+    </>
+  );
+}

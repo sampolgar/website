@@ -1,0 +1,34 @@
+# EIP 1559
+
+Changes to fee model
+
+before
+
+- First price auction
+- Miners sort by highest gas price
+- MetaMask enables slow, average, fast preferences
+- not ideal for users & expensive during peak times
+- Payment to miner = block reward + gas fee
+- Miner receives block reward + gas fee
+
+problems
+
+- Predictable transaction fees
+- Delays in transaction processing
+- Confusing fee bidding system & unprocessed transactions
+-
+
+after
+
+- Base fee is set per block based on how congested the network is
+- Block size can be doubled from 12.5M Gwei to 25M Gwei causing the base fee to increase
+- Base fee can increase by 12.5% per block
+- Miner tip to incentivize miners to include transaction
+- Payment to miner = block reward + base fee + tip
+- Miner receives block reward + tip
+
+differences
+
+- Less profit for miners
+- More network activity = more eth burnt = less Eth in circulation
+- Make gas fee lower? no
