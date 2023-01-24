@@ -45,3 +45,18 @@ contract SimpleStorage {
 3. read only state of blockchain with `view` or `pure` e.g. `function retreive() public view returns(uint256)`
 4. define data locations with `calldata` & `memory` (in memory whilst function is running) and `storage` for permamnent storage.
 5. `storage` won't work as a function param
+
+# Import contract + Inheritance
+
+```solidity
+import "./SimpleStorage.sol";
+
+contract ExtraStorage is SimpleStorage {
+}
+
+```
+
+## Notes
+
+1. contract is like an object, create it with a constructor `Obj currentObj = new Obj()`
+2. inheritance with `is`
