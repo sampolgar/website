@@ -5,12 +5,19 @@
 
 # variables
 
-```solidity
-string public message;
-uint256 internal internalVar;
-uint8 private privateVar;
-bytes memory dataFromUser
-```
+- `string public` message;
+- `uint256 internal` internalVar;
+- `uint8 private` privateVar;
+- `bytes` memory dataFromUser
+- `address` funder
+
+## functions
+
+- `function fund() public payable`
+- `function fund() public payable returns (uint256)`
+- `modifier onlyOwner`
+- `fallback() external payable`
+- `receive() external payable`
 
 ## Notes
 
@@ -74,7 +81,7 @@ contract SimpleStorage {
 2. child inherits parent contract with `is`
 3. parent function needs to be `public virtual`
 4. to override, child function needs `override`
-5. imports contain `.sol`
+5. imports contain `.sol` e.g. `import "./Contract.sol"`
 
 ```solidity
 contract SimpleStorage {
@@ -116,7 +123,7 @@ contract StorageFactory {
 
 1. always multiply before divide. e.g. `var1 * var2 / var3` = `(var1 * var2) / var3`
 2. spread unneeded params with commas e.g. if only price is needed, use `( , int256 price , , , )`
-3. Eth in USD is eth price & 1e10
+3. Eth in USD is eth price \* 1e10 => use converter
 4. `msg.sender` `msg.value`
 5. `modifier` run before/after function depending on \_ used.
 
@@ -133,7 +140,7 @@ modifier checkOwner{
 // run withdraw after modifier
 modifier checkOwner{
     require(msg.sender == owner);
-    _; 
+    _;
 }
 
 
@@ -146,3 +153,40 @@ modifier checkOwner{
 # transactions
 
 - https://docs.soliditylang.org/en/v0.8.17/units-and-global-variables.html
+
+# Gas Optimization
+
+## using immutable and constant
+
+```solidity
+  // address public owner;  changes into ==>
+    address public immutable i_owner;
+
+   // uint256 public MINIMUM_USD = 1 * 1e18;    changes to =>
+    uint256 public constant MINIMUM_USD = 1 * 1e18;
+```
+
+## using errors instead of logging to console
+
+require changes to custom errors
+before:
+
+```solidity
+    require(msg.sender == owner, "sender isn't owner");
+```
+
+after:
+
+```solidity
+// create error above contract declaration
+ error NotOwner();
+    contract MyContract {
+        modifier onlyOwner {
+    // require(msg.sender == i_owner, "sender isn't owner");
+    // _;
+
+    if(msg.sender != i_owner) {revert NotOwner();}
+    _;
+    }
+}
+```
