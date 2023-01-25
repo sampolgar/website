@@ -1,0 +1,148 @@
+# Links
+
+- [eth converter](https://eth-converter.com/)
+- [solidity by example](https://solidity-by-example.org/)
+
+# variables
+
+```solidity
+string public message;
+uint256 internal internalVar;
+uint8 private privateVar;
+bytes memory dataFromUser
+```
+
+## Notes
+
+1. `public`, `internal`, `private`
+2. `int` can be negative. `uint256`,`uint8` can't
+
+# simple contract
+
+## Notes
+
+1. modify state of blockchain with `public` e.g. `function store(uint256 _favoriteNumber) public` else use `private` or `internal`
+2. read only state of blockchain with `view` or `pure` e.g. `function retreive() public view returns(uint256)`
+3. define data locations with `calldata` & `memory` (in memory whilst function is running) and `storage` for permamnent storage.
+4. `storage` won't work as a function param
+5. support for maps with `string => uint256`
+6. working with imported contracts requires `contract address` + `contract ABI`
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.8;
+
+contract SimpleStorage {
+
+    uint256 public favoriteNumber;
+    People public person = People({
+        favoriteNumber: 2,
+        name: "Sam"
+    });
+
+    struct People {
+        uint256 favoriteNumber;
+        string name;
+    }
+
+    mapping(string => uint256) public nameToFavoriteNumber;
+
+    People[] public people;
+
+    function store(uint256 _favoriteNumber) public {
+        favoriteNumber = _favoriteNumber;
+        retreive();
+    }
+
+    function retreive() public view returns(uint256){
+        return favoriteNumber;
+    }
+
+    function addPerson(string calldata _name, uint256 _favoriteNumber) public {
+        People memory newPerson = People(_favoriteNumber, _name );
+        people.push(newPerson);
+        nameToFavoriteNumber[_name] = _favoriteNumber;
+    }
+}
+```
+
+# Import + Inheritance
+
+## Notes
+
+1. contract is like an object, create it with a constructor `Obj currentObj = new Obj()`
+2. child inherits parent contract with `is`
+3. parent function needs to be `public virtual`
+4. to override, child function needs `override`
+5. imports contain `.sol`
+
+```solidity
+contract SimpleStorage {
+    function store(uint256 _favoriteNumber) public virtual{
+        favoriteNumber = _favoriteNumber;
+        retrieve();
+    }
+}
+
+//import "./SimpleStorage.sol";
+
+contract ExtraStorage is SimpleStorage {
+        function store(uint256 _favoriteNumber) public override {
+        favoriteNumber = _favoriteNumber +5;
+    }
+}
+
+import "./SimpleStorage.sol";
+contract StorageFactory {
+    //deploy an array of SimpleStorage
+
+    SimpleStorage[] public sArr;
+
+    function deployArrayOfSimpleStorages(){
+        SimpleStorage s = new SimpleStorage()
+        sArr.push(s)
+    }
+
+    function sfStore(uint256 _i, uint256 _num){
+        sArr[_i].store(_num);
+    }
+}
+
+```
+
+# DeFi
+
+## Notes
+
+1. always multiply before divide. e.g. `var1 * var2 / var3` = `(var1 * var2) / var3`
+2. spread unneeded params with commas e.g. if only price is needed, use `( , int256 price , , , )`
+3. Eth in USD is eth price & 1e10
+4. `msg.sender` `msg.value`
+5. `modifier` run before/after function depending on \_ used.
+
+### modifier
+
+```solidity
+function withdraw() public Owner{...}
+// run withdraw before modifier
+modifier checkOwner{
+    _;
+    require(msg.sender == owner);
+}
+
+// run withdraw after modifier
+modifier checkOwner{
+    require(msg.sender == owner);
+    _; 
+}
+
+
+```
+
+```solidity
+
+```
+
+# transactions
+
+- https://docs.soliditylang.org/en/v0.8.17/units-and-global-variables.html
