@@ -10,12 +10,14 @@
 - `uint8 private` privateVar;
 - `bytes` memory dataFromUser
 - `address` funder
+- `funders = new address[](0);` | creates new funder array with 0 obj
 
 ## functions
 
 - `function fund() public payable`
 - `function fund() public payable returns (uint256)`
 - `modifier onlyOwner`
+- `constructor`
 - `fallback() external payable`
 - `receive() external payable`
 
@@ -32,7 +34,7 @@
 2. read only state of blockchain with `view` or `pure` e.g. `function retreive() public view returns(uint256)`
 3. define data locations with `calldata` & `memory` (in memory whilst function is running) and `storage` for permamnent storage.
 4. `storage` won't work as a function param
-5. support for maps with `string => uint256`
+5. support for maps with `string => uint256` e.g. `mapping(address => uint256) public addressToAmountFunded;` maps an address to a number
 6. working with imported contracts requires `contract address` + `contract ABI`
 
 ```solidity
@@ -153,6 +155,7 @@ modifier checkOwner{
 # transactions
 
 - https://docs.soliditylang.org/en/v0.8.17/units-and-global-variables.html
+- `address(this)` is the contract address
 
 # Gas Optimization
 
