@@ -1,3 +1,69 @@
 # Building in public
 
 ## 24/1
+
+## 26/1
+
+- Task: Write a contract that receives a minimum usd amount of eth and allows only the contract creator to withdraw.
+- Challenge: write from scratch w/o looking at solution
+- Patrick C Course [here](https://youtu.be/gyMwXuJrbJQ?t=18281)
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+
+contract FundMe {
+
+    address internal owner;
+    constructor(){
+        owner = msg.sender;
+    }
+
+    uint256 public minimumUsd = 1* 1e18;
+    //create funders array and a map between funder and funding amount
+    address[] public funders;
+    mapping(address => uint256) addressToFundingAmount;
+
+
+    function fund() public payable{
+        require(convertEthToUsd(msg.value) >= minimumUsd, "sorry, not enough");
+        funders.push(msg.sender);
+        addressToFundingAmount[msg.sender] = msg.value;
+    }
+
+    //converted is in usd
+    function convertEthToUsd(uint256 ethAmount) public view returns(uint256){
+        uint256 ethPrice = getEthPrice();
+        uint256 converted = (ethPrice * ethAmount) / 1e18;
+        return converted;
+    }
+
+    //eth price is in Wei 1624,2249276800,00000000
+    function getEthPrice() public view returns(uint256){
+        AggregatorV3Interface chainlinkPrice = AggregatorV3Interface(0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e);
+        (,int256 answer, , , ) = chainlinkPrice.latestRoundData();
+        return uint256(answer * 1e10);
+    }
+
+    function withdraw() public ownerCheck {
+        //recreate the funders list
+        funders = new address[](0);
+        // then use the call to remove the funds from the contract
+        (bool sent, ) = payable(owner).call{value: address(this).balance}("");
+        require(sent, "sending failed");
+    }
+
+    modifier ownerCheck {
+        require(msg.sender == owner, "sorry mate, not you");
+        _;
+    }
+
+    function getContractBalance() public view returns(uint256) {
+        uint256 currentBal = address(this).balance;
+        return currentBal;
+    }
+}
+
+```

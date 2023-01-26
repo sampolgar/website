@@ -2,8 +2,11 @@
 
 - [eth converter](https://eth-converter.com/)
 - [solidity by example](https://solidity-by-example.org/)
+- [send/transfer]()https://solidity-by-example.org/sending-ether/
 
-# variables
+# variables & states
+
+- states: `public, internal, private`
 
 - `string public` message;
 - `uint256 internal` internalVar;
@@ -11,11 +14,18 @@
 - `bytes` memory dataFromUser
 - `address` funder
 - `funders = new address[](0);` | creates new funder array with 0 obj
+- `immutable decimal`
+- `constant MY_HASH`
 
 ## functions
 
-- `function fund() public payable`
-- `function fund() public payable returns (uint256)`
+[solidity kb](https://docs.soliditylang.org/en/v0.8.17/contracts.html)
+
+- external, public, internal, private
+
+- `function fund() public payable` - allows user to pay
+- `function convertEthToUsd(uint256 ethAmount) internal returns (uint256)` - access within contract or derived
+- `function doesntAllowOtherContracts() private returns (uint256)` - access within contract only`
 - `modifier onlyOwner`
 - `constructor`
 - `fallback() external payable`
@@ -193,3 +203,5 @@ after:
     }
 }
 ```
+
+# 
