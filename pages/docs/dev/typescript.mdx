@@ -1,0 +1,40 @@
+# tsconfig
+
+```json
+{
+  "compilerOptions": {
+    "lib": ["es6"],
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "sourceMap": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}
+```
+
+# Errors
+
+### unknown file extension .ts for /app.ts
+
+[stack solution](https://stackoverflow.com/questions/62096269/cant-run-my-node-js-typescript-project-typeerror-err-unknown-file-extension)
+
+1. remove `"type": "module"` from package.json
+2. check `"@types/node"` and `"ts-node"` and `"typescript"` are dependencies in package.json
+3. change `node app.ts` to `ts-node-esm app.ts`
+   or
+4. if the project uses .ts imports & requires add this to tsconfig.json
+
+```json
+{
+  "compilerOptions": {
+    "esModuleInterop": true
+  }
+}
+```
