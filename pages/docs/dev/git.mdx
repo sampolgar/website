@@ -1,181 +1,32 @@
 # Git cheat sheet
 
-## Setup Project
+## Create Repo
 
-git config --global init.default Branch main
+- `git init`
+- `git add .`
+- `git commit -m "first commit"`
+- create repo or fork
 
-git config --global user.email "sampolgar@gmail.com"
+## commands
 
-git init | setup dir
+#### useful
 
-ls -la | see in the file structure
+- `git status`
+- `git remote -v`
+- `git rm -r --cached .`
 
-rm -rf .git/ | delete the git init file
+### branching
 
-## Create New Repo
+- `git branch` | `git branch -r`
+- `git branch new-feature`
+- `git checkout main`
+- `git checkout -b new-feature`
+- `git branch -d branch-name` delete local branch, branch must be comitted
+- or `git branch -D branch-name` delete branch, doesn't need commit. Ensure I'm on the branch
 
-git add README.md
+## Global Setup
 
-bit branch -M main
-
-git remote add origin https://github.com/sampolgar/project.git
-
-git add .
-
-git commit -m "initial"
-
-git push -u origin main
-
-## Push exisiting repo
-
-git remote add origin https://github.com/sampolgar/project.git
-
-git branch -M main
-
-git push -u origin main
-
-## Adding/Committing/Status
-
-git add . | git add -A
-
-git commit -m "message"
-
-git status
-
-git remote add origin https://github.com/sampolgar/git-commands.git
-
-git push --set-upstream origin main
-
-git remote -v
-
-git push -u
-
-## forget .gitignore
-
-git rm -r --cached .
-or
-git rm -r --cached node_modules
-
-git add .
-
-git commit -m "Untrack files in .gitignore"
-
-## Branch
-
-git branch
-
-git branch -r
-
-git branch sam-feature
-
-git checkout main
-
-git checkout -b sam-newbranch
-
-git branch -d branch-name (delete branch locally, branch must be committed)
-
-git branch -D branch-name (delete branch, doesn't need commit, ensure you're on the branch)
-
-# Early Troubleshooting
-
-git remote set-url origin https://github.com/sampolgar/new-remote-url.git
-
-## Working with upstream repo
-
-git fetch upstream
-
-git merge upstream/main
-
-git push origin main
-
-git pull
-
-## merge fork to main
-
-git checkout main
-
-git pull origin main
-
-git merge test
-
-git push origin main
-
-git log
-
-## add to gitignore
-
-cat gitignore
-
-touch .gitignore
-
-echo 'xxx' > .gitignore
-
-## standard linux
-
-mv commands.md readme.md
-
-rm readme.md
-
-rm-r
-
-## fork & create pull request
-
-1. fork to my own repo
-2. clone
-3. create new branch git checkout -b fix-up-readme (example)
-4. git add . & git commit & push to branch fix-up-readme
-5. compare & pull request from fix-up-readme to main
-
-## Merge project A into Project B
-
-cd path/to/project-b
-
-git remote add project-a /path/to/project-a
-
-git fetch project-a --tags
-
-git merge --allow-unrelated-histories project-a/master # or whichever branch you want to merge
-
-git remote remove project-a
-
-## bash
-
-find: sudo find . -name "_poster_"
-
-rename file: mv filename newfilename
-
-# Troubleshooting
-
-### refusing to merge unrelated histories
-
-Because there is no common base - when I created a new project and pushed it as a branch
-
---allow-unrelated-histories
-
-### when you didn't make any change but git says theres a change. Check status, then if not needed
-
-git reset --hard
-
-### .DS_Store causing trouble
-
-Delete it
-find . -name .DS_Store -print0 | xargs -0 git rm -f --ignore-unmatch
-
-Add it to gitignore
-echo .DS_Store >> .gitignore
-
-Commit
-git add .gitignore
-git commit -m '.DS_Store banished!'
-
-# Ancillary
-
-## Ngrok
-
-- download and unzip ngrok
-- ngrok config add-authtoken authtoken
-- ngrok http 3000
-
-## Deno
-
-- cmd, shift, P - run -> Deno: Initialize Workspace Configuration command
+- `git config --global init.default Branch main`
+- `git config --global user.email "sampolgar@gmail.com"`
+- `ls -la | see in the file structure`
+- `rm -rf .git/ | delete the git init file`

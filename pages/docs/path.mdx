@@ -1,5 +1,22 @@
 # Building in public
 
+## Tech skills to demonstrate
+
+- Typescript, Node.js, npm packages
+- The Graph, Dune analytics, blockchain data APIs
+- Bigquery, SQL, noSQL
+- REST, GraphQL API
+- AWS infrastructure, Docker, Github Action
+- Solidity, Hardhat, Ethers.js, ZK
+- Circom
+- Rust
+
+## Features
+
+- fetching data on-chain for DID. e.g. if user has token assign badge
+- building sdk
+- building npm package
+
 ## 24/1
 
 ## 26/1
@@ -80,10 +97,29 @@ contract FundMe {
 2. NPM module for creating tokens, nft's, dapps, etc
 3. NPM module for creating a gated community allowing sismo badge holders access
 4. DID protocol with key requirement variables
+5. create a token gated community website generator e.g. disqus
 
 ### Tutorial ideas
 
-### Today
+1. create a token gated community website
+2. create a token gated community website generator
+
+### Notes from today
 
 - using `ethers` to create an encrypted json key from .env file [link](https://youtu.be/gyMwXuJrbJQ?t=28054)
-- using `process.env.PRIVATE_KEY` with key in .env file or key sent in cmd e.g. `PRIVATE_KEY=MYPRIVATEKEY node index.js`
+- using `process.env.PRIVATE_KEY` with key in .env file or key sent in cmd execution e.g. `PRIVATE_KEY=MYPRIVATEKEY node index.js`
+
+## 28/1
+
+- [] in ethers - write the storage contract
+- [] in ethers - write a contract that receives a minimum usd amount of eth and allows only the contract creator to withdraw.
+-
+
+### Notes from today
+
+- using `solc` to compile contracts from `.sol` to `.bin` + `.abi` to deploy with ethers `const factory = new ethers.ContractFactory(abi, binary, wallet)`
+- needed specific version i.e. `yarn add solc@0.8.7-fixed`
+- `yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o . SimpleStorage.sol`
+- add this to your scripts file e.g. scripts: `{"compile": "yarn...... SimpleStorage.sol"}`
+- using ethers, a `provider` class connects you to the network, a `signer` has direct/indirect access to private key to authorize charges & actions, `contract` is the contract obj
+- wasting time on the typescript tutorial, I'll change to javascript
