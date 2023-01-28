@@ -1,3 +1,8 @@
+# NPM
+
+## General
+- package.json, dependencies with `@` e.g. `@nomiclabs/hardhat` are built by the project i.e. nomiclabs. 
+
 ## Prettier
 
 - user settings (can default to vscode, etc)
@@ -12,3 +17,10 @@
   "singleQuote": false
 }
 ```
+
+## dep vs dev-dep
+
+- use dev for testing env. use normal for anything needing to run app in prod
+- dev = unit tests, linters, hardhat, etc anything to build/transpile/package
+- `pnpm add --dev hardhat`
+

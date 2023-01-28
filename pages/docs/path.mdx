@@ -111,8 +111,8 @@ contract FundMe {
 
 ## 28/1
 
-- [] in ethers - write the storage contract
-- [] in ethers - write a contract that receives a minimum usd amount of eth and allows only the contract creator to withdraw.
+- [x] in ethers - write the storage contract
+- [x] in ethers - write a contract that receives a minimum usd amount of eth and allows only the contract creator to withdraw.
 -
 
 ### Notes from today
@@ -123,3 +123,51 @@ contract FundMe {
 - add this to your scripts file e.g. scripts: `{"compile": "yarn...... SimpleStorage.sol"}`
 - using ethers, a `provider` class connects you to the network, a `signer` has direct/indirect access to private key to authorize charges & actions, `contract` is the contract obj
 - wasting time on the typescript tutorial, I'll change to javascript
+
+### Hardhat
+
+- if running `npx hardhat` doesn't return the hardhat creation prompts, check for parent `hardhat.config.js` file and remove it or run `npx hardhat --verbose`
+- hardhat uses built in network by default => config in hardhat.config.js e.g. `module.exports = {defaultNetwork: "hardhat"}`
+- or execute via cmd `yarn hardhat run scripts/deploy.js --network hardhat`
+- `yarn hardhat` brings up tasks e.g. run or custom task
+- `yarn hardhat console` brings up the js console to execute
+- [open zeppelin ref](https://docs.openzeppelin.com/learn/deploying-and-interacting)
+
+### chai
+
+- execute specific tests with `yarn hardhat test --grep update-when-test`
+- format
+
+```javascript
+describe('SimpleStorage', function () {
+  let SimpleStorageFactory, simpleStorage;
+  beforeEach(async function () {
+    simpleStorageFactory = await ethers.getContractFactory('SimpleStorage');
+    simpleStorage = await simpleStorageFactory.deploy();
+  });
+
+  it('should start with a favorite number 0', async function () {
+    const currentValue = await simpleStorage.retrieve();
+    console.log(`current value is ${currentValue}`);
+    const expectedValue = '0';
+    assert.equal(currentValue.toString(), expectedValue);
+  });
+
+  it('should update when we store a number', async function () {
+    const valUpdated = 5;
+    const res = await simpleStorage.store(valUpdated);
+    await res.wait(1);
+
+    const valReturned = await simpleStorage.retrieve();
+    console.log(` -------- ${valReturned}`);
+    assert.equal(valUpdated, valReturned);
+  });
+});
+```
+
+### complete the below w/o github copilot
+
+-[] create a hardhat deployment script to deploy the SimpleStorage contract & 1. verify it on Etherscan 2. interact with it and log value
+-[] Deploy the contract to hardhat network to view transactions on the console chain
+-[] Deploy the contract to the Goerli testnet and verify it on Etherscan
+-[] create tests for the contract
