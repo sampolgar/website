@@ -43,3 +43,70 @@ compile to js with tsc. if no tsc, add globally `npm i typescript -g`
 }
 ```
 
+## imports
+
+- js: `require("hardhat-gas-reporter")`
+- ts: `import "hardhat-gas-reporter"`
+
+- js: `const { task } = require("hardhat/config")`
+- ts: `import { task } from "hardhat/config"`
+
+- js: `module.exports = {}`
+- ts: `export default task`
+
+- js
+
+```javascript
+describe("SimpleStorage", function () {
+    let simpleStorageFactory, simpleStorage
+    beforeEach(async function () {
+        simpleStorageFactory = await ethers.getContractFactory("SimpleStorage")
+        simpleStorage = await simpleStorageFactory.deploy()
+    })
+```
+
+- ts
+
+```typescript
+import { SimpleStorage__factory, SimpleStorage } from "../typechain-types"
+
+describe("SimpleStorage", function () {
+    let simpleStorageFactory: SimpleStorage__factory,
+        simpleStorage: SimpleStorage
+    beforeEach(async function () {
+        simpleStorageFactory = (await ethers.getContractFactory(
+            "SimpleStorage"
+        )) as SimpleStorage__factory
+        simpleStorage = await simpleStorageFactory.deploy()
+    })
+```
+
+- `why simpleStorageFactory = await.... as SimpleStorage__Factory` but not `simpleStorage = await...`
+
+### dealing with nested imports
+
+#### given this tree structure
+
+📦test
+┗ 📜test-deploy.ts  
+📦typechain-types
+┣ 📂factories
+┃ ┣ 📜SimpleStorage\_\_factory.ts
+┃ ┗ 📜index.ts
+┣ 📜SimpleStorage.ts
+┣ 📜common.ts
+┣ 📜hardhat.d.ts
+┗ 📜index.ts
+
+#### I want `import { SimpleStorage__factory, SimpleStorage } from "../typechain-types"` in test-deploy.ts
+
+##### SimpleStorage\_\_factory
+
+1. in `📦typechain-types > 📂factories > 📜SimpleStorage__factory.ts` => `export class SimpleStorage__factory`
+2. in `📦typechain-types > 📂factories > 📜index.ts` => `export { SimpleStorage__factory } from "./SimpleStorage__factory";`
+3. in `📦typechain-types > 📜index.ts` => `export * as factories from "./factories";` & `export { SimpleStorage__factory } from "./factories/SimpleStorage__factory";`
+
+##### SimpleStorage
+
+1. in `📦typechain-types > 📜SimpleStorage.ts` => `export interface SimpleStorage`
+2. in `📦typechain-types > 📜index.ts` => `export type { SimpleStorage } from "./SimpleStorage";`
