@@ -177,21 +177,31 @@ describe('SimpleStorage', function () {
 
 ### complete the below w/o github copilot [link](https://youtu.be/gyMwXuJrbJQ?t=34728)
 
--[x] create the SimpleStorage contract that stores a fav number, retreives the number, and stores an array of person structs (name, favnum)
--[x] create a hardhat deployment script to deploy the SimpleStorage contract on Goerli
--[x] verify it on Etherscan
--[x] interact with it
--[x] Deploy the contract to hardhat network to view transactions on the console chain
--[x] Deploy the contract to the Goerli testnet and verify it on Etherscan
--[x] create a task to check the block number
--[x] create tests for the contract
--[x] check with coverage
--[x] work with gas reporter in tests, check usd price with coinmarketcap
+-[] create the SimpleStorage contract that stores a fav number, retreives the number, and stores an array of person structs (name, favnum)
+-[] create a hardhat deployment script to deploy the SimpleStorage contract on Goerli
+-[] verify it on Etherscan in the code
+-[] interact with it 
+-[] Deploy the contract to hardhat network to view transactions on the console chain 
+-[] Deploy the contract to the Goerli testnet and verify it on Etherscan 
+-[] create a task to check the block number 
+-[] create tests for the contract 
+-[] check with coverage 
+-[] work with gas reporter in tests, check usd price with coinmarketcap api
 -[] update to Typescript
+
+#### round 1 - 4 hours
+
+#### round 2 - 3 hours
 
 ### Notes
 
+- Why does hre.run return `HardhatError: HH303: Unrecognized task verify: verify` but `run` doesn't.
 
+```js
+const verify = async (contractAddress, args) => {
+  await hre.run('verify: verify', {});
+};
+```
 
 Next
 -[] create the Todo contract that stores an array of todo's add, get, update, delete
@@ -199,12 +209,13 @@ Next
 -[]
 
 Current strategy
+
 1. watch tutorial while following along and pausing
 2. try to replicate in 1 go
-3. 
+3.
 
 Proposed strategy
+
 1. watch tutorial 3 speed and take note of high level tasks
 2. try to replicate each high level task
-3. 
-
+3.
