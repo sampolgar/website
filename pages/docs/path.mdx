@@ -1,6 +1,6 @@
 # Building in public
 
-## Tech skills to demonstrate
+## Tech skills needed on git
 
 - Typescript, Node.js, npm packages
 - The Graph, Dune analytics, blockchain data APIs
@@ -19,77 +19,17 @@
 
 ## 24/1
 
+- highly recommended [Patrick free code camp 32 hr tutorial](https://www.youtube.com/watch?v=gyMwXuJrbJQ&t), let's start with that.
+
 ## 26/1
 
-- Task: Write a contract that receives a minimum usd amount of eth and allows only the contract creator to withdraw.
-- Challenge: write from scratch w/o looking at solution
-- Patrick C Course [here](https://youtu.be/gyMwXuJrbJQ?t=18281)
-
-```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
-
-import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
-
-contract FundMe {
-
-    address internal owner;
-    constructor(){
-        owner = msg.sender;
-    }
-
-    uint256 public minimumUsd = 1* 1e18;
-    //create funders array and a map between funder and funding amount
-    address[] public funders;
-    mapping(address => uint256) addressToFundingAmount;
-
-
-    function fund() public payable{
-        require(convertEthToUsd(msg.value) >= minimumUsd, "sorry, not enough");
-        funders.push(msg.sender);
-        addressToFundingAmount[msg.sender] = msg.value;
-    }
-
-    //converted is in usd
-    function convertEthToUsd(uint256 ethAmount) public view returns(uint256){
-        uint256 ethPrice = getEthPrice();
-        uint256 converted = (ethPrice * ethAmount) / 1e18;
-        return converted;
-    }
-
-    //eth price is in Wei 1624,2249276800,00000000
-    function getEthPrice() public view returns(uint256){
-        AggregatorV3Interface chainlinkPrice = AggregatorV3Interface(0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e);
-        (,int256 answer, , , ) = chainlinkPrice.latestRoundData();
-        return uint256(answer * 1e10);
-    }
-
-    function withdraw() public ownerCheck {
-        //recreate the funders list
-        funders = new address[](0);
-        // then use the call to remove the funds from the contract
-        (bool sent, ) = payable(owner).call{value: address(this).balance}("");
-        require(sent, "sending failed");
-    }
-
-    modifier ownerCheck {
-        require(msg.sender == owner, "sorry mate, not you");
-        _;
-    }
-
-    function getContractBalance() public view returns(uint256) {
-        uint256 currentBal = address(this).balance;
-        return currentBal;
-    }
-}
-
-```
+-[x] Write a contract that receives a minimum usd amount of eth and allows only the contract creator to withdraw. -[x] write from scratch w/o looking at solution
 
 ## 27/1
 
 - [x] Write a contract that receives a minimum usd amount of eth and allows only the contract creator to withdraw
 - [x] Think about what NPM packages I can build
-- [] Think about what tutorial I can build
+- [x] Think about what tutorial I can build
 
 ### NPM package ideas
 
@@ -136,6 +76,7 @@ contract FundMe {
 
 - execute specific tests with `yarn hardhat test --grep update-when-test`
 - execute specific test by changing `it("should...` to `it.only("should...`
+- tests use `beforeEach` to execute the contract creation before calling each `it`
 
 ```javascript
 describe('SimpleStorage', function () {
@@ -180,12 +121,12 @@ describe('SimpleStorage', function () {
 -[] create the SimpleStorage contract that stores a fav number, retreives the number, and stores an array of person structs (name, favnum)
 -[] create a hardhat deployment script to deploy the SimpleStorage contract on Goerli
 -[] verify it on Etherscan in the code
--[] interact with it 
--[] Deploy the contract to hardhat network to view transactions on the console chain 
--[] Deploy the contract to the Goerli testnet and verify it on Etherscan 
--[] create a task to check the block number 
--[] create tests for the contract 
--[] check with coverage 
+-[] interact with it
+-[] Deploy the contract to hardhat network to view transactions on the console chain
+-[] Deploy the contract to the Goerli testnet and verify it on Etherscan
+-[] create a task to check the block number
+-[] create tests for the contract
+-[] check with coverage
 -[] work with gas reporter in tests, check usd price with coinmarketcap api
 -[] update to Typescript
 
@@ -195,6 +136,8 @@ describe('SimpleStorage', function () {
 
 ### Notes
 
+##### question
+
 - Why does hre.run return `HardhatError: HH303: Unrecognized task verify: verify` but `run` doesn't.
 
 ```js
@@ -203,19 +146,23 @@ const verify = async (contractAddress, args) => {
 };
 ```
 
-Next
--[] create the Todo contract that stores an array of todo's add, get, update, delete
+##### question
 
--[]
+how to understand what to include in a function, etc, from cmd linking in code
 
-Current strategy
+## Changing learning strategy
 
-1. watch tutorial while following along and pausing
-2. try to replicate in 1 go
-3.
+1. watch tutorial while following along and pausing (1.5 hr tutorial)
+2. try to replicate
 
 Proposed strategy
 
-1. watch tutorial 3 speed and take note of high level tasks
-2. try to replicate each high level task
-3.
+1. skip over whole tutorial quickly
+2. watch tutorial in 10-15 minute segments
+3. replicate each 10-15 segment before moving forwards
+4. repeat
+
+## 31/1
+
+- [progress point](https://youtu.be/gyMwXuJrbJQ?t=38398)
+

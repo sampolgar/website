@@ -9,12 +9,78 @@
 ```
 
 ## js function reminder
+
 ### arrow 1
+
 - `function` and const functions are almost the same.
 - `async function greeter(greeting, name) {}` - same as
--  `const greeter = async (greeting, name) => {}` - same as
+- `const greeter = async (greeting, name) => {}` - same as
 - `async (greeting, name) => {}`
 
 ### arrow 2
+
 - preferred:`describe("hello", function() {})`
 - not preferred: `describe("hello", () => {})`
+
+## dealing with nested imports
+
+#### given this tree structure
+
+📦test
+┗ 📜test-deploy.ts  
+📦typechain-types
+┣ 📂factories
+┃ ┣ 📜SimpleStorage\_\_factory.ts
+┃ ┗ 📜index.ts
+┣ 📜SimpleStorage.ts
+┣ 📜common.ts
+┣ 📜hardhat.d.ts
+┗ 📜index.ts
+
+#### I want `import { SimpleStorage__factory, SimpleStorage } from "../typechain-types"` in test-deploy.ts
+
+##### SimpleStorage\_\_factory
+
+1. in `📦typechain-types > 📂factories > 📜SimpleStorage__factory.ts` => `export class SimpleStorage__factory`
+2. in `📦typechain-types > 📂factories > 📜index.ts` => `export { SimpleStorage__factory } from "./SimpleStorage__factory";`
+3. in `📦typechain-types > 📜index.ts` => `export * as factories from "./factories";` & `export { SimpleStorage__factory } from "./factories/SimpleStorage__factory";`
+
+##### SimpleStorage
+
+1. in `📦typechain-types > 📜SimpleStorage.ts` => `export interface SimpleStorage`
+2. in `📦typechain-types > 📜index.ts` => `export type { SimpleStorage } from "./SimpleStorage";`
+
+###
+
+- import `task from "hardhat/config"`
+import
+
+
+- import `{task} from "hardhat/config"`
+import the task functi
+
+  o
+
+## function export + destructure
+
+```js
+async function deploy(hre) {
+  const namedAccounts = hre.getNamedAccounts,
+    deployments = hre.deployments;
+}
+module.exports.default = deploy();
+```
+
+same as
+
+```js
+module.exports = async (hre) => {
+  const { getNamedAccounts, deployments } = hre;
+};
+```
+
+same as
+
+```js
+module.exports = async ({ getNamedAccounts, deployments }) => {};
+```
