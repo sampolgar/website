@@ -217,8 +217,8 @@ modifier errorOrNot(){
 
 | Higher Level Item | Item                             | Competency 1 - 5 | Fluency 1 - 5 |
 | ----------------- | -------------------------------- | ---------------- | ------------- |
-| Solidity          | Remix                            | 4                | 0             |
-| Solidity          | Basic contract                   | 3                | 0             |
+| Solidity          | Remix                            | 2                | 0             |
+| Solidity          | Basic contract                   | 1                | 0             |
 | Solidity          | Storage / Memory / Types         | 1                | 0             |
 | Solidity          | Best practice format/storage     | 1                | 0             |
 | Hardhat           | Hardhat / Ethers / Deploy        | 1                | 0             |
@@ -234,3 +234,75 @@ modifier errorOrNot(){
 | Hardhat           | Dynamic chain support            | 1                | 0             |
 | Hardhat           | Typechain                        | 1                | 0             |
 | Hardhat           | TypeScript                       | 1                | 0             |
+
+## 2/2
+
+Before I continue with the tutorial, I will make a project to check my understanding and improve on the above.
+To check my understanding, I'll create a community contract that allows users to make posts, like posts, and buy posts.
+
+### draft 1
+
+```solidity
+contract CommunityMember {
+  //make friend
+  //make post w price
+  //like post - can't like own post
+  //buy post from someone
+  //remove friend
+}
+
+contract ASingleCommunity {
+    //add member
+    //set membership payable
+    //remove member
+    //get list of members
+    //
+    //make group
+    //make group admin
+    //transfer group admin
+    //
+}
+
+contract AllCommunities {
+    //new member
+    //remove member
+    //get list of members
+    //mapping member address and member name => mapping(address => string)
+    //get list of friends - mapping address to name => mapping(address => mapping(address => ))
+
+    //create community
+    //get a community
+    //get all communities
+}
+```
+
+### draft 2 (simplify)
+
+```solidity
+contract CommunityMember {
+  //make friend
+  //remove friend
+  //make post - add to post map, convert string to hex
+  //like post - can't like own post, add to like map
+
+  //------non essential
+  //buy post from someone
+}
+
+contract AllCommunities {
+    //new member
+    //remove member
+    //get list of members -- mapping member address and member name => mapping(address => string)
+    //get list of a members friends -- mapping address to name => mapping(address => mapping(address => ))
+
+    //------non essential
+    //get a list of posts of 1 member - mapping address to posts => mapping(address => mapping(contentAddress => ))
+    //get a list of post likes of 1 member - mapping address to likes => mapping(address => contentAddress)
+}
+```
+
+
+- soft delete https://stackoverflow.com/questions/48515633/deleting-mapping-from-mapping-in-solidity
+
+## 3/2
+- initial values for data types https://ethereum.stackexchange.com/questions/40559/what-are-the-initial-zero-values-for-different-data-types-in-solidity
