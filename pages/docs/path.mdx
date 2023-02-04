@@ -301,8 +301,48 @@ contract AllCommunities {
 }
 ```
 
-
 - soft delete https://stackoverflow.com/questions/48515633/deleting-mapping-from-mapping-in-solidity
 
 ## 3/2
+
 - initial values for data types https://ethereum.stackexchange.com/questions/40559/what-are-the-initial-zero-values-for-different-data-types-in-solidity
+
+## 4/2
+
+What's not working and why
+
+## Types containing (nested) mappings can only be parameters or return variables of internal or library functions.
+
+- the Member can't be stored in memory because it has a mapping
+- mapping is not allowed in memory because map locations are stored at random in storage [details](https://ethereum.stackexchange.com/questions/107027/how-to-return-an-array-of-structs-that-has-mappings-nested-within-them)
+
+
+```solidity
+  struct Member {
+      address memberAddress;
+      string name;
+      address[] friends;
+      mapping(address => bool) friendsMap;
+  }
+
+  function getMemberByAddress(address _i) mustBeMember public view returns(Member memory){
+        uint256 memberPosition = membersMap[_i];
+        return membersArray[memberPosition];
+  }
+```
+
+### Question
+
+```solidity
+
+    struct MemberMatch {
+        uint256 arrayPos;
+        bool memberExists;
+    }
+    mapping(address => MemberMatch) public amembersMap;
+
+    or this
+
+    mapping(address => uint256) internal membersMap;
+    mapping(address => bool) internal memberExists;
+```
