@@ -347,14 +347,50 @@ What's not working and why
 ```
 
 ## 7/2 deploy my community contract with hardhat
+
+### Exercise
+
 - contracts
 - scripts / deploy.ts
 - test Community.ts
 - hardhat config, add etherscan, add solidity compiler, add typechain, add gas reporter, add coverage, add waffle, add chai, add dynamic chain support
 
 ### I didn't
+
 1. wait for 5 block confirmations before verifying
 2. create a utils file for verification
 3. use hardhat deploy
 4. use solhint
 5. didn't create a task
+
+## 8/2
+
+### AM
+
+- [1](https://leetcode.com/problems/fruit-into-baskets/)
+- [2](https://leetcode.com/problems/the-k-strongest-values-in-an-array/)
+
+## 9/2
+### AM
+
+- [1](https://www.algoexpert.io/questions/river-sizes)
+- review yesterday exercises
+
+### PM
+- Community project in hardhat
+- Read Sismo docs
+
+### notes from the day
+- use solhint => yarn solhint contracts/Community.sol. solhint provides error messages you see in remix via the command line
+- moving to hardhat deploy starts [here](https://youtu.be/gyMwXuJrbJQ?t=36650)
+
+Error message
+Property 'attach' is missing in type 'ContractFactory<any[], BaseContract>' 
+but required in type 'Community__factory'.ts(2741)
+Community__factory.ts(189, 12): 'attach' is declared here.
+
+What does this mean?
+deployer = (await getNamedAccounts()).deployer
+- using the getNamedAccounts function from hardhat-deploy
+- returns a promised object with named accounts
+- 
