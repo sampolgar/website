@@ -370,27 +370,42 @@ What's not working and why
 - [1](https://leetcode.com/problems/fruit-into-baskets/)
 - [2](https://leetcode.com/problems/the-k-strongest-values-in-an-array/)
 
-## 9/2
 ### AM
 
 - [1](https://www.algoexpert.io/questions/river-sizes)
 - review yesterday exercises
 
 ### PM
+
 - Community project in hardhat
 - Read Sismo docs
 
 ### notes from the day
+
 - use solhint => yarn solhint contracts/Community.sol. solhint provides error messages you see in remix via the command line
 - moving to hardhat deploy starts [here](https://youtu.be/gyMwXuJrbJQ?t=36650)
 
 Error message
-Property 'attach' is missing in type 'ContractFactory<any[], BaseContract>' 
-but required in type 'Community__factory'.ts(2741)
-Community__factory.ts(189, 12): 'attach' is declared here.
+Property 'attach' is missing in type 'ContractFactory<any[], BaseContract>'
+but required in type 'Community**factory'.ts(2741)
+Community**factory.ts(189, 12): 'attach' is declared here.
 
 What does this mean?
 deployer = (await getNamedAccounts()).deployer
+
 - using the getNamedAccounts function from hardhat-deploy
 - returns a promised object with named accounts
-- 
+
+## 9/2
+
+### return longest contiguous subarray with at most 2 distinct elements
+
+#### My solution
+[0,1,2,3,2,2,3,1]
+- compare parent array with child array
+- select i from parent
+- select j as i+1 from parent. if j == i, move j across parent array until j != i
+- iterate through child array. if child array pos contains i or j add to count
+
+#### Better solution
+
