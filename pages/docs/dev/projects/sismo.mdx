@@ -1,0 +1,49 @@
+Data Providers => Group Generators
+
+## Data Provider Types
+
+## Current
+
+-
+-
+
+### Proposed
+
+- Twitter
+- The Graph (people who were liquidated by TIME)
+-
+
+## Twitter
+
+- [https://developer.twitter.com/en/docs/authentication/oauth-2-0/application-only](Auth)
+- [https://developer.twitter.com/en/apps/](create app)
+- [https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/main/Follows-Lookup/followers_lookup.js](Followers lookup API in javascript)
+
+### Example Group Generators
+
+- [https://github.com/sismo-core/sismo-hub/blob/main/group-generators/generators/ens-twitter/index.ts](twitter names) formatted
+
+```js
+const jsonListData0 = {
+  'treysongz.eth': '1',
+  'mariobautista.eth': '1',
+  'vitalik.eth': '1',
+};
+```
+
+- [https://github.com/sismo-core/sismo-hub/blob/main/group-generators/generators/grail-member/index.ts](eth addresses)
+
+```js
+data: {
+    "0x972f37637a03e94FFBf84C1d9F5a9F31bF800DE9": "1",
+    "nerdycap.eth": "1",
+}
+```
+
+- [https://github.com/sismo-core/sismo-hub/blob/main/group-generators/generators/zksync-github-stargazers/index.ts](GitHub)
+
+```js
+const githubProviderData0 = await githubProvider.getRepositoriesStargazers({
+  repositories: ['matter-labs/zksync'],
+});
+```

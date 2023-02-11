@@ -403,11 +403,33 @@ deployer = (await getNamedAccounts()).deployer
 ## 11/2
 
 ### AM
+
 TS
-[https://www.algoexpert.io/questions/two-number-sum](2 number sum)
+[https://www.algoexpert.io/questions/two-number-sum](2 number sum) round1
+1st time = 3 hours
+
 1. brute force - double nested for loop
 2. make map, loop through array and check if target - current number is in map e.g. current = 3, target = 5, 5 - 3 = 2, check if 2 is in map, if it is, return [3, 2], if not, add 3 to map
 3. sort and use 2 pointers
 
-Solidity
+## 12/2
 
+### AM
+
+[https://www.algoexpert.io/questions/two-number-sum](2 number sum) round 2
+2nd time = 2 hours
+
+1. my 2nd array loop starts back at 1. why? I'm not sure but I should base the 2nd loop iterator on the first i.e. `j = i + 1`
+2. was fine
+3. while loop was wrong. I was checking for successful match and then incrementing pointers. My while loop should check for invalid, incremenet pointers inside then check for valid again outside while
+
+
+
+
+
+
+
+Writing
+1. plan for day (AM/PM)
+2. day notes (AM/PM)
+3. day review + tomorrow plan
