@@ -47,3 +47,25 @@ const githubProviderData0 = await githubProvider.getRepositoriesStargazers({
   repositories: ['matter-labs/zksync'],
 });
 ```
+
+
+
+### questions
+What's going on here?
+
+```shell
+spolgar@Sams-MacBook-Air sismo-hub % yarn send-to-attester hydra-s1-accountbound local --send-on-chain 
+yarn run v1.22.19
+$ node --require ts-node/register/transpile-only src/cli/cli.ts send-to-attester hydra-s1-accountbound local --send-on-chain
+Sending groups on local chain
+Computing merkle trees for internalCollectionId 0
+Computing merkle trees for internalCollectionId 4
+Computing merkle trees for internalCollectionId 8
+Computing merkle trees for internalCollectionId 25
+Computing merkle trees for internalCollectionId 26
+Registry tree root: 0x29619e5eb7cc196df73104be426ddff816535302b03fb628da690b3dc68a396c
+contains 5 accounts trees
++ New Group (local-group) for internalCollectionId 0
+  GroupId: 0x0fe7b6a34bbdc1ac117638a2d859593c811c57861aafe7d6e53f303a3517ad5f
+```
+https://docs.sismo.io/sismo-docs/technical-concepts/accounts-registry-tree
