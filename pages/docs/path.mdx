@@ -525,5 +525,134 @@ This is a crazy solution
 - doesn't take into account that the BST is sorted
 
 ## 19/2
+
 - https://www.algoexpert.io/questions/find-closest-value-in-bst
-- 
+
+## 20/2
+
+### AM
+
+- TS practice, Solidity practice
+- create mock API for Sismo
+  https://pipedream.com/@dylburger/mock-a-rest-api-with-pipedream-p_pWCnBq/readme
+  https://github.com/cowprotocol/ts-dune-client/blob/main/src/queryParameter.ts
+  https://dune.com/queries/156895
+
+- https://www.algoexpert.io/questions/find-closest-value-in-bst
+- - complete both recursive and iterative solutions
+
+### PM
+
+- sismo
+- uni
+
+## Question
+
+What's the difference between calling return on a recursive function and not calling return?
+
+- Return uses the results of the function in the next iteration of the function.
+- Not calling with return could instead for example, update a global var
+- Think about the factorial (1 x 2 x 3 x 4 x 5)
+
+```ts
+function factorial(n: number): number {
+  if (n === 0) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
+
+const result: number = factorial(5);
+console.log(result); //120
+```
+
+```ts
+function printNumbers(n: number): void {
+  if (n === 0) {
+    return;
+  } else {
+    console.log(n);
+    printNumbers(n - 1);
+  }
+}
+
+printNumbers(5);
+```
+
+- in `branch sums`, summing the BST branches, I don't need to return the bstRecurse because I'm not using the result of the sum in the next iteration (I'm just adding the sum and adding it to the sum array)
+- in `find closest value in BST`, I'm using the running sum of each bst search to compare it to the proceeding sums.
+
+Given a class
+
+```ts
+class BinaryTree {
+  value: number;
+  left: BinaryTree | null;
+  right: BinaryTree | null;
+
+  constructor(value: number) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+```
+
+1. create an interface for a node
+2. create an array of nodes using spread operator
+3. pop a node object off and destructure it
+
+```ts
+//1 => each node is either the class left or right and needs `BinaryTree | null` otherwise error =  Type 'BinaryTree | null' is not assignable to type 'BinaryTree'.
+interface Node {
+  node: BinaryTree | null;
+  depth: number;
+}
+
+//2
+let nodes: Node[] = [
+  { node: tree, depth: 0 },
+  { node: tree.left, depth: 1 },
+  { node: tree.right, depth: 1 },
+];
+
+let stack: Node[] = [];
+stack.push(...nodes);
+
+//3
+let { node, depth } = stack.pop()!; /// without the ! I get Property 'node' does not exist on type 'Node | undefined'. because we define the Node as being a tree or null.
+```
+
+#### logic returns errors
+
+For the Binary Tree class above, the following function returns
+`Function lacks ending return statement and return type does not include 'undefined'.`
+`Object is possibly 'null'.`
+
+```ts
+function recurseHandler(tree: BinaryTree | null, depthSum: number): number {
+  if (tree === null) {
+    return (
+      depthSum +
+      recurseHandler(tree.left, depthSum + 1) +
+      recurseHandler(tree.right, depthSum + 1)
+    );
+  }
+}
+```
+- function lacks ending return statement because there's nothing after the if statement
+- I'm saying that tree is null, but then I'm trying to access tree
+
+solution
+
+```ts
+function recurseHandler(tree: BinaryTree | null, depthSum: number): number {
+  if (tree === null) return 0;
+  return (
+    depthSum +
+    recurseHandler(tree.left, depthSum + 1) +
+    recurseHandler(tree.right, depthSum + 1)
+  );
+}
+```
