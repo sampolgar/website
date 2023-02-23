@@ -1,17 +1,164 @@
-Data Providers => Group Generators
+# Create Dune Analytics data provider
 
-## Data Provider Types
+## first, learn
 
-## Current
+-[x] create static group generator with rest data provider -[x] create static group generator with rest & snapshot data provider using Union/Intersect
+-[] create static group generator with rest & proccess.env api key
+-[] repeat for Goerli
+-[] create group generator with daily generation
+-[] create group generator with process.env api key and daily generation
+
+## second, do
+
+-[] create separate dune project
+-[] cater for different queries & input parameters
+-[] run test cases
+
+## questions
+
+- how to do enormous groups and issue badgges to thousands
+- how to generate groups with .env api key if it's in my gitignore?
+
+## Notes
+
+```ts
+  public constructor() {
+    this.url = 'https://eoytk2wrnwx0j2c.m.pipedream.net';
+    this.restProvider = new RestProvider();
+    this.headers = {
+      'x-dune-api-key': process.env.MY_API_KEY as string,       //both work but the second is better
+      'x-dune-api-key': DuneAnalyticsProvider.getAPIKey(),
+    };
+  }
+```
+
+
+
+
 
 -
 -
-
-### Proposed
-
-- Twitter
-- The Graph (people who were liquidated by TIME)
 -
+-
+-
+-
+-
+-
+-
+
+# Current
+
+## static group generator with rest & snapshot
+
+```ts
+import { dataOperators } from '@group-generators/helpers/data-operators';
+//data operators join queries together
+
+import { dataProviders } from '@group-generators/helpers/data-providers';
+//data providers bring data here
+
+import { Tags, ValueType, GroupWithData, FetchedData } from 'topics/group';
+
+//Tags  - examples:  NFT = "NFT", Mainnet = "Mainnet", Asset = "Asset", User = "User", Vote = "Vote", POAP = "POAP", ENS = "ENS", Lens = "Lens", Web3Social = "Web3Social", SybilResistance = "SybilResistance", Eth2 = "Eth2", GitcoinGrant = "GitcoinGrant", GameJutsu = "GameJutsu", Twitter = "twitter", Factory = "Factory", BadgeHolders = "BadgeHolders", CoreTeam = "CoreTeam"}
+
+//ValueType - examples: Score = 'Score', Info = 'Info',
+//designed to avoid doxing?
+
+//GroupWithData = [address: string]: BigNumberish;
+
+//data providers:
+
+import {
+  GenerationContext,
+  GenerationFrequency,
+  GroupGenerator,
+} from 'topics/group-generator';
+
+//GenerationContext = timestamp: number;
+
+//GenerationFrequency =   Once = "once", Daily = "daily", Weekly = "weekly", Monthly = "monthly",
+
+//GroupGenerator = has frequence, dependancy, generate function that takes frequency and store for generated data. Returns promise w group data array
+
+const generator: GroupGenerator = {
+  generationFrequency: GenerationFrequency.Once,
+  generate: async (context: GenerationContext): Promise<GroupWithData[]> => {
+    // //snapshot.org/#/excaliburexchange.eth/proposal/0xa1b00d332f3cc248ddccaf3fbdefd8af93b0fa2078121b4e6eb3db8ad63a6118
+    const snapshotProvider = new dataProviders.SnapshotProvider();
+    // //Query all voters from old excalibur exchange
+    // //
+    const voters = await snapshotProvider.queryProposalVoters({
+      proposal:
+        '0xa1b00d332f3cc248ddccaf3fbdefd8af93b0fa2078121b4e6eb3db8ad63a6118',
+    });
+
+    const restProvider = new dataProviders.RestProvider();
+
+    interface Row {
+      date: string;
+      nounid: number;
+      winner: string;
+      paid: number;
+      eth_price_usd: number;
+      ma_last_7_auction: number;
+      ma_last_30_auction: number;
+      url: string;
+      cumulative: number;
+    }
+
+    interface QueryResult {
+      execution_id: string;
+      query_id: number;
+      state: string;
+      submitted_at: string;
+      expires_at: string;
+      execution_started_at: string;
+      execution_ended_at: string;
+      result: {
+        metadata: {
+          column_names: string[];
+          result_set_bytes: number;
+          total_row_count: number;
+          datapoint_count: number;
+          pending_time_millis: number;
+          execution_time_millis: number;
+        };
+        rows: Row[];
+      };
+    }
+
+    const dailyAuctionData = (await restProvider.fetchData({
+      url: 'https://eoytk2wrnwx0j2c.m.pipedream.net',
+      method: 'post',
+    })) as unknown as QueryResult;
+
+    const { rows } = dailyAuctionData.result;
+
+    // Use the data in the Group Generator
+    const duneData: FetchedData = {};
+    for (const row of rows) {
+      duneData[row.winner] = 1;
+    }
+
+    // const myGroup = dataOperators.Union([voters, duneData]);
+    const myGroup = dataOperators.Intersection(voters, duneData);
+
+    return [
+      {
+        name: 'sp-static-group-generator',
+        timestamp: context.timestamp,
+        data: myGroup,
+        valueType: ValueType.Score,
+        tags: [Tags.User, Tags.Vote],
+      },
+    ];
+  },
+};
+
+export default generator;
+```
+
+# notes
 
 ## Twitter
 
@@ -48,13 +195,12 @@ const githubProviderData0 = await githubProvider.getRepositoriesStargazers({
 });
 ```
 
-
-
 ### questions
+
 What's going on here?
 
 ```shell
-spolgar@Sams-MacBook-Air sismo-hub % yarn send-to-attester hydra-s1-accountbound local --send-on-chain 
+spolgar@Sams-MacBook-Air sismo-hub % yarn send-to-attester hydra-s1-accountbound local --send-on-chain
 yarn run v1.22.19
 $ node --require ts-node/register/transpile-only src/cli/cli.ts send-to-attester hydra-s1-accountbound local --send-on-chain
 Sending groups on local chain
@@ -68,4 +214,5 @@ contains 5 accounts trees
 + New Group (local-group) for internalCollectionId 0
   GroupId: 0x0fe7b6a34bbdc1ac117638a2d859593c811c57861aafe7d6e53f303a3517ad5f
 ```
+
 https://docs.sismo.io/sismo-docs/technical-concepts/accounts-registry-tree

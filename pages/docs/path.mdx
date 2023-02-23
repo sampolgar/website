@@ -532,14 +532,13 @@ This is a crazy solution
 
 ### AM
 
-- TS practice, Solidity practice
-- create mock API for Sismo
-  https://pipedream.com/@dylburger/mock-a-rest-api-with-pipedream-p_pWCnBq/readme
-  https://github.com/cowprotocol/ts-dune-client/blob/main/src/queryParameter.ts
-  https://dune.com/queries/156895
+-[x] TS practice, Solidity practice -[x] create mock API for Sismo (needs improving)
+https://pipedream.com/@dylburger/mock-a-rest-api-with-pipedream-p_pWCnBq/readme
+https://github.com/cowprotocol/ts-dune-client/blob/main/src/queryParameter.ts
+https://dune.com/queries/156895
 
-- https://www.algoexpert.io/questions/find-closest-value-in-bst
-- - complete both recursive and iterative solutions
+-[x] https://www.algoexpert.io/questions/find-closest-value-in-bst -[x]complete both recursive and iterative solutions
+-[]https://www.algoexpert.io/questions/node-depths
 
 ### PM
 
@@ -641,6 +640,7 @@ function recurseHandler(tree: BinaryTree | null, depthSum: number): number {
   }
 }
 ```
+
 - function lacks ending return statement because there's nothing after the if statement
 - I'm saying that tree is null, but then I'm trying to access tree
 
@@ -656,3 +656,242 @@ function recurseHandler(tree: BinaryTree | null, depthSum: number): number {
   );
 }
 ```
+
+## 21/2
+
+### AM
+
+- TS practice, Solidity practice
+- create static generator with API key for Sismo
+- create dynamic (daily group generation) generator with API key for Sismo
+  https://pipedream.com/@dylburger/mock-a-rest-api-with-pipedream-p_pWCnBq/readme
+  https://github.com/cowprotocol/ts-dune-client/blob/main/src/queryParameter.ts
+  https://dune.com/queries/156895
+
+### PM
+
+### review
+
+- better work in the morning than afternoon. I was easily distracted in the PM.
+- I'll start working out around midday and going to the library in the afternoon to continue focus
+
+Notes
+
+### difference between `forEach` and `for...of`
+
+- `for...of` is preferred for iterating arrays of objects
+- `for...of` can `break` out of a loop and stop processing the rest of the array
+- `forEach` can only `return` which stops processing the current iteration and moves to the next element
+
+```ts
+// for...of
+const: numbers[]: number[] = [ 1, 2, 3];
+for (const number of numbers) {
+  if (number === 2) break;
+}
+
+// forEach
+numbers.forEach((number) => {
+  if (number === 2) return; // error
+})
+```
+
+## Difference between
+
+`export interface ResultMetadata {}`
+and
+`export type ResultMetadata = {}`
+
+- Interface can be extended by other interfaces and classes, types can't be extended
+  e.g.
+
+```ts
+interface A {
+  a: string;
+}
+
+interface B extends A {
+  b: string;
+}
+```
+
+## how to typecast
+
+```ts
+interface PersonFirst {
+  name: string;
+  age: number;
+}
+
+interface PersonSecond {
+  name: string;
+  age: number;
+}
+
+const personFirst: PersonFirst = { name: 'Alice', age: 30 };
+
+const personSecond = personFirst as PersonSecond; // using the as keyword
+
+// or
+
+const person2 = <Person>myObj; // using the angle bracket syntax
+```
+
+## how to use type guards
+
+https://medium.com/@wujido20/runtime-types-in-typescript-5f74fc9dc6c4
+https://ivov.dev/notes/typescript-and-set-theory
+
+## Question
+
+How does the type work [here](https://medium.com/@maksim_smagin/how-good-is-your-typescript-interview-with-just-3-questions-cecdce5ce4d4)?
+
+```ts
+type DeepPartial<T> = {
+  [P in keyof T]?: DeepPartial<T[P]>;
+};
+
+function find<T>(criteria: DeepPartial<T>): T[] {
+  ...
+}
+
+type User = {
+  id: number;
+  name: string;
+  address: {
+    country: string;
+    city: string;
+    house: string;
+    zipcode: string;
+  };
+};
+
+const users = find({
+  address: { coutry: 'UK' }
+});
+```
+
+## 22/2
+
+### AM
+
+- TS practice, Solidity practice
+
+### PM
+
+-[x] create static generator with API key for Sismo
+
+- needed to execute process.env.MY_API_KEY as terminal variables e.g. `MY_API_KEY=1234 yarn generate-group ...`
+
+```ts
+  public constructor() {
+    this.url = 'https://eoytk2wrnwx0j2c.m.pipedream.net';
+    this.restProvider = new RestProvider();
+    this.headers = {
+      'x-dune-api-key': process.env.MY_API_KEY as string,       //both work but the second is better
+      'x-dune-api-key': DuneAnalyticsProvider.getAPIKey(),
+    };
+  }
+```
+
+### review
+
+## 23/2
+
+### AM
+
+- TS practice, solidity practice
+
+### PM
+
+- Sismo dune provider handling execution wait time
+
+### notes
+
+#### Truthy vs Non Truthy
+
+Non Truthy
+
+- bool('') = false
+- bool(0) = false
+- bool(-0) = false
+- bool(NaN) = false
+- bool(null) = false
+- bool(undefined) = false
+- bool(false) = false
+- false or null when coerced into a boolean value using the ! (not) operator
+
+#### if(myString) vs while(myString) vs while(!!myString)
+
+- `let myString = ""`
+- `if(myString)` is falsy in a boolean contex because the value of myString is an empty string
+- `while(myString)`, is evaluated differently. It's not checking whether the value of myString is truthy or falsy, it's checking if the value myString exists. Even if it exists as an empty string, it is truthy because it exists
+- `while(!!myString)` is checking the value of myString the same as `if(myString)`
+- This is called "coercing" a value into a boolean value
+
+examples
+
+```ts
+!!"" = false
+!!"hello" = true // compiles to true = true because the string is type set to a bool
+```
+
+```ts
+let myString = 'hello';
+
+while (myString) {
+  console.log(myString);
+  myString.slice(1);
+}
+//hello, ello, llo, lo, o, undefined
+```
+
+```ts
+while (!!myString) {
+  console.log(myString);
+  myString.slice(1);
+}
+console.log(`ended`);
+
+//hello, ello, llo, lo, o, ended
+```
+
+#### getting stuck on recursive problems, writing here my instructions for next time
+
+1. Start with the base case
+
+- What stops the algo?
+- What's the simplest thing that can stop it?
+- Is my Algo going to reach it or run indefinately?
+
+2. What are the smaller sub-problems?
+3. how does the recursive step combine the solutions into the original problem?
+4. if stuck, draw a recursive tree
+
+```python
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+```
+
+factorial(4)
+|
+|--> factorial(3)
+| |
+| |--> factorial(2)
+| | |
+| | |--> factorial(1)
+| | | |
+| | | |--> factorial(0)
+| | | | |
+| | | | |--> return 1
+| | | |
+| | | |--> return 1
+| | |
+| | |--> return 2
+| |
+| |--> return 6
+|
+|--> return 24
