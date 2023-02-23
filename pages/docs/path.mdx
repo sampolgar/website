@@ -29,6 +29,7 @@
 ## 24/1
 
 highly recommended [Patrick free code camp 32 hr tutorial](https://www.youtube.com/watch?v=gyMwXuJrbJQ&t), let's start with that.
+other recommended [Austin Griffiths on YouTube](https://www.youtube.com/watch?v=m2AJAcWk394)
 
 ### Notes
 
@@ -895,3 +896,30 @@ factorial(4)
 | |--> return 6
 |
 |--> return 24
+
+### why use <T> instead of <any> in a generic function?
+
+```ts
+export async function http<T>(request: RequestInfo): Promise<T> {
+  const response = await fetch(request);
+  const body = await response.json();
+  return body;
+}
+
+// example consuming code
+interface Todo {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
+const data = await http<Todo[]>('https://jsonplaceholder.typicode.com/todos');
+```
+
+- <T>  is a type param. the caller can specify what type they use and what to expect back
+- in the `http` function example above, the API consumer calls `await http<Todo[]>(...)` and expects an array of Todo objects to be returned from the API endpoint
+- <T> is generally better than <any> because it provides stronger type safety and better code readability
+- use <T> when you know the type of data returned from the API
+- <any> is only better when the response type is unknown, or if you need to typecast it to a different type
+
