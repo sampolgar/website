@@ -923,3 +923,130 @@ const data = await http<Todo[]>('https://jsonplaceholder.typicode.com/todos');
 - use <T> when you know the type of data returned from the API
 - <any> is only better when the response type is unknown, or if you need to typecast it to a different type
 
+## 24/2
+
+### AM
+
+- TS practice, sprint to the end of AlgoExpert level 1 26/26 questions. Then I'll cover ground on Solidity and then move onto level 2
+- Sismo TS dune client
+
+### PM
+
+- Sismo TS dune client
+- Cryptography 101 study
+
+#### Notes
+
+- Binary search tree -> I iterated from the start through to the end, rather than recursive search or iterator with moving window left and right. I need to work on it conceptually
+- 2 ways to search, 1 is break the array in the middle and recursive search the left and right. time is O(log n) because you're cutting the array in half each time. Space is O(log n) because you're creating a new array each time.
+- The other way is a moving window, while left < right, get the middle number, if the target is smaller than middle, move the window to the left. Time is (log n) and space is O(1) because you're not creating a new array each time.
+
+## 25/2
+
+- Sismo TS dune client
+  When making POST/GET requests, does Sismo want to use private functions?
+  Does Sismo use string https links for API or use query concatentaion?
+  How do we handle the dune column names e.g. HB Hello 1
+  Should we only return the address array or should we return the whole object?
+  I've abstracted the return type, is that ok?
+
+Notes
+
+What's going on here? Why do we need to return the Promise.resolve(fetchResult) rather than just
+
+```ts
+function feedingA<T>(string: fetch): Promise<T> {
+  const fetchResult = await fetch(string);
+  return a<T>(Promise.resolve(fetchResult));
+}
+
+function a(fetchResult: Promise<Response>) {
+  return fetchResult.then((res) => res.json());
+}
+```
+
+## 26/2
+
+- Why do I need to use this? \*[Symbol.iterator]() {}
+
+### Error message
+
+`const ErrorClass = *stateErrorMap[state]*`
+
+```js
+Element (stateErrorMap[state]) implicitly has an 'any' type because expression of type
+'"QUERY_STATE_EXECUTING" |
+"QUERY_STATE_PENDING" |
+"QUERY_STATE_FAILED" |
+"QUERY_STATE_EXPIRED" |
+"QUERY_STATE_CANCELLED"'
+
+can't be used to index type '{
+  QUERY_STATE_FAILED: typeof ExecutionFailedError
+  QUERY_STATE_EXPIRED: typeof ExecutionFailedError
+  QUERY_STATE_CANCELLED: typeof ExecutionFailedError; }
+
+Property 'QUERY_STATE_EXECUTING' does not exist on type '{
+  QUERY_STATE_FAILED: typeof ExecutionFailedError;
+  QUERY_STATE_EXPIRED: typeof ExecutionFailedError;
+  QUERY_STATE_CANCELLED: typeof ExecutionFailedError; }
+```
+
+### Code
+
+```ts
+if (state in stateErrorMap) {
+  const ErrorClass = stateErrorMap[state];
+  throw new ErrorClass(state);
+}
+
+const stateErrorMap = {
+  QUERY_STATE_FAILED: ExecutionFailedError,
+  QUERY_STATE_EXPIRED: ExecutionFailedError,
+  QUERY_STATE_CANCELLED: ExecutionFailedError,
+};
+
+state:
+  | 'QUERY_STATE_EXECUTING'
+  | 'QUERY_STATE_PENDING'
+  | 'QUERY_STATE_COMPLETED'
+  | 'QUERY_STATE_FAILED'
+  | 'QUERY_STATE_EXPIRED'
+  | 'QUERY_STATE_CANCELLED';
+```
+
+## 27/2
+
+### AlgoExpert
+
+#### find 3 largest numbers in an array, return them without sorting the array
+
+- initially I initialized the 3 top numbers to 0, but that doesn't work if the array has negative numbers
+- i solved this by either 1) initializing the numbers to null or 2) initializing the numbers to the first 3 numbers in the array or null
+
+1. `let top1 = null;` -> I don't think this is good TypeScript because it's not a number. I can't do math on it. I think it should be `let top1: number | null = null;`
+2. `let sortedArr: Array<number | null> = [null, null, null]`
+
+#### Bubble sort array of numbers
+
+- while loop with a for loop inside
+- while loop is false, iterate from beginning to end of array -1 -count (array -1 because we're comparing the current number with the next number, -count because each time we loop around while we bubble a top number to the top of the array)
+- if the current number is greater than the next number, swap them
+
+## 28/2
+
+### AlgoExpert
+
+#### insertion sort
+
+- iterate array from 1 to end. (1 because )
+
+```
+for(let i = 0; i < array.length; i++){
+  let j = i;
+  while(array[j] < array[-1] && j > 0){j
+    swap(array[i], array[j])
+  }
+```
+
+}
