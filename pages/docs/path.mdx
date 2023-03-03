@@ -1073,6 +1073,22 @@ Why put a for loop inside a while loop?
 - 1. while pointer < end of array -1 (because we're comparing to pointer2)
 - 2. if pointer2 (starting at pointer1 + 1), set that pointer to the smallest number, then swap the smallest number with pointer1
 
+### Palindrome check
+
+3 methods
+
+1. left and right pointers. 2 pointers, 1 at the start, 1 at the end. while left < right, if left !== right, return false. else return true
+2. reverse the string and compare it to the original string
+3. recurse through the string, if the first and last letter are the same, recurse through the string without the first and last letter. if the string is empty, return true. else return false
+
+### Ceaser Cipher (shift string x number of times)
+
+1. iterate through the string, if the character is a letter, shift it. Either
+
+- - 1. convert the character to a number, shift it, convert it back to a character
+- - 2. create a map of the alphabet, shift the character, return the character
+- - 3. create an array of the alphabet characters, use indexOf to get the position of the input. Add the key amount to the position and modulus it to get the shifted position, return the shifted position character
+
 #### quick checklist to help me with algorithms
 
 - 1. what is the input? what is the output?
@@ -1084,130 +1100,86 @@ Why put a for loop inside a while loop?
 - 3. time and space complexity
 - 4. code the framework, log the pointers and comparators
 - 5. code the logic
-## 24/2
 
-### AM
+## 3/3
 
-- TS practice, sprint to the end of AlgoExpert level 1 26/26 questions. Then I'll cover ground on Solidity and then move onto level 2
-- Sismo TS dune client
+### Algoexpert return true if chars in string a available in string b (target) and correct number of times
 
-### PM
+- 3 methods
 
-- Sismo TS dune client
-- Cryptography 101 study
+1. iterate through string a, for each character, get the number of times it appears in both strings. return true if it's the same
 
-#### Notes
+- - time complexity. n = number of characters in target. m = number of characters in stringa. O(n \* (m + n)) = O(n^2 + nm) = O(nm)
+- - space complexity. O(1) because we're not storing anything
 
-- Binary search tree -> I iterated from the start through to the end, rather than recursive search or iterator with moving window left and right. I need to work on it conceptually
-- 2 ways to search, 1 is break the array in the middle and recursive search the left and right. time is O(log n) because you're cutting the array in half each time. Space is O(log n) because you're creating a new array each time.
-- The other way is a moving window, while left < right, get the middle number, if the target is smaller than middle, move the window to the left. Time is (log n) and space is O(1) because you're not creating a new array each time.
+2. use a map or dictionary to store the number of times each character appears in string a. iterate through string b to check.
 
-## 25/2
+- - time complexity. O (n + m) because we're iteratig through both strings
+- - space complexity.
 
-- Sismo TS dune client
-  When making POST/GET requests, does Sismo want to use private functions?
-  Does Sismo use string https links for API or use query concatentaion?
-  How do we handle the dune column names e.g. HB Hello 1
-  Should we only return the address array or should we return the whole object?
-  I've abstracted the return type, is that ok?
-
-Notes
-
-What's going on here? Why do we need to return the Promise.resolve(fetchResult) rather than just
+Difference between dictionary and map
 
 ```ts
-function feedingA<T>(string: fetch): Promise<T> {
-  const fetchResult = await fetch(string);
-  return a<T>(Promise.resolve(fetchResult));
-}
+const dictionary: { [key: string]: number } = {};
+//set
+dictionary.a = 1;
+dictionary['b'] = 2;
 
-function a(fetchResult: Promise<Response>) {
-  return fetchResult.then((res) => res.json());
-}
+//update
+dictionary.a += 1;
+dictionary['b'] += 1;
+
+//get
+let a1 = dictionary.a;
+let b2 = dictionary['b'];
+
+//delete
+delete dictionary['b'];
+
+const map = new Map<string, number>();
+//set & get Update needs getting and setting
+map.set('a', 1);
+map.get('a');
 ```
 
-## 26/2
+## 4/3
 
-- Why do I need to use this? \*[Symbol.iterator]() {}
-
-### Error message
-
-`const ErrorClass = *stateErrorMap[state]*`
-
-```js
-Element (stateErrorMap[state]) implicitly has an 'any' type because expression of type
-'"QUERY_STATE_EXECUTING" |
-"QUERY_STATE_PENDING" |
-"QUERY_STATE_FAILED" |
-"QUERY_STATE_EXPIRED" |
-"QUERY_STATE_CANCELLED"'
-
-can't be used to index type '{
-  QUERY_STATE_FAILED: typeof ExecutionFailedError
-  QUERY_STATE_EXPIRED: typeof ExecutionFailedError
-  QUERY_STATE_CANCELLED: typeof ExecutionFailedError; }
-
-Property 'QUERY_STATE_EXECUTING' does not exist on type '{
-  QUERY_STATE_FAILED: typeof ExecutionFailedError;
-  QUERY_STATE_EXPIRED: typeof ExecutionFailedError;
-  QUERY_STATE_CANCELLED: typeof ExecutionFailedError; }
-```
-
-### Code
+### Algoexpert return an array of strings with semordnilap pairs
 
 ```ts
-if (state in stateErrorMap) {
-  const ErrorClass = stateErrorMap[state];
-  throw new ErrorClass(state);
-}
+//input
+array = ['cat', 'dog', 'tac', 'god', 'act'];
+//response = [['cat', 'tac'], ['dog', 'god']]
 
-const stateErrorMap = {
-  QUERY_STATE_FAILED: ExecutionFailedError,
-  QUERY_STATE_EXPIRED: ExecutionFailedError,
-  QUERY_STATE_CANCELLED: ExecutionFailedError,
+//create a set from the array items
+const set = new Set(array);
+//check if the reverse of the item is in the set
+
+//declare a result array
+const pairs: [string, string][] = [];
+
+//iterate through....
+```
+
+### Why use a Set over an Array or Map?
+
+- set has iteratable methods
+- set has keys needing to be unique
+- can use set.add() and set.has() to check if an item is in the set
+
+Array's don`t have keys or unique values
+Map's have a key value pair. Set's don`t have a key value pair, only keys. So use a Set if you don`t need the value
+
+### Reversing a string
+
+```ts
+//reverse it with a function
+const reverse = (s: string) => {
+  let r = '';
+  for (let i = s.length - 1; i >= 0; i--) r += s[i];
+  return r;
 };
 
-state:
-  | 'QUERY_STATE_EXECUTING'
-  | 'QUERY_STATE_PENDING'
-  | 'QUERY_STATE_COMPLETED'
-  | 'QUERY_STATE_FAILED'
-  | 'QUERY_STATE_EXPIRED'
-  | 'QUERY_STATE_CANCELLED';
+//or
+const reversedString = s.split('').reverse().join('');
 ```
-
-## 27/2
-
-### AlgoExpert
-
-#### find 3 largest numbers in an array, return them without sorting the array
-
-- initially I initialized the 3 top numbers to 0, but that doesn't work if the array has negative numbers
-- i solved this by either 1) initializing the numbers to null or 2) initializing the numbers to the first 3 numbers in the array or null
-
-1. `let top1 = null;` -> I don't think this is good TypeScript because it's not a number. I can't do math on it. I think it should be `let top1: number | null = null;`
-2. `let sortedArr: Array<number | null> = [null, null, null]`
-
-#### Bubble sort array of numbers
-
-- while loop with a for loop inside
-- while loop is false, iterate from beginning to end of array -1 -count (array -1 because we're comparing the current number with the next number, -count because each time we loop around while we bubble a top number to the top of the array)
-- if the current number is greater than the next number, swap them
-
-## 28/2
-
-### AlgoExpert
-
-#### insertion sort
-
-- iterate array from 1 to end. (1 because )
-
-```
-for(let i = 0; i < array.length; i++){
-  let j = i;
-  while(array[j] < array[-1] && j > 0){j
-    swap(array[i], array[j])
-  }
-```
-
-}
