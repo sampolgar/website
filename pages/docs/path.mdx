@@ -857,7 +857,7 @@ console.log(`ended`);
 //hello, ello, llo, lo, o, ended
 ```
 
-#### getting stuck on recursive problems, writing here my instructions for next time
+#### getting stuck on recursive problems, writing here my instructions for next time recursion
 
 1. Start with the base case
 
@@ -1183,3 +1183,69 @@ const reverse = (s: string) => {
 //or
 const reversedString = s.split('').reverse().join('');
 ```
+
+### I've now completed the beginner section of Algoexpert
+
+- before moving to the medium section, to test my fluency, I want to do all questions in 1 day
+- I'll choose the recursive questions first, I don't feel confident in them yet
+- Things I'd like to focus on
+  - better understand when to use while loop, for loop, for of loop, for in loop
+  - better understand edge conditions on looping e.g. when to use -1, when to loop backwards from end to start
+  - better understand time and space complexity
+  - comparing previous coding solution to current, comment on it
+  - focus on consise & readability e.g. use arrow functions and ternary operators
+
+### Fetch review, explaining to myself
+
+What's the difference between this:
+
+```ts
+duneAnalyticsProvider
+  .dune(queryId, queryParameters)
+  .then((duneData) => {
+    for (const row of duneData) {
+      formattedData[row[addressFieldName]] = 1;
+    }
+
+    console.log(`formattedData: ${formattedData}`);
+    if (formattedData.undefined === 1)
+      throw Error(
+        'No data returned. Check the addressFieldName matches the address field in Dune. The address field in Dune must not have a space e.g. ETH Address. If so, rename it to ETH_Address or ETHAddress'
+      );
+  })
+  .catch((error) => console.log(`error: ${error}`));
+```
+
+and this:
+
+```ts
+
+```
+
+```ts
+
+```
+
+```ts
+
+```
+
+```ts
+
+```
+
+```ts
+
+```
+
+## 5/3
+
+## Algorigthms
+
+Recalling my goals for repeating the easy section
+
+- be precise in why I'm selecting a while loop, for loop, for of loop, for in loop
+- be precise in determining edge conditions on looping e.g. when to use -1, when to loop backwards from end to start
+- better understand time and space complexity
+- use arrow functions and ternary operators
+- recursion - understand when to use `return recurse` and when to just use inline function
