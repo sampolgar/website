@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>APIs</title>
+        <!-- <link rel="stylesheet" href="../base.css"> -->
+    </head>
+
+    <body>
+        <script>
+
+
+            // first()
+            // second()
+            // third()
+            fourth().catch((err) => {
+                console.log("fourth catch");
+                console.log(err);
+            })
+
+            function first() {
+                console.log('first')
+                const endpoint = "https://api.github.com/users/sampolgar";
+                const apiPromise = fetch(endpoint);
+                console.log(apiPromise.then((r) => {
+                    console.log(r);
+                    return r.json();
+                }));
+            }
+
+            function second() {
+                const endpoint = "https://api.github.com/users/sampolgar";
+                const apiPromise = fetch(endpoint);
+                apiPromise          // fetch returns a promise
+                    .then((response) => {           // response is the response object
+                        console.log(response);
+                        const r = response.json();     // response object has a method called json() which returns a promise
+                        return r
+                    })
+                    .then((data) => {               // data is the json data returned from the json() method
+                        console.log(data);
+                    })
+                    .catch(handleError);            // catch is a method that takes a callback function to handle errors;
+            }
+
+            function handleError(err) {
+                console.log("OH NO!");
+                console.log(err);
+            }
+
+            function third() {
+                const endpoint = "https://api.github.com/users/sampolgar";
+                const apiPromise = fetch(endpoint);
+
+
+                apiPromise.finally(() => {
+                    console.log("finally");
+                })
+                apiPromise.catch((err) => {
+                    console.log("catch");
+                    console.log(err);
+                })
+                apiPromise.then((response) => {
+                    console.log("then");
+                    let thisThen = response.json();
+                    thisThen.then((d) => {
+                        console.log("this then");
+                        console.log(d);
+                    })
+                        .catch((err) => {
+                            console.log("this catch");
+                            console.log(err);
+                        })
+                })
+            }
+
+            async function fourth() {
+                const endpoint = "htts://api.github.com/users/sampolgar123123123";
+                const apiPromise = fetch(endpoint);
+                const response = await apiPromise;
+                const data = await response.json();
+                console.log(data);
+            }
+
+        </script>
+    </body>
+
+</html>
+<script>
+
+</script>

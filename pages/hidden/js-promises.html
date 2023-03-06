@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>APIs</title>
+        <!-- <link rel="stylesheet" href="../base.css"> -->
+    </head>
+
+    <body>
+        <script>
+            function makePizza() {
+                const pizzaPromise = new Promise(function (resolve, reject) {
+                    resolve(`Here is your pizza 🍕 with the toppings ${toppings.join(' ')}`);
+                });
+                return pizzaPromise;
+            }
+            const pizza = makePizza();
+            console.log(pizza);
+        </script>
+    </body>
+
+</html>
+
+const pepperoniPromise = makePizza(['pepperoni']);
+const canadianPromise = makePizza(['pepperoni', 'mushroom', 'onions'])
+console.log(pepperoniPromise, canadianPromise);

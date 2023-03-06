@@ -31,5 +31,9 @@
     "theme": {
       "footer": false
     }
+  },
+  "hidden": {
+    "title": "Hidden",
+    "hidden": true
   }
 }

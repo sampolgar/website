@@ -1249,3 +1249,60 @@ Recalling my goals for repeating the easy section
 - better understand time and space complexity
 - use arrow functions and ternary operators
 - recursion - understand when to use `return recurse` and when to just use inline function
+
+```TS
+const fletcher3 = async <T>(): Promise<T> => {
+  const res = await fetch(`${url3}`, {
+    method: 'GET',
+    headers: {
+      'x-dune-api-key': DUNE_API_KEY,
+    },
+  });
+  const dat = await res;
+  return dat;
+  // const data = await res.json();
+  // return data;
+};
+
+Type 'Response' is not assignable to type 'T'.
+  'T' could be instantiated with an arbitrary type
+  which could be unrelated to 'Response'
+```
+
+This is saying dat is of type Response and I can't send an already typed Type to <T> because it wants a more generic type
+Response has a json() method and other methods, so I can't just return dat, I need to return dat.json()
+
+I can typecast it to T like (return dat as T) but I shouldn't because it's not generic. I should just return dat.json()
+
+````ts
+
+```ts
+
+````
+
+# 6/3 - 13/3
+
+## Algo's
+
+- better understand when to use while loop, for loop, for of loop, for in loop
+- better understand edge conditions on looping e.g. when to use -1, when to loop backwards from end to start
+- better understand time and space complexity
+- focus on consise & readability e.g. use arrow functions and ternary operators
+
+## Sismo
+
+Finish dune analytics provider & tutorial
+
+## rareskills
+
+## applied cryptography course usyd
+
+## 6/3
+
+### AM
+#### closest val in BST
+- Time O(log(n)) best because it's a BST. O(log(n)) for worst because our target could be the last item
+- Space(O(1)) because we're not storing much
+- Finding a single number so we can return the recursive function (not just call it?)
+
+#### branch summing a binary Tree
