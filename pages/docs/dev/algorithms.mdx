@@ -1,0 +1,118 @@
+# Notes on algo's
+
+## recursion
+
+When should a recursive algorithm
+
+1. not return anything
+2. return the result of the algorithm
+3. return the algorithm itself
+
+I've been confused about this and realised it's something I needed to solidify.
+
+### 1. Not return anything
+
+A function that doesn't return is used to perform an action on an existing data structure or global variable.
+For example, `reverse a string` or `print a list`
+
+```python
+def reverse_string(string):
+    if len(string) == 0:
+        return ""
+    return string[-1] + reverse_string(string[:-1])
+
+print(reverse_string("hello world"))
+# dlrow olleh
+```
+
+```python
+def print_list(list):
+    if len(list) == 0:
+        return
+    print(list[0])
+    print_list(list[1:])
+
+print_list(["hello", "world"])
+# hello
+# world
+```
+
+#### How it works
+
+Notice how the reversed string uses the memory stack to build the string
+The first function returns the reversed string in 1 go, where the second function returns the first element, then the second element.
+This is recursion, the first function continues to run until it reaches the base case, then it returns the reversed string, it's saved the string values in the memory stack.
+
+### 2. return the result of the algorithm
+
+Returning the function itself allows you to maintain the state of the function as you recurse until a base case is reached, then you can return the result of the algorithm.
+
+```python
+def recursive_function(data):
+    # do some processing on data
+    new_data = data + 1
+    if new_data < 10:
+        return recursive_function(new_data)
+    else:
+        return data
+```
+
+#### How it works
+
+The state of the data is maintained as the function recurses (like a global variable).
+The function will continue to recurse until the base case is reached, then it will return the result of the algorithm.
+
+### 3. return the algorithm itself
+
+This is the most confusing for me because I'm thinking about variables.
+
+- Don't think about variables, think about the call stack
+- If you're returning the algorithm itself, you're returning the call stack
+- The call stack will grow until the base case, then it will start popping off the stack
+
+For example, the factorial funciton multiplies itself by the number below.
+`if n = 5, then F(5) = 5 x F(4)....`
+How can we represent this in a function?
+
+```python
+def recursive_factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * recursive_factorial(n-1)
+```
+
+#### How it works
+
+The call stack will retain the state of the function until the base case. It won't be returning each result as it recurses through.
+Given the example above, the call stack will look like this
+
+```
+factorial(5) --> adds frame 1 to call stack
+    factorial(4) --> adds frame 2 to call stack
+        factorial(3) --> adds frame 3 to call stack
+            factorial(2) --> adds frame 4 to call stack
+                factorial(1) --> adds frame 5 to call stack
+                    factorial(0) --> returns 1, pops frame 5 from call stack
+                return 1 * 1 = 1, pops frame 4 from call stack
+            return 2 * 1 = 2, pops frame 3 from call stack
+        return 3 * 2 = 6, pops frame 2 from call stack
+    return 4 * 6 = 24, pops frame 1 from call stack
+```
+
+All of this is the `recursive_factorial(n-1)` part of the function.
+When we `return n * recursive_factorial(n-1)` we are actually returning
+`n * ` the call stack above. This is why we don't need to create a variable to store the result of the recursive function, we can just return it because the recursive function is the result.
+
+#### recursion return
+using `return` inside a recursive function is used to exit the function.
+If you don't use `return` inside a recursive function, it will continue to recurse until the base case is reached.
+
+```python
+
+
+```
+
+```
+
+```
