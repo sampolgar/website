@@ -24,6 +24,13 @@ def reverse_string(string):
 print(reverse_string("hello world"))
 # dlrow olleh
 ```
+```ts
+function reverseString(str: string): string {
+  if (str.length === 0) return "";
+  return str[str.length - 1] + reverseString(str.slice(0, -1));
+}
+```
+
 
 ```python
 def print_list(list):
@@ -104,9 +111,52 @@ All of this is the `recursive_factorial(n-1)` part of the function.
 When we `return n * recursive_factorial(n-1)` we are actually returning
 `n * ` the call stack above. This is why we don't need to create a variable to store the result of the recursive function, we can just return it because the recursive function is the result.
 
+#### How it works with a tree
+
+
+                1
+            /       \
+        2               3
+      /    \           /   \
+    4       5       6       7
+   /  \
+8       9
+
+- depth is a variable in memory that is used to keep track of the depth of the tree
+- the depth is incremented as the function recurses
+- each recursion, the depth in memory is added to the result of the recursive fn
+- when we say `depth + addNodeDepthsRecursive(node.left, depth + 1)` we are adding the current depth to the result of the next function
+
+```ts
+function addNodeDepthsRecursive(node: Node, depth: number): number {
+  if (!node) return 0;
+  return (
+    depth +
+    addNodeDepthsRecursive(node.left, depth + 1) +
+    addNodeDepthsRecursive(node.right, depth + 1)
+  );
+}
+```
+```
+addNodeDepthsRecursive(0) --> adds frame 1 to call stack
+    addNodeDepthsRecursive(1) --> adds frame 2 to call stack
+        addNodeDepthsRecursive(2) --> adds frame 3 to call stack
+            addNodeDepthsRecursive(3) --> adds frame 4 to call stack
+            return 0, pops frame 4 from call stack
+        return (1 + 1), pops frame 3 from call stack
+    return  (2 + 2 + 2 + 2) + (1 + 1) , pops frame 2 from call stack
+return (3 + 3) + (2 + 2 + 2 + 2) + (1 + 1), pops frame 1 from call stack
+    
+```
+
+```ts
+
+```
+
 #### recursion return
+
 using `return` inside a recursive function is used to exit the function.
-If you don't use `return` inside a recursive function, it will continue to recurse until the base case is reached.
+If you don't use `return` inside a recursive function, it will continue to recurse until the base case is reached or will just continue
 
 ```python
 
