@@ -13,7 +13,7 @@
 | Ethersjs            | 1                |               |
 | Circom              |                  |               |
 | The Graph           |                  |               |
-| Dune Analytics      |                  |               |
+| Dune Analytics      | 1                | 0             |
 | Blockchain data API | 1                |               |
 | Bigquery            |                  |               |
 | SQL                 | 2                | 2             |
@@ -154,17 +154,17 @@ describe('SimpleStorage', function () {
 
 ### complete the below w/o github copilot [link](https://youtu.be/gyMwXuJrbJQ?t=34728)
 
--[] create the SimpleStorage contract that stores a fav number, retreives the number, and stores an array of person structs (name, favnum)
--[] create a hardhat deployment script to deploy the SimpleStorage contract on Goerli
--[] verify it on Etherscan in the code
--[] interact with it
--[] Deploy the contract to hardhat network to view transactions on the console chain
--[] Deploy the contract to the Goerli testnet and verify it on Etherscan
--[] create a task to check the block number
--[] create tests for the contract
--[] check with coverage
--[] work with gas reporter in tests, check usd price with coinmarketcap api
--[] update to Typescript
+-[x] create the SimpleStorage contract that stores a fav number, retreives the number, and stores an array of person structs (name, favnum)
+-[x] create a hardhat deployment script to deploy the SimpleStorage contract on Goerli
+-[x] verify it on Etherscan in the code
+-[x] interact with it
+-[x] Deploy the contract to hardhat network to view transactions on the console chain
+-[x] Deploy the contract to the Goerli testnet and verify it on Etherscan
+-[x] create a task to check the block number
+-[x] create tests for the contract
+-[x] check with coverage
+-[x] work with gas reporter in tests, check usd price with coinmarketcap api
+-[x] update to Typescript
 
 #### round 1 completed - 5 hours
 
@@ -554,7 +554,7 @@ What's the difference between calling return on a recursive function and not cal
 - Not calling with return could instead for example, update a global var
 - Think about the factorial (1 x 2 x 3 x 4 x 5)
 
-```ts
+```js
 function factorial(n: number): number {
   if (n === 0) {
     return 1;
@@ -567,7 +567,7 @@ const result: number = factorial(5);
 console.log(result); //120
 ```
 
-```ts
+```js
 function printNumbers(n: number): void {
   if (n === 0) {
     return;
@@ -585,7 +585,7 @@ printNumbers(5);
 
 Given a class
 
-```ts
+```js
 class BinaryTree {
   value: number;
   left: BinaryTree | null;
@@ -603,7 +603,7 @@ class BinaryTree {
 2. create an array of nodes using spread operator
 3. pop a node object off and destructure it
 
-```ts
+```js
 //1 => each node is either the class left or right and needs `BinaryTree | null` otherwise error =  Type 'BinaryTree | null' is not assignable to type 'BinaryTree'.
 interface Node {
   node: BinaryTree | null;
@@ -630,7 +630,7 @@ For the Binary Tree class above, the following function returns
 `Function lacks ending return statement and return type does not include 'undefined'.`
 `Object is possibly 'null'.`
 
-```ts
+```js
 function recurseHandler(tree: BinaryTree | null, depthSum: number): number {
   if (tree === null) {
     return (
@@ -647,7 +647,7 @@ function recurseHandler(tree: BinaryTree | null, depthSum: number): number {
 
 solution
 
-```ts
+```js
 function recurseHandler(tree: BinaryTree | null, depthSum: number): number {
   if (tree === null) return 0;
   return (
@@ -684,12 +684,13 @@ Notes
 - `for...of` can `break` out of a loop and stop processing the rest of the array
 - `forEach` can only `return` which stops processing the current iteration and moves to the next element
 
-```ts
+```js
 // for...of
 const: numbers[]: number[] = [ 1, 2, 3];
 for (const number of numbers) {
   if (number === 2) break;
 }
+
 
 // forEach
 numbers.forEach((number) => {
@@ -706,7 +707,7 @@ and
 - Interface can be extended by other interfaces and classes, types can't be extended
   e.g.
 
-```ts
+```js
 interface A {
   a: string;
 }
@@ -718,7 +719,7 @@ interface B extends A {
 
 ## how to typecast
 
-```ts
+```js
 interface PersonFirst {
   name: string;
   age: number;
@@ -747,7 +748,7 @@ https://ivov.dev/notes/typescript-and-set-theory
 
 How does the type work [here](https://medium.com/@maksim_smagin/how-good-is-your-typescript-interview-with-just-3-questions-cecdce5ce4d4)?
 
-```ts
+```js
 type DeepPartial<T> = {
   [P in keyof T]?: DeepPartial<T[P]>;
 };
@@ -784,7 +785,7 @@ const users = find({
 
 - needed to execute process.env.MY_API_KEY as terminal variables e.g. `MY_API_KEY=1234 yarn generate-group ...`
 
-```ts
+```js
   public constructor() {
     this.url = 'https://eoytk2wrnwx0j2c.m.pipedream.net';
     this.restProvider = new RestProvider();
@@ -832,12 +833,12 @@ Non Truthy
 
 examples
 
-```ts
+```js
 !!"" = false
 !!"hello" = true // compiles to true = true because the string is type set to a bool
 ```
 
-```ts
+```js
 let myString = 'hello';
 
 while (myString) {
@@ -847,7 +848,7 @@ while (myString) {
 //hello, ello, llo, lo, o, undefined
 ```
 
-```ts
+```js
 while (!!myString) {
   console.log(myString);
   myString.slice(1);
@@ -897,9 +898,9 @@ factorial(4)
 |
 |--> return 24
 
-### why use <T> instead of <any> in a generic function?
+### why use `<T>` instead of `<any>` in a generic function?
 
-```ts
+```js
 export async function http<T>(request: RequestInfo): Promise<T> {
   const response = await fetch(request);
   const body = await response.json();
@@ -917,11 +918,11 @@ interface Todo {
 const data = await http<Todo[]>('https://jsonplaceholder.typicode.com/todos');
 ```
 
-- <T>  is a type param. the caller can specify what type they use and what to expect back
+- `<T>` is a type param. the caller can specify what type they use and what to expect back
 - in the `http` function example above, the API consumer calls `await http<Todo[]>(...)` and expects an array of Todo objects to be returned from the API endpoint
-- <T> is generally better than <any> because it provides stronger type safety and better code readability
-- use <T> when you know the type of data returned from the API
-- <any> is only better when the response type is unknown, or if you need to typecast it to a different type
+- `<T>` is generally better than `<any>` because it provides stronger type safety and better code readability
+- use `<T>` when you know the type of data returned from the API
+- `<any>` is only better when the response type is unknown, or if you need to typecast it to a different type
 
 ## 24/2
 
@@ -954,7 +955,7 @@ Notes
 
 What's going on here? Why do we need to return the Promise.resolve(fetchResult) rather than just
 
-```ts
+```js
 function feedingA<T>(string: fetch): Promise<T> {
   const fetchResult = await fetch(string);
   return a<T>(Promise.resolve(fetchResult));
@@ -994,7 +995,7 @@ Property 'QUERY_STATE_EXECUTING' does not exist on type '{
 
 ### Code
 
-```ts
+```js
 if (state in stateErrorMap) {
   const ErrorClass = stateErrorMap[state];
   throw new ErrorClass(state);
@@ -1119,7 +1120,7 @@ Why put a for loop inside a while loop?
 
 Difference between dictionary and map
 
-```ts
+```js
 const dictionary: { [key: string]: number } = {};
 //set
 dictionary.a = 1;
@@ -1146,7 +1147,7 @@ map.get('a');
 
 ### Algoexpert return an array of strings with semordnilap pairs
 
-```ts
+```js
 //input
 array = ['cat', 'dog', 'tac', 'god', 'act'];
 //response = [['cat', 'tac'], ['dog', 'god']]
@@ -1172,7 +1173,7 @@ Map's have a key value pair. Set's don`t have a key value pair, only keys. So us
 
 ### Reversing a string
 
-```ts
+```js
 //reverse it with a function
 const reverse = (s: string) => {
   let r = '';
@@ -1199,7 +1200,7 @@ const reversedString = s.split('').reverse().join('');
 
 What's the difference between this:
 
-```ts
+```js
 duneAnalyticsProvider
   .dune(queryId, queryParameters)
   .then((duneData) => {
@@ -1218,23 +1219,23 @@ duneAnalyticsProvider
 
 and this:
 
-```ts
+```js
 
 ```
 
-```ts
+```js
 
 ```
 
-```ts
+```js
 
 ```
 
-```ts
+```js
 
 ```
 
-```ts
+```js
 
 ```
 
@@ -1250,7 +1251,7 @@ Recalling my goals for repeating the easy section
 - use arrow functions and ternary operators
 - recursion - understand when to use `return recurse` and when to just use inline function
 
-```TS
+```js
 const fletcher3 = async <T>(): Promise<T> => {
   const res = await fetch(`${url3}`, {
     method: 'GET',
@@ -1269,14 +1270,14 @@ Type 'Response' is not assignable to type 'T'.
   which could be unrelated to 'Response'
 ```
 
-This is saying dat is of type Response and I can't send an already typed Type to <T> because it wants a more generic type
+This is saying dat is of type Response and I can't send an already typed Type to `<T>`because it wants a more generic type
 Response has a json() method and other methods, so I can't just return dat, I need to return dat.json()
 
 I can typecast it to T like (return dat as T) but I shouldn't because it's not generic. I should just return dat.json()
 
-````ts
+````js
 
-```ts
+```js
 
 ````
 
@@ -1313,3 +1314,5 @@ Finish dune analytics provider & tutorial
 
 - continue recursion problems on AlgoExpert easy
 - follow this to improve my recursion gamehttps://www.youtube.com/watch?v=ngCos392W4w
+
+## 20/3
