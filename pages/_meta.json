@@ -32,6 +32,12 @@
       "footer": false
     }
   },
+  "cryptography": {
+    "title": "Cryptography",
+    "theme": {
+      "footer": false
+    }
+  },
   "hidden": {
     "title": "Hidden",
     "hidden": true
