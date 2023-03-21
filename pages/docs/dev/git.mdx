@@ -3,8 +3,7 @@
 ## Create Repo
 
 - `git init`
-- `git add .`
-- `git commit -m "first commit"`
+- `git commit -am "first commit"` | `git add . && git commit -m "first commit"`
 - `git branch -M main`
 - `git remote add origin` / `git remote add upstream https://github.com/sampolgar/.../.git`
 - `git pull main --allow-unrelated-histories`
@@ -33,3 +32,26 @@
 - `git config --global user.email "sampolgar@gmail.com"`
 - `ls -la | see in the file structure`
 - `rm -rf .git/ | delete the git init file`
+
+## Revert or Reset
+
+- `git log --oneline --graph --author="sampolgar@gmail.com"` | easily see the commit history
+- reset undoes commits, revert undoes commits and creates a new commit
+- `git reset --hard HEAD~5` || `git reset --hard hashofmerge_commit` | reset the last commit, or
+- `git reset --soft HEAD~1` || `git reset --soft hasofmerge_commit` | reset the last commit, but keep the changes
+- `git revert HEAD` || `git revert HEAD~2` || `git revert HEAD~4..HEAD~1` || `git revert hasofmerge_commit -m parentNumber` | revert
+
+Revert a commit
+https://stackoverflow.com/questions/1895059/revert-to-a-commit-by-a-sha-hash-in-git/1895095#1895095
+
+Revert a pushed commit
+
+## Update or sync a forked Repo [here](https://www.youtube.com/watch?v=deEYHVpE1c8)
+
+- `git remote add upstream https://github.com/whoever/whatever.git` | Add the remote, call it "upstream":
+- `git fetch upstream` | Fetch all the branches of that remote into remote-tracking branches
+- `git checkout main` | make sure I'm on main
+- `git rebase upstream/main` | Rewrite your master branch so that any commits of yours that aren't already in upstream/main are replayed on top of that other branch:
+  `If you don't want to rewrite the history of your main branch, (for example because other people may have cloned it) then you should replace the last command with git merge upstream/main.`
+  `However, for making further pull requests that are as clean as possible, it's probably better to rebase.`
+- `git push -f origin main` | push the changes to my forked repo, use `-f` the first time after rebase

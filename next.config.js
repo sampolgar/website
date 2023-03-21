@@ -5,6 +5,7 @@ const withNextra = require('nextra')({
   flexsearch: {
     codeblocks: false,
   },
+  defaultShowCopyCode: true,
 });
 
 module.exports = withNextra();
