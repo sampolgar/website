@@ -43,6 +43,8 @@
 
 Revert a commit
 https://stackoverflow.com/questions/1895059/revert-to-a-commit-by-a-sha-hash-in-git/1895095#1895095
+Revert changes, git push origin -f closes a PR and reverts any changes => you can edit them and push a new PR
+https://stackoverflow.com/questions/32212783/how-to-remove-a-file-from-a-git-commit-that-has-been-pushed
 
 Revert a pushed commit
 
@@ -55,3 +57,29 @@ Revert a pushed commit
   `If you don't want to rewrite the history of your main branch, (for example because other people may have cloned it) then you should replace the last command with git merge upstream/main.`
   `However, for making further pull requests that are as clean as possible, it's probably better to rebase.`
 - `git push -f origin main` | push the changes to my forked repo, use `-f` the first time after rebase
+
+## sam can you revert your last commit in the PR?
+
+https://stackoverflow.com/questions/36168839/how-to-remove-commits-from-a-pull-request
+
+Removing commits that you want to delete
+
+- git checkout my-pull-request-branch
+- git rebase -i HEAD~n
+- pick commits to keep, drop commits to discard
+- git push --force
+
+If you drop all commits in the PR it will close the PR
+
+- git rebase -i HEAD~n
+- swap the commit you want to remove to the bottom (most recent) position
+- git reset HEAD^ --soft
+- git push -f
+
+this should remove commit from remote and keep commit on local
+
+## Unstash a few files
+
+- `git stash pop` | pop everything
+- `git add` | add what you want to keep
+- `git stash --keep-index` | stash the rest
