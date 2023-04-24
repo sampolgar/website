@@ -1,0 +1,188 @@
+# Using JMESPath for Sismo
+
+## Summary steps
+
+We need to give the data provider 3 values
+
+1. GraphQL Query
+2. GraphQL Endpoint
+3. JMESPath query that extracts an array of addresses in the format `["0x123", "0x456"]`
+
+## Instructions
+
+1. Make your graphql query in a graphql explorer/postman
+2. Copy the response
+3. Use the [JMESPath online tool](https://jmespath.org/) to make a jmespath query that extracts an array of addresses like `["0x123", "0x456"]`
+4. remove the `data` key from the jmespath query, i.e. if your jmespath query is `data.votes[].voter` change it to `votes[].voter`
+
+## Example Snapshot - get query voters https://hub.snapshot.org/graphql
+
+#### 1. GraphQL Query
+
+```graphql
+query {
+  votes(
+    first: 1000
+    skip: 0
+    where: {
+      proposal: "0xa1b00d332f3cc248ddccaf3fbdefd8af93b0fa2078121b4e6eb3db8ad63a6118"
+    }
+    orderBy: "created"
+    orderDirection: desc
+  ) {
+    id
+    voter
+    vp
+    vp_by_strategy
+    vp_state
+    created
+    proposal {
+      id
+    }
+    choice
+    space {
+      id
+    }
+  }
+}
+```
+
+#### 2. GraphQL Response
+
+returns a list of votes like this
+
+```json
+{
+  "data": {
+    "votes": [
+      {
+        "id": "0x0d185b44dc6a9e4077d44a29fccc22d1f6238192107d08afa890a1bdddc01e10",
+        "voter": "0x4Aad3544bE38067F534b6B516f9E645D495c4062",
+        "vp": 303.51012989219987,
+        "vp_by_strategy": [303.51012989219987],
+        "vp_state": "final",
+        "created": 1648917736,
+        "proposal": {
+          "id": "0xa1b00d332f3cc248ddccaf3fbdefd8af93b0fa2078121b4e6eb3db8ad63a6118"
+        },
+        "choice": 1,
+        "space": {
+          "id": "excaliburexchange.eth"
+        }
+      },
+      {
+        "id": "0xf141aa62dc57b20fb6ea1197df44ba0ab4de166c8c19302553065788812beea1",
+        "voter": "0xB01f126C9041CC230e91378d688450Db4c3510cA",
+        "vp": 9.155539736940863,
+        "vp_by_strategy": [9.155539736940865],
+        "vp_state": "final",
+        "created": 1648917438,
+        "proposal": {
+          "id": "0xa1b00d332f3cc248ddccaf3fbdefd8af93b0fa2078121b4e6eb3db8ad63a6118"
+        },
+        "choice": 1,
+        "space": {
+          "id": "excaliburexchange.eth"
+        }
+      },
+      {
+        "id": "0x976aa8d60f9337f34c2648b892b6b5bb8e103a9bfb9d5ead587adde930c939a2",
+        "voter": "0x9EECB23993c525b64C366344Ba6F6Db66c3a82B9",
+        "vp": 113.62965351061816,
+        "vp_by_strategy": [113.62965351061816],
+        "vp_state": "final",
+        "created": 1648768983,
+        "proposal": {
+          "id": "0xa1b00d332f3cc248ddccaf3fbdefd8af93b0fa2078121b4e6eb3db8ad63a6118"
+        },
+        "choice": 1,
+        "space": {
+          "id": "excaliburexchange.eth"
+        }
+      }
+    ]
+  }
+}
+```
+
+#### 3. JMESPath Query
+
+Use the [JMESPath online tool](https://jmespath.org/) to extract the list of voters `data.votes[].voter`
+
+We end up with an array like
+
+```json
+[
+  "0x4Aad3544bE38067F534b6B516f9E645D495c4062",
+  "0xB01f126C9041CC230e91378d688450Db4c3510cA",
+  "0x9EECB23993c525b64C366344Ba6F6Db66c3a82B9"
+]
+```
+
+#### 4. Remove `data` key
+
+Because Sismo uses a graphql library, we need to remove the `data` key from the jmespath query, i.e. `votes[].voter`
+
+## Example Sismo - get minted badges https://api.sismo.io/
+
+#### 1. GraphQL Query
+
+```graphql
+{
+  mintedBadges(where: { tokenId: 10000089 }) {
+    owner {
+      id
+    }
+  }
+}
+```
+
+#### 1. GraphQL Response
+
+returns a list of minted badges like
+
+```json
+{
+  "data": {
+    "mintedBadges": [
+      {
+        "owner": {
+          "id": "0x3da45ec536031922a1b7fe5df89630e3e691e66e"
+        }
+      },
+      {
+        "owner": {
+          "id": "0xfb805cae07533fc500a4e6b47eb83938c1b033d9"
+        }
+      },
+      {
+        "owner": {
+          "id": "0xde9355770629d481c629c6a521d3617f914e3b77"
+        }
+      },
+      {
+        "owner": {
+          "id": "0x2588253cc1daac3e7d823b9190ec87e75c67f2c4"
+        }
+      }
+    ]
+  }
+}
+```
+
+#### 3. JMESPath Query
+
+Use the [JMESPath online tool](https://jmespath.org/) to extract the list of owners `data.mintedBadges[].owner.id`
+
+```json
+[
+  "0x3da45ec536031922a1b7fe5df89630e3e691e66e",
+  "0xfb805cae07533fc500a4e6b47eb83938c1b033d9",
+  "0xde9355770629d481c629c6a521d3617f914e3b77",
+  "0x2588253cc1daac3e7d823b9190ec87e75c67f2c4"
+]
+```
+
+#### 4. Remove `data` key
+
+Because Sismo uses a graphql library, we need to remove the `data` key from the jmespath query, i.e. `mintedBadges[].owner.id`
