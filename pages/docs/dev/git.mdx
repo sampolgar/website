@@ -16,6 +16,16 @@
 - `git remote -v`
 - `git rm -r --cached .`
 - `git add . && git commit -m "" && git push origin main`
+- `git commit -am "committing and pushing" && git push origin main`
+
+### Fork and Branch
+
+1. Fork, clone the forked repo
+2. `git remote -v` should be the forked Repo
+3. `git remote add upstream ....` add the original repo
+4. `git fetch upstream` fetch the original repo | `git pull upstream main` | `git push origin main`
+5. `git checkout -b new-branch-name` create a new branch
+6. `git commit -am"commit and add"` && `git push origin new-branch-name`
 
 ### branching
 
@@ -83,3 +93,9 @@ this should remove commit from remote and keep commit on local
 - `git stash pop` | pop everything
 - `git add` | add what you want to keep
 - `git stash --keep-index` | stash the rest
+
+## NVM
+
+- `source $(brew --prefix nvm)/nvm.sh`
+- `nvm use 18.15`
+- nvm alias default 20
