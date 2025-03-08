@@ -2,27 +2,58 @@
 title: Introduction
 ---
 
+import {Steps, Cards} from 'nextra/components'
+import { Search } from 'lucide-react';
+
 
 # Nextra Docs Starter
 
-This is a template for creating documentation with [Nextra](https://nextra.site).
+This starter template includes the following features:
 
-[**Live Demo →**](https://nextra-docs-template.vercel.app)
+<Cards>
+    <Cards.Card
+        icon={<img src="/images/general/icon.svg" alt="Logo" width={28} height={28}/>}
+        title="Nextra 4"
+        href="https://nextra.site"
+    />
+    <Cards.Card
+        icon={<Search/>}
+        title="Search with Pagefind"
+        href="https://the-guild.dev/blog/nextra-4#new-search-engine--pagefind"
+    />
+    <Cards.Card
+        title="Lucide Icons"
+        href="https://lucide.dev/icons"
+    />
+</Cards>
 
-[![](.github/screenshot.png)](https://nextra-docs-template.vercel.app)
+[**Live Demo →**](https://nextra-4-docs-starter.vercel.app)
+
+[**Check this on GitHub →**](https://github.com/phucbm/nextra-docs-starter)
 
 ## Quick Start
 
-Click the button to clone this repository and deploy it on Vercel:
+You can deploy this template on Vercel by clicking the button below
 
-[![](https://vercel.com/button)](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra-docs-template&showOptionalTeamCreation=false)
+[![](https://vercel.com/button)](https://vercel.com/new/clone?s=https://vercel.com/new/clone?https%3A%2F%2Fgithub.com%2Fphucbm%2Fnextra-docs-starter&showOptionalTeamCreation=false)
 
-## Local Development
+Or you can follow the steps below to clone the repository and run it locally.
 
-First, run `pnpm i` to install the dependencies.
+<Steps>
+    ### Clone this repository
 
-Then, run `pnpm dev` to start the development server and visit localhost:3000.
+    Using the GitHub CLI:
+    ```bash
+    gh repo clone phucbm/nextra-docs-starter
+    ```
 
-## License
+    ### Install
+    ```bash
+    pnpm i
+    ```
 
-This project is licensed under the MIT License.
+    ### Run the development server
+    ```bash
+    pnpm dev
+    ```
+</Steps>
