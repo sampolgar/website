@@ -8,11 +8,13 @@ This starter template includes the following features:
 
 [**Live Demo →**](https://nextra-4-docs-starter.vercel.app)
 
+[![](.github/screenshot.png)](https://nextra-4-docs-starter.vercel.app)
+
 ## Quick Start
 
 You can deploy this template on Vercel by clicking the button below
 
-[![](https://vercel.com/button)](https://vercel.com/new/clone?s=https://vercel.com/new/clone?https%3A%2F%2Fgithub.com%2Fphucbm%2Fnextra-docs-starter&showOptionalTeamCreation=false)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fphucbm%2Fnextra-blog-starter)
 
 ## Local Development
 

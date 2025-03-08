@@ -2,6 +2,7 @@ import {Footer, Layout, Navbar} from 'nextra-theme-docs'
 import {Banner, Head} from 'nextra/components'
 import {getPageMap} from 'nextra/page-map'
 import 'nextra-theme-docs/style.css'
+import Link from "next/link";
 
 export const metadata = {
     // Define your metadata here
@@ -15,7 +16,7 @@ const navbar = (
         // ... Your additional navbar options
     />
 )
-const footer = <Footer>MIT {new Date().getFullYear()} © Nextra.</Footer>
+const footer = <Footer>MIT {new Date().getFullYear()} © Nextra. Customized with ♥️ by <Link href="https://github.com/phucbm">PHUCBM</Link></Footer>
 
 export default async function RootLayout({children}) {
     return (
