@@ -6,9 +6,9 @@ This starter template includes the following features:
 - [x] **Search with Pagefind**
 - [x] **Lucide Icons**
 
-[**Live Demo →**](https://nextra-4-docs-starter.vercel.app)
+[**Live Demo →**](https://nextra-docs-starter.vercel.app)
 
-[![](.github/screenshot.png)](https://nextra-4-docs-starter.vercel.app)
+[![](.github/screenshot.png)](https://nextra-docs-starter.vercel.app)
 
 ## Quick Start
 
