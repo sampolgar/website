@@ -1,18 +1,27 @@
-import React from 'react'
-import { DocsThemeConfig } from 'nextra-theme-docs'
+import React from "react";
 
-const config: DocsThemeConfig = {
-  logo: <span>My Project</span>,
-  project: {
-    link: 'https://github.com/shuding/nextra-docs-template',
-  },
-  chat: {
-    link: 'https://discord.com',
-  },
-  docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
-  footer: {
-    text: 'Nextra Docs Template',
-  },
-}
+const config = {
+    search: true,
+    head: (
+        <>
+            <link rel="icon" type="image/png" href="/images/general/logo.png" />
+        </>
+    ),
+    logo: (
+        <>
+      <span className="nx-flex nx-items-center nx-gap-2">
+        <img src="/images/general/logo.png" style={{ width: "45px" }} alt="Logo" />
+        <b>Viivue Docs</b>
+      </span>
+        </>
+    ),
+    project: {
+        link: "https://github.com/viivue/docs-v2",
+    },
+    docsRepositoryBase: "https://github.com/viivue/docs-v2",
+    footer: {
+        text: "Viivue Documents",
+    },
+};
 
-export default config
+export default config;
