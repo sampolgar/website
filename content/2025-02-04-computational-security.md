@@ -1,4 +1,4 @@
-# Introduction
+# Computational Security
 
 The foundations of modern cryptography rest upon a remarkable paradigm shift: moving from Shannon's perfect secrecy to computational security. While Shannon's 1949 work established the mathematical foundations of perfect secrecy, it also revealed a fundamental limitation - the key length must be at least as long as the message. This constraint, while theoretically elegant, severely limited practical applications.
 
@@ -11,7 +11,7 @@ Goldwasser and Micali's seminal work in the 1980s revolutionized this landscape 
 These relaxations enabled a new framework where security could be based on computational assumptions rather than information-theoretic guarantees. Consider the contrast:
 
 Shannon: ∀A: Pr[A breaks scheme] = 0
-GM: ∀A ∈ PPT: Pr[A breaks scheme] ≤ negl(λ)
+GM: ∀A ∈ PPT: Pr[A breaks scheme] $\leq$ negl($\lambda$)
 
 This transition fundamentally changed how we construct secure systems, leading to practical primitives like pseudorandom functions, public-key encryption, and zero-knowledge proofs.
 
