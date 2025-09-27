@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/phucbm/nextra-docs-starter#readme",
   "dependencies": {
+    "katex": "^0.16.22",
     "next": "^15.3.4",
     "nextra": "^4.2.17",
     "nextra-theme-docs": "^4.2.17",
