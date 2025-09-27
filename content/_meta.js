@@ -3,8 +3,12 @@ export default {
     title: "Home",
     type: "page",
   },
-  frameworks: {
-    title: "Frameworks",
+  technical: {
+    title: "Technical",
+    type: "page",
+  },
+  running: {
+    title: "Running",
     type: "page",
   },
   about: {
