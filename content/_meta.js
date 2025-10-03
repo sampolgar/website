@@ -11,6 +11,10 @@ export default {
     title: "Running",
     type: "page",
   },
+  life: {
+    title: "Life",
+    type: "page",
+  },
   about: {
     title: "About",
     type: "page",
