@@ -2,8 +2,6 @@ https://files.boazbarak.org/introtcs/lnotes_book.pdf#page=59.39
 
 # Definitions
 
-
-
 # Proofs
 
 Understanding importance hierarchy: definitions > theorems > proofs

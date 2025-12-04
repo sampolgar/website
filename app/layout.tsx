@@ -36,7 +36,7 @@ export default async function RootLayout({ children }) {
       <Head
       // ... Your additional head options
       >
-        <link rel="shortcut icon" href="/images/general/icon.svg" />
+        <link rel="shortcut icon" href="/images/general/logo.svg" />
         {/* Your additional tags should be passed as `children` of `<Head>` element */}
       </Head>
       <body>
@@ -44,7 +44,7 @@ export default async function RootLayout({ children }) {
           //   banner={banner}
           navbar={navbar}
           pageMap={await getPageMap()}
-          docsRepositoryBase="https://github.com/phucbm/nextra-docs-starter/tree/main"
+          docsRepositoryBase="http://github.com/sampolgar/website/tree/main"
           footer={footer}
           // ... Your additional layout options
         >

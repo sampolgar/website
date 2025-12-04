@@ -15,8 +15,8 @@ export default {
     title: "Life",
     type: "page",
   },
-  about: {
-    title: "About",
+  publications: {
+    title: "Publications",
     type: "page",
   },
 };
