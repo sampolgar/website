@@ -3,8 +3,8 @@ export default {
     title: "Home",
     type: "page",
   },
-  technical: {
-    title: "Technical",
+  blog: {
+    title: "blog",
     type: "page",
   },
   running: {
