@@ -44,7 +44,7 @@ export default async function RootLayout({ children }) {
           //   banner={banner}
           navbar={navbar}
           pageMap={await getPageMap()}
-          docsRepositoryBase="http://github.com/sampolgar/website/tree/main"
+          docsRepositoryBase="https://github.com/sampolgar/website/tree/main"
           footer={footer}
           // ... Your additional layout options
         >
